@@ -28,6 +28,8 @@ html {
 }
 
 body {
+  background-image: url("../images/image1.jpg");
+  background-size: cover;
   font-weight: 400;
   overflow-x: hidden;
   position: relative;
