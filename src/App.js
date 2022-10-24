@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./Components/About"
 import Contact from "./Components/Contact";
 import HomePage from "./Components/HomePage";
+import NavBar from "./Navbar/NavBar";
+import Login from "./Components/Login";
 
 
 function App() {
@@ -11,10 +13,12 @@ function App() {
     <div className="App">
 
       <BrowserRouter>
+        <NavBar/>
         <Routes>
-          <Route path="/" element={<HomePage/>}></Route>
+          <Route exact path="/" element={<HomePage/>}></Route>
           <Route path="/about" element={<About/>}></Route>
           <Route path="/contact" element={<Contact/>}></Route>
+          <Route path="/login" element={<Login/>}></Route>
 
         </Routes>  
       </BrowserRouter>

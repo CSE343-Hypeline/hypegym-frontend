@@ -167,7 +167,7 @@ span.navbar-text {
 .navbar-text button {
   font-weight: 700;
   color: #fff;
-  border: 1px solid #fff;
+  border: 1px solid  rgb(221, 255, 0) ;
   padding: 18px 34px;
   font-size: 18px;
   margin-left: 18px;
@@ -248,19 +248,26 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .banner {
   margin-top: 0;
   padding: 260px 0 100px 0;
-  background-image: url("./assets/img/banner-bg.png");
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
+  background: linear-gradient(
+    to right, 
+    rgb(221, 255, 0), 
+    rgb(222, 5, 5)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
 }
 .banner .tagline {
   font-weight: 700;
   letter-spacing: 0.8px;
   padding: 8px 10px;
-  background: linear-gradient(
+  color: linear-gradient(
     90.21deg,
-    rgba(170, 54, 124, 0.5) -5.91%,
-    rgba(74, 47, 189, 0.5) 111.58%
+    rgba(170, 139, 54, 0.5) -5.91%,
+    rgba(7, 0, 0, 0.5) 111.58%
   );
   border: 1px solid rgba(255, 255, 255, 0.5);
   font-size: 20px;
@@ -272,7 +279,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-weight: 700;
   letter-spacing: 0.8px;
   line-height: 1;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   display: block;
 }
 .banner p {
@@ -283,10 +290,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   width: 96%;
 }
 .banner button {
-  color: #fff;
+  color: rgb(208, 41, 32);
   font-weight: 700;
   font-size: 20px;
-  margin-top: 60px;
+  margin-top: 30px;
   letter-spacing: 0.8px;
   display: flex;
   align-items: center;

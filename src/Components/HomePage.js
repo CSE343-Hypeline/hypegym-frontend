@@ -1,9 +1,9 @@
-import NavBar from "../Navbar/NavBar";
+import { Banner } from "./Banner";
 
 const HomePage = () => {
     return (
       <div>
-        <NavBar/>
+        <Banner/>
       </div>
     )
   };
