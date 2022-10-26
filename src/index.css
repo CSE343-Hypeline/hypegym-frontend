@@ -12,35 +12,3 @@ code {
     monospace;
 }
 
-.Login {
-  height:100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-form{
-  display:block;
-  position:relative;
-}
-
-form:after{
-  content:'';
-  display: block;
-  position:absolute;
-  top:-5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5 px;
-  index:1;
-  /* background image gelecek mi*/
-  /* çerçeve mi */
-}
-
-form .form-inner {
-
-}
-
-form .form-inner .form-group{
-  
-}
