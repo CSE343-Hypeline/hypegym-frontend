@@ -27,8 +27,8 @@ export default function (props) {
           <div className="d-grid gap-2 mt-3">
             <button class="button-75" role="button"><span class="text">SUBMİT</span></button>
           </div>
-          <p className="forgot-password text-right mt-100">
-            Forgot <a href="#" >password?</a>
+          <p className="forgotPassword" >
+            <a href="#" > Forgot password?</a>
           </p>
         </div>
       </form>
