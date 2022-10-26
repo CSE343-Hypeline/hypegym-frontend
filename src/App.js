@@ -5,7 +5,8 @@ import About from "./Components/About"
 import Contact from "./Components/Contact";
 import HomePage from "./Components/HomePage";
 import NavBar from "./Navbar/NavBar";
-import Login from "./Components/Login";
+import Login from "./Components/LoginPage/Login";
+
 
 
 function App() {
