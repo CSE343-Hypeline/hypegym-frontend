@@ -1,11 +1,9 @@
 import React from "react";
 
-import logo from "../assets/img/logo.svg";
-import { Navbar, Container, Nav} from "react-bootstrap";
+import logo from "../../assets/img/logo.svg";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import {LinkContainer} from 'react-router-bootstrap'
-
-
+import { LinkContainer } from "react-router-bootstrap";
 
 function NavBar() {
   const [activateLink, setActivateLink] = useState("home");
@@ -28,7 +26,7 @@ function NavBar() {
   const onUpdateActiveLink = (value) => {
     setActivateLink(value);
   };
-//navbar link cssine bak
+  //navbar link cssine bak
   return (
     <Navbar expand="lg" className={scrolled ? "scrolled" : ""}>
       <Container>
@@ -44,7 +42,7 @@ function NavBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <LinkContainer to="">
-              <Nav.Link 
+              <Nav.Link
                 className={
                   activateLink === "home" ? "active navbar-link" : "navbar-link"
                 }
@@ -53,11 +51,13 @@ function NavBar() {
                 Home
               </Nav.Link>
             </LinkContainer>
-            
+
             <LinkContainer to="about">
               <Nav.Link
                 className={
-                  activateLink === "about" ? "active navbar-link" : "navbar-link"
+                  activateLink === "about"
+                    ? "active navbar-link"
+                    : "navbar-link"
                 }
                 onClick={() => onUpdateActiveLink("about")}
               >
@@ -67,10 +67,11 @@ function NavBar() {
 
             <LinkContainer to="contact">
               <Nav.Link
-                to = "contact"
+                to="contact"
                 className={
                   activateLink === "Contact"
-                    ? "active navbar-link" : "navbar-link"
+                    ? "active navbar-link"
+                    : "navbar-link"
                 }
                 onClick={() => onUpdateActiveLink("Contact")}
               >
@@ -80,23 +81,24 @@ function NavBar() {
 
             <LinkContainer to="login">
               <Nav.Link
-                to = "login"
                 className={
                   activateLink === "Login"
-                    ? "active navbar-link" : "navbar-link"
+                    ? "active navbar-link"
+                    : "navbar-link"
                 }
                 onClick={() => onUpdateActiveLink("Login")}
               >
                 Log In
               </Nav.Link>
             </LinkContainer>
-
           </Nav>
           <span className="navbar-text">
-            <button className="vvd" onClick={() => console.log("connect")}>
-              {" "}
-              <span>Become member</span>{" "}
-            </button>
+            <LinkContainer to="contact">
+              <button className="vvd" onClick={() => console.log("connect")}>
+                {" "}
+                <span>Become member</span>{" "}
+              </button>
+            </LinkContainer>
           </span>
         </Navbar.Collapse>
       </Container>
