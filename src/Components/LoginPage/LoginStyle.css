@@ -15,7 +15,7 @@
 }
 
 .Auth-form::before {
-  background-image: url("../../../images/formimg.jpg");
+  background-image: url("../../images/formimg.jpg");
   opacity: 0.2;
 }
 .Auth-form-content {
