@@ -26,28 +26,14 @@ export default function (props) {
             />
           </div>
           <div className="d-grid gap-2 mt-3">
-<<<<<<< HEAD
             <button class="button-75" role="button"><span class="text">SUBMIT</span></button>
           </div>
           <p className="forgotPassword" >
             <a href="#"  > Forgot password?</a>
-=======
-            <button class="button-75" role="button">
-              <span class="text">SUBMİT</span>
-            </button>
-          </div>
-          <p className="forgotPassword">
-            <a href="#"> Forgot password?</a>
->>>>>>> d05f3efaa88144187d678fcec8a15f4712b9f85e
           </p>
         </div>
       </form>
     </div>
-<<<<<<< HEAD
 
   )
 }
-=======
-  );
-}
->>>>>>> d05f3efaa88144187d678fcec8a15f4712b9f85e
