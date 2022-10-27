@@ -17,6 +17,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
+
 }
 
 .Auth-form {
@@ -25,11 +26,21 @@
     padding-top: 30px;
     padding-bottom: 20px;
     border-radius: 8px;
-
+    z-index: 2;
 
 }
 
+a {
 
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+
+    text-decoration: none;
+    color: #ee9877;
+}
 
 
 .Auth-form-content {
