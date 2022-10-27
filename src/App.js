@@ -14,16 +14,17 @@ function App() {
   useEffect(() => {
     authCheck(setAuth);
   }, []);
-
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar />
+        <NavBar auth={auth} setAuth={setAuth} />
         <Routes>
           <Route exact path="/" element={<HomePage />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/login" element={<Login />}></Route>
+          {!auth && (
+            <Route path="/login" element={<Login setAuth={setAuth} />}></Route>
+          )}
         </Routes>
       </BrowserRouter>
     </div>

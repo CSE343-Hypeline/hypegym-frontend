@@ -1,24 +1,28 @@
 import { useState } from "react";
+import { loginAPI } from "../API";
 import "./LoginStyle.css";
 
-export default function (props) {
+export default function ({ setAuth }) {
   const [userData, setUserData] = useState({
-    username: "222222",
+    username: "",
     email: "",
     password: "",
   });
 
   const updateFormData = (event) => {
-    if (event.target.placeholder === "Name") {
-      setUserData({ ...userData, username: event.target.value });
-    } else if (event.target.placeholder === "Email") {
-      setUserData({ ...userData, email: "blabal@gmail.com" });
-    } else if (event.target.placeholder === "Password") {
+    // if (event.target.placeholder === "username") {
+    //   setUserData({ ...userData, username: event.target.value });
+    // }
+    if (event.target.type === "email") {
+      setUserData({ ...userData, email: event.target.value });
+    } else if (event.target.type === "password") {
       setUserData({ ...userData, password: event.target.value });
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    loginAPI(userData, setAuth);
     console.log(userData);
   };
 
@@ -29,12 +33,12 @@ export default function (props) {
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Log In</h3>
           <div className="form-group mt-3">
-            <label>Username</label>
+            <label>Email</label>
             <input
               type="email"
               className="form-control mt-1"
               placeholder="Enter Email"
-              value={userData.username}
+              value={userData.email}
               onChange={updateFormData}
             />
           </div>

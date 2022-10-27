@@ -5,7 +5,7 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 
-function NavBar() {
+function NavBar({ auth, setAuth }) {
   const [activateLink, setActivateLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
 
@@ -79,26 +79,44 @@ function NavBar() {
               </Nav.Link>
             </LinkContainer>
 
-            <LinkContainer to="login">
+            {auth ? (
               <Nav.Link
                 className={
-                  activateLink === "Login"
+                  activateLink === "Logout"
                     ? "active navbar-link"
                     : "navbar-link"
                 }
-                onClick={() => onUpdateActiveLink("Login")}
+                onClick={() => {
+                  onUpdateActiveLink("Logout");
+                  setAuth(false);
+                }}
               >
-                Log In
+                Log Out
               </Nav.Link>
-            </LinkContainer>
+            ) : (
+              <LinkContainer to="login">
+                <Nav.Link
+                  className={
+                    activateLink === "Login"
+                      ? "active navbar-link"
+                      : "navbar-link"
+                  }
+                  onClick={() => onUpdateActiveLink("Login")}
+                >
+                  Log In
+                </Nav.Link>
+              </LinkContainer>
+            )}
           </Nav>
           <span className="navbar-text">
-            <LinkContainer to="contact">
-              <button className="vvd" onClick={() => console.log("connect")}>
-                {" "}
-                <span>Become member</span>{" "}
-              </button>
-            </LinkContainer>
+            {!auth && (
+              <LinkContainer to="contact">
+                <button className="vvd" onClick={() => console.log("connect")}>
+                  {" "}
+                  <span>Become member</span>{" "}
+                </button>
+              </LinkContainer>
+            )}
           </span>
         </Navbar.Collapse>
       </Container>
