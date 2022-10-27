@@ -29,7 +29,7 @@ export default function (props) {
             <button class="button-75" role="button"><span class="text">SUBMIT</span></button>
           </div>
           <p className="forgotPassword" >
-            <a href="#"  > Forgot password?</a>
+            <a href="#" > Forgot password?</a>
           </p>
         </div>
       </form>

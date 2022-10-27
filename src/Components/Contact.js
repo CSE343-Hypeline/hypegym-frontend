@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import contactImg from "../assets/img/logo.svg";
-import TrackVisibility from "react-on-screen";
+
 
 const Contact = () => {
   return (
@@ -8,12 +8,12 @@ const Contact = () => {
       <Container>
         <Row className="align-items-center">
           <Col size={12} md={6}>
-            <TrackVisibility>
+            < >
               <img src={contactImg} alt="Contact Us" />
-            </TrackVisibility>
+            </>
           </Col>
           <Col size={12} md={6}>
-            <TrackVisibility>
+            <>
               <div>
                 <h2>Get In Touch</h2>
                 <form>
@@ -39,7 +39,7 @@ const Contact = () => {
                   </Row>
                 </form>
               </div>
-            </TrackVisibility>
+            </>
           </Col>
         </Row>
       </Container>
