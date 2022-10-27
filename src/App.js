@@ -6,8 +6,15 @@ import Contact from "./Components/Contact";
 import HomePage from "./Components/HomePage";
 import NavBar from "./Components/Navbar/NavBar";
 import Login from "./Components/LoginPage/Login";
+import { useState, useEffect } from "react";
+import { authCheck } from "./Components/API";
 
 function App() {
+  const [auth, setAuth] = useState(false);
+  useEffect(() => {
+    authCheck(setAuth);
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
