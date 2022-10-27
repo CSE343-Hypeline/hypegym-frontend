@@ -1,3 +1,16 @@
+.login-blur {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.808);
+    width: 400px;
+    height: 300px;
+    filter: blur(40px);
+    opacity: 0.8;
+    z-index: 1;
+    border-radius: 100%;
+    margin-top: 3cm;
+}
+
+
 .Auth-form-container {
     display: flex;
     justify-content: center;
@@ -8,19 +21,15 @@
 
 .Auth-form {
     width: 420px;
-    box-shadow: rgb(181, 235, 65, 0.16) 1px 1px 30px;
+    box-shadow: rgb(181, 235, 65, 0.16) 1px 1px 20px;
     padding-top: 30px;
     padding-bottom: 20px;
     border-radius: 8px;
-
-
-}
-
-.Auth-form::before {
-    background-image: url("../../../images/formimg.jpg");
-    opacity: 0.2;
+    z-index: 2;
 
 }
+
+
 
 
 
@@ -39,6 +48,16 @@
 
 .forgotPassword {
     text-align: center;
+
+}
+
+a {
+    color: white;
+text-decoration: none;
+}
+
+a:hover {
+    color: rgb(240, 148, 115);
 }
 
 /* button css */
