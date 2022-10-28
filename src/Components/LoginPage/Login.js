@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { loginAPI } from "../API";
 import "./LoginStyle.css";
 
@@ -8,6 +8,9 @@ export default function ({ setAuth }) {
     email: "",
     password: "",
   });
+
+
+  
 
   const updateFormData = (event) => {
     // if (event.target.placeholder === "username") {
