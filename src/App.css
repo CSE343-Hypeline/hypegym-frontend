@@ -102,7 +102,7 @@ nav.navbar {
   padding: 18px 0;
   position: fixed;
   width: 80%;
-  top: 20px;
+  top: 35px;
   z-index: 9999;
   transition: 0.32s ease-in-out;
 }
@@ -118,9 +118,9 @@ nav.navbar a.navbar-brand {
 
 nav.navbar .navbar-nav .nav-link.navbar-link {
   font-weight: 400;
-  color: #fff !important;
+  color: rgb(255, 255, 255) !important;
   letter-spacing: 0.8px;
-  padding: 0 25px;
+  padding: 0 35px;
   font-size: 18px;
   opacity: 0.75;
 }
@@ -141,7 +141,8 @@ span.navbar-text {
   padding: 20px 34px;
   font-size: 18px;
   margin-left: 35px;
-  position: relative;
+  position: fixed;
+  width: 250px;
   background-color: transparent;
   transition: 0.3s ease-in-out;
 }
@@ -315,7 +316,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 /************ Projects Css ************/
 .contact {
-  padding: 180px 0 200px 0;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 12%;
 }
 
 .contact img {

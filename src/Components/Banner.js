@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import { ArrowRightCircle } from "react-bootstrap-icons";
-import headerImg from "../assets/img/header-img.svg";
 import { Col } from "react-bootstrap";
 
 export const Banner = () => {
@@ -17,9 +15,9 @@ export const Banner = () => {
             </button>
           </Col>
 
-          <Col xs={12} md={6} xl={7}>
+          {/* <Col xs={12} md={6} xl={7}>
             <h1>H</h1>
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     </section>
