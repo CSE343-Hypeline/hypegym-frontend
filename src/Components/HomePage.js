@@ -5,7 +5,7 @@ const HomePage = () => {
     <div>
       <Banner />
     </div>
-  )
+  );
 };
 
 export default HomePage;
