@@ -147,6 +147,7 @@ span.navbar-text {
   border-radius: 10px;
   transition: 0.3s ease-in-out;
   text-align: center;
+  box-shadow: rgb(255, 239, 10, 0.5) 3px 3px 100px;
 }
 
 .navbar-text button span {
@@ -349,6 +350,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-size: 18px;
   letter-spacing: 0.8px;
   transition: 0.3s ease-in-out;
+  box-shadow: rgb(255, 239, 10, 0.5) 3px 3px 100px;
 }
 
 .contact form input:focus,
