@@ -29,17 +29,17 @@ function App() {
       ) : (
         <BrowserRouter>
           <NavBar auth={auth} setAuth={setAuth} />
+
           <Routes history={History}>
             <Route exact path="/" element={<HomePage />}></Route>
             <Route path="/about" element={<About />}></Route>
             <Route path="/contact" element={<Contact />}></Route>
             <Route path="*" element={<Error404 />}></Route>
-            {!auth && (
               <Route
                 path="/login"
                 element={<Login setAuth={setAuth} />}
               ></Route>
-            )}
+            
           </Routes>
         </BrowserRouter>
       )}
