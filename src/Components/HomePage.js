@@ -6,7 +6,7 @@ const HomePage = () => {
       <Container>
         <Row className="align-items-center">
           <h1> {"Get Stronger"} </h1>
-          <h3>Watch the your gym get hyped with technology</h3>
+          <h3>Watch the your gym get hyped with Hypeline Technologies</h3>
         </Row>
       </Container>
     </section>
