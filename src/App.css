@@ -145,6 +145,7 @@ span.navbar-text {
   width: 250px;
   background-color: transparent;
   transition: 0.3s ease-in-out;
+  text-align: center;
 }
 
 .navbar-text button span {
