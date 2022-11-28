@@ -5,15 +5,17 @@ import HomePage from "./HomePage";
  * @param {Function} setAuth represents if user login in
  */
 export const authCheck = async (setAuth) => {
-  const response = await fetch("/auth", {
+  const response = await fetch("http://localhost:8080/api/auth", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   });
+  console.log(response);
 
   if (response.status === 200) {
     setAuth(true);
+    console.log("Status: 200");
   } else {
     setAuth(false);
   }

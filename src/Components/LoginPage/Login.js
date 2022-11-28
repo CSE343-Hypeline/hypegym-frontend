@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { loginAPI } from "../API";
+import OwnerPage from "../OwnerPage";
 import "./LoginStyle.css";
+import { useNavigate } from "react-router";
 
 export default function ({ setAuth }) {
+  const navigate = useNavigate();
+
   const [userData, setUserData] = useState({
     username: "",
     email: "",
@@ -10,9 +14,6 @@ export default function ({ setAuth }) {
   });
 
   const updateFormData = (event) => {
-    // if (event.target.placeholder === "username") {
-    //   setUserData({ ...userData, username: event.target.value });
-    // }
     if (event.target.type === "email") {
       setUserData({ ...userData, email: event.target.value });
     } else if (event.target.type === "password") {
@@ -22,7 +23,9 @@ export default function ({ setAuth }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    loginAPI(userData, setAuth);
+    setAuth(true);
+    navigate("/ownerPage");
+    // loginAPI(userData, setAuth);
     console.log(userData);
   };
 
