@@ -29,7 +29,6 @@ function App() {
       ) : (
         <BrowserRouter>
           <NavBar auth={auth} setAuth={setAuth} />
-
           <Routes history={History}>
             <Route exact path="/" element={<HomePage />}></Route>
             <Route path="/about" element={<About />}></Route>
