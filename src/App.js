@@ -8,9 +8,8 @@ import Error404 from "./Components/Error404/Error404";
 
 import NavBar from "./Components/Navbar/NavBar";
 import Login from "./Components/Login/Login";
-import OwnerPage from "./Components/Owner/OwnerPage";
+import OwnerPage from "./Components/Users/Owner/OwnerPage";
 import { useState, useEffect } from "react";
-import { authCheck } from "./Components/API";
 
 function App() {
   const [auth, setAuth] = useState(false);

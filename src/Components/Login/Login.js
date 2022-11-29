@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { loginAPI } from "../API";
-import OwnerPage from "../Owner/OwnerPage";
 import "./LoginStyle.css";
 import { useNavigate } from "react-router-dom";
 
@@ -26,11 +25,10 @@ export default function ({ setAuth }) {
 
     loginAPI(userData)
       .then((data) => {
+        console.log(data);
         if (data.status === 200) {
           setAuth(true);
           navigate("/ownerpage");
-        } else {
-          console.log("Wrong Email or Password");
         }
       })
       .catch((err) => console.log(err.response.data.error));
