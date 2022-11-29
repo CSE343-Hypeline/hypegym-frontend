@@ -1,7 +1,21 @@
 import { Sidebar as Example } from "../../sidebars/sidebar-1/Sidebar";
-// import { Concept as Example } from "./concepts/concept-1/Concept";
 import "./OwnerPage.css";
-function OwnerPage() {
+import { button } from "../../API";
+import { useEffect } from "react";
+
+function OwnerPage({ auth }) {
+  useEffect(() => {
+    pingTest();
+  }, []);
+
+  const pingTest = () => {
+    button()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err.response.data.error));
+  };
+
   return (
     <div>
       <Example />

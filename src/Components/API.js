@@ -21,6 +21,19 @@ export function loginAPI(data) {
   });
 }
 
+export function button() {
+  // const navigate = useNavigate();
+
+  return new Promise((resolve, reject) => {
+    axios
+      .get("http://localhost:8080/api/ping")
+      .then((response) => {
+        resolve(response);
+      })
+      .catch((err) => reject(err));
+  });
+}
+
 // /**
 //  *
 //  * @param {Function} setAuth represents if user login in

@@ -268,7 +268,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 .banner h3 {
   padding-top: 30px;
-  text-shadow: rgb(255, 239, 10, 0.5) 1px 15px 10px;
+  text-shadow: rgba(0, 0, 0, 0.5) 1px 15px 10px;
 }
 
 .banner p {

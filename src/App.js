@@ -22,7 +22,11 @@ function App() {
       {auth ? (
         <BrowserRouter>
           <Routes history={History}>
-            <Route exact path="/ownerpage" element={<OwnerPage />}></Route>
+            <Route
+              exact
+              path="/ownerpage"
+              element={<OwnerPage setAuth={auth} />}
+            ></Route>
           </Routes>
         </BrowserRouter>
       ) : (
