@@ -15,7 +15,7 @@ import { authCheck } from "./Components/API";
 function App() {
   const [auth, setAuth] = useState(false);
   useEffect(() => {
-    authCheck(setAuth);
+    // authCheck(setAuth);
   }, []);
 
   return (

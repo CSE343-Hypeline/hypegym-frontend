@@ -8,7 +8,6 @@ export default function ({ setAuth }) {
   const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
-    username: "",
     email: "",
     password: "",
   });
@@ -23,9 +22,15 @@ export default function ({ setAuth }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setAuth(true);
-    navigate("/ownerPage");
-    // loginAPI(userData, setAuth);
+    loginAPI(userData);
+    // console.log("response: "+response);
+    // if(response.ok)
+    // {
+    //   setAuth(true);
+    //   navigate("/ownerPage");
+    // }
+    // else
+    //   console.log("Error with login");
     console.log(userData);
   };
 

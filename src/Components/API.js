@@ -1,6 +1,6 @@
-import HomePage from "./HomePage";
+import axios from "axios"
 
-/**
+/** 
  *
  * @param {Function} setAuth represents if user login in
  */
@@ -24,24 +24,28 @@ export const authCheck = async (setAuth) => {
  * @param {Object} An object containing user credentials
  * @param {Function} setAuth To set state of auth
  */
-export const loginAPI = async (data, setAuth) => {
-  const response = await fetch("http://localhost:8080/api/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-  console.log(data);
+export const loginAPI = async (data) => {
 
-  console.log(response);
-  if (!response.ok) {
-    const message = `An error has occured: ${response.status}`;
-    alert(message);
-    return;
-  }
+  const value = axios.post("http://localhost:8080/login",
+  {body: JSON.stringify(data)})
+  .then((response) => console.log(response.data))
 
-  setAuth(true);
+
+  // const valuse = await fetch("http://localhost:8080/login", {
+  //   method: "POST",
+  //   body: JSON.stringify(data),
+  // }).then(response => response.json)
+  //   .catch((error) => console.log(error))
+
+  console.log(value);
+  // if (!response.ok) {
+  //   const message = `An error has occured: ${response.status}`;
+  //   alert(message);
+  //   return false;
+  // }
+  // else
+  //   return true;
+  // setAuth(true);
 };
 
 /**
