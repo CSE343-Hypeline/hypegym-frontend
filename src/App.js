@@ -3,12 +3,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
-import HomePage from "./Components/HomePage";
-import Error404 from "./Components/Error404";
+import HomePage from "./Components/Home/HomePage";
+import Error404 from "./Components/Error404/Error404";
 
 import NavBar from "./Components/Navbar/NavBar";
-import Login from "./Components/LoginPage/Login";
-import OwnerPage from "./Components/OwnerPage";
+import Login from "./Components/Login/Login";
+import OwnerPage from "./Components/Owner/OwnerPage";
 import { useState, useEffect } from "react";
 import { authCheck } from "./Components/API";
 
@@ -34,11 +34,7 @@ function App() {
             <Route path="/about" element={<About />}></Route>
             <Route path="/contact" element={<Contact />}></Route>
             <Route path="*" element={<Error404 />}></Route>
-              <Route
-                path="/login"
-                element={<Login setAuth={setAuth} />}
-              ></Route>
-            
+            <Route path="/login" element={<Login setAuth={setAuth} />}></Route>
           </Routes>
         </BrowserRouter>
       )}
