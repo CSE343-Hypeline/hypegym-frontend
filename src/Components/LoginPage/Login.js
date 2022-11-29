@@ -2,7 +2,7 @@ import { useState } from "react";
 import { loginAPI } from "../API";
 import OwnerPage from "../OwnerPage";
 import "./LoginStyle.css";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 export default function ({ setAuth }) {
   const navigate = useNavigate();
@@ -22,16 +22,17 @@ export default function ({ setAuth }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    loginAPI(userData);
-    // console.log("response: "+response);
-    // if(response.ok)
+    console.log(userData);
+
+    // const response = loginAPI(userData).then(data => console.log(data));
+    console.log(loginAPI(userData));
+    // if(response.statusText === 'OK')
     // {
     //   setAuth(true);
     //   navigate("/ownerPage");
     // }
     // else
     //   console.log("Error with login");
-    console.log(userData);
   };
 
   return (

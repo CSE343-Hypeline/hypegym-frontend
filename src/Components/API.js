@@ -1,10 +1,13 @@
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
 
 /** 
  *
  * @param {Function} setAuth represents if user login in
  */
 export const authCheck = async (setAuth) => {
+
+
   const response = await fetch("http://localhost:8080/api/auth", {
     method: "GET",
     headers: {
@@ -24,12 +27,24 @@ export const authCheck = async (setAuth) => {
  * @param {Object} An object containing user credentials
  * @param {Function} setAuth To set state of auth
  */
-export const loginAPI = async (data) => {
+export async function loginAPI (data) {
+  // const navigate = useNavigate();
 
-  const value = axios.post("http://localhost:8080/login",
-  {body: JSON.stringify(data)})
-  .then((response) => console.log(response.data))
+  const value = await axios.post("http://localhost:8080/login",
+  {
+   "email": data.email,
+   "password": data.password
+  })
+  .then((response) => {
+    
+    if (response.status === 200) {
+      
+    }  
+    return response.data.status
+  
+  })
 
+  // navigate("/ownerPage");
 
   // const valuse = await fetch("http://localhost:8080/login", {
   //   method: "POST",
@@ -37,7 +52,7 @@ export const loginAPI = async (data) => {
   // }).then(response => response.json)
   //   .catch((error) => console.log(error))
 
-  console.log(value);
+  // console.log(value);
   // if (!response.ok) {
   //   const message = `An error has occured: ${response.status}`;
   //   alert(message);
