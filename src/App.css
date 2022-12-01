@@ -31,7 +31,9 @@ html {
 
 body {
   background-image: url("./assets/img/image4.jpg");
+  background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   font-weight: 400;
   overflow-x: hidden;
   position: relative;
@@ -134,6 +136,7 @@ span.navbar-text {
   display: flex;
   align-items: center;
 }
+
 .navbar-text button {
   font-weight: 700;
   color: #fff;
@@ -246,11 +249,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-weight: 700;
   letter-spacing: 0.8px;
   padding: 8px 10px;
-  color: linear-gradient(
-    90.21deg,
-    rgba(170, 139, 54, 0.5) -5.91%,
-    rgba(7, 0, 0, 0.5) 111.58%
-  );
+  color: linear-gradient(90.21deg,
+      rgba(170, 139, 54, 0.5) -5.91%,
+      rgba(7, 0, 0, 0.5) 111.58%);
   border: 1px solid rgba(255, 255, 255, 0.5);
   font-size: 20px;
   margin-bottom: 16px;
@@ -266,6 +267,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   display: block;
   text-shadow: rgb(255, 239, 10, 0.5) 1px 15px 10px;
 }
+
 .banner h3 {
   padding-top: 30px;
   text-shadow: rgba(0, 0, 0, 0.5) 1px 15px 10px;
@@ -318,7 +320,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
 }
 
-.txt-rotate > .wrap {
+.txt-rotate>.wrap {
   border-right: 0.08em solid #666;
 }
 

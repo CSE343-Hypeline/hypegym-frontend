@@ -1,0 +1,41 @@
+#SideBar {
+    background-color: #fdd13f;
+    width: 248px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#SideBar .Logo {}
+
+#SideBar .content {
+    padding: 0 10px;
+
+}
+
+#SideBar .content .menu_top {
+    margin-bottom: 60px;
+}
+
+#SideBar .content .menu_item {
+    margin: 10px;
+    padding: 0 10px;
+    color: azure;
+}
+
+#SideBar .content .menu_item:hover {
+    background-color: #534325;
+}
+
+#SideBar .content .menu_item img {
+    width: 50px;
+    height: 50px;
+}
+
+#SideBar .content .menu_top .menu_item span {}
+
+#SideBar .content .menu_bottom {}
+
+#SideBar .content .menu_bottom .menu_item {}

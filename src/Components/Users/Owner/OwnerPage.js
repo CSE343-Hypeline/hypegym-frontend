@@ -1,24 +1,15 @@
-import { Sidebar as Example } from "../../sidebars/sidebar-1/Sidebar";
-import "./OwnerPage.css";
-import { button } from "../../API";
-import { useEffect } from "react";
+import React, { useState } from 'react';
 
-function OwnerPage({ auth }) {
-  useEffect(() => {
-    pingTest();
-  }, []);
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import SideBar from '../../../utils/sidebars/SideBar';
+import './OwnerPage.css'
 
-  const pingTest = () => {
-    button()
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => console.log(err.response.data.error));
-  };
+function OwnerPage() {
+  const [navVisible, showNavbar] = useState(false);
 
   return (
-    <div>
-      <Example />
+    <div className="OwnerPage">
+      <SideBar />
     </div>
   );
 }
