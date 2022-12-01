@@ -1,7 +1,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import About from "./Components/About";
+import About from "./Components/About/About";
 import Contact from "./Components/Contact";
 import HomePage from "./Components/Home/HomePage";
 import Error404 from "./Components/Error404/Error404";

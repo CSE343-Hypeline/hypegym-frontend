@@ -30,7 +30,7 @@ html {
 }
 
 body {
-  background-image: url("./images/image4.jpg");
+  background-image: url("./assets/img/image4.jpg");
   background-size: cover;
   font-weight: 400;
   overflow-x: hidden;
