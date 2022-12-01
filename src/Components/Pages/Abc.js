@@ -1,7 +1,11 @@
 import React from 'react'
-
-export default function Abc() {
+import SideBar from '../../utils/sidebars/SideBar'
+function Abc() {
     return (
-        <div>AJDJHJDFFFFFFGGGGGGGGGGG</div>
+
+        < div >
+            <SideBar />
+            AJDJHJDFFFFFFGjjjjjjjjjjjjjjjjjGGGGGGGGGG</ div>
     )
 }
+export default Abc

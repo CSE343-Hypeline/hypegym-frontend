@@ -11,8 +11,10 @@ import Login from "./Components/Login/Login";
 import OwnerPage from "./Components/Users/Owner/OwnerPage";
 import { useState, useEffect } from "react";
 import history from "./history";
+import SideBar from "./utils/sidebars/SideBar";
 
 function App() {
+
   const [auth, setAuth] = useState(false);
   useEffect(() => {
     // authCheck(setAuth);
@@ -20,19 +22,22 @@ function App() {
 
   return (
     <div className="App">
+      {console.log(auth)}
       {auth ? (
         <BrowserRouter>
           <Routes history={history}>
             <Route
               exact
               path="/ownerpage"
-              element={<OwnerPage setAuth={auth} />}
-            ></Route>
+              element={<OwnerPage auth={true} />}
+            >  </Route>
             <Route
               exact
               path="/abc"
-              element={<Abc setAuth={auth} />}
+              element={<Abc setAuth={true} />}
             ></Route>
+
+
           </Routes>
         </BrowserRouter>
       ) : (
@@ -42,7 +47,7 @@ function App() {
             <Route exact path="/" element={<HomePage />}></Route>
             <Route path="/about" element={<About />}></Route>
             <Route path="/contact" element={<Contact />}></Route>
-            {/* <Route path="*" element={<Error404 />}></Route> */}
+            <Route path="*" element={<Error404 />}></Route>
             <Route path="/login" element={<Login setAuth={setAuth} />}></Route>
           </Routes>
         </BrowserRouter>

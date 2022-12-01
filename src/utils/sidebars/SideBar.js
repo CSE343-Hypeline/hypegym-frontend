@@ -2,7 +2,10 @@ import React from 'react'
 import './SideBar.css'
 import logo from './logo.png'
 import history from '../../history'
+import { useNavigate } from 'react-router-dom'
 export default function SideBar() {
+	const navigate = useNavigate();
+
 	return (
 		<div id='SideBar'>
 			<div className='Logo'>
@@ -11,9 +14,9 @@ export default function SideBar() {
 			<div className='content'>
 				<div className='menu_top'>
 					<button className='menu_item' onClick={() => {
-
-						history.push('/abc')
-						history.go()
+						navigate("/abc");
+						// history.push('/abc')
+						// history.go()
 
 					}}>
 						{/* < img src={logo} srcSet='' /> */}
