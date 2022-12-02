@@ -1,11 +1,13 @@
 import React from 'react'
 import SideBar from '../../../utils/sidebars/SideBar'
+import './dashboard.css'
 function DashboardPage() {
     return (
 
-        < div >
+        < div id='main_dashboard'>
             <SideBar />
-            AJDJHJDFFFFFFGjjjjjjjjjjjjjjjjjGGGGGGGGGG</ div>
+            <div >
+                AJDJHJDFFFFFFGjjjjjjjjhggggjjjjjjjjjGGGGGGGGGG</ div></div>
     )
 }
 export default DashboardPage

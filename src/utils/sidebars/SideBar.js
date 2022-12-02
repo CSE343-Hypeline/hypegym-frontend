@@ -15,20 +15,20 @@ export default function SideBar() {
 				<div className='menu_top'>
 					<button className='menu_item' onClick={() => {
 						navigate("/dashboard");
-						// history.push('/abc')
+						// history.push('/dashboard')
 						// history.go()
 
 					}}>
 						{/* < img src={logo} srcSet='' /> */}
-						<i class="bi bi-exclude"></i>
+						<i class="bi bi-exclude" style={{ fontSize: '20px' }}></i>
 						<span className='menu_option'>DASHBOARD</span>
 					</button>
 					<button className='menu_item'>
-						<i class="bi bi-grid-3x3"></i>
+						<i class="bi bi-grid-3x3" style={{ fontSize: '20px' }}></i>
 						<span className='menu_option'>GYM MEMBER</span>
 					</button>
 					<button className='menu_item'>
-						<i class="bi bi-grid-3x3-gap-fill"></i>
+						<i class="bi bi-grid-3x3-gap-fill" style={{ fontSize: '20px' }}></i>
 						<span className='menu_option'>PERSONAL TRAINER</span>
 					</button>
 				</div>
@@ -37,8 +37,8 @@ export default function SideBar() {
 						<img src={logo} srcSet='' />
 						<span>Dashboard</span>
 					</div> */}
-					<button className='menu_item'>
-						<i class="bi bi-x-circle"></i>
+					<button className='menu_item' >
+						<i class="bi bi-x-circle" style={{ fontSize: '20px' }}></i>
 						<span className=' option_logout'>LOG OUT</span>
 					</button>
 				</div>
