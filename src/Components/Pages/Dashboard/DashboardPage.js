@@ -1,6 +1,6 @@
 import React from 'react'
-import SideBar from '../../utils/sidebars/SideBar'
-function Abc() {
+import SideBar from '../../../utils/sidebars/SideBar'
+function DashboardPage() {
     return (
 
         < div >
@@ -8,4 +8,4 @@ function Abc() {
             AJDJHJDFFFFFFGjjjjjjjjjjjjjjjjjGGGGGGGGGG</ div>
     )
 }
-export default Abc
+export default DashboardPage

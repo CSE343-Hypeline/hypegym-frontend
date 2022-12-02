@@ -14,7 +14,7 @@ export default function SideBar() {
 			<div className='content'>
 				<div className='menu_top'>
 					<button className='menu_item' onClick={() => {
-						navigate("/abc");
+						navigate("/dashboard");
 						// history.push('/abc')
 						// history.go()
 

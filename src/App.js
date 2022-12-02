@@ -5,13 +5,14 @@ import About from "./Components/About/About";
 import Contact from "./Components/Contact/Contact";
 import HomePage from "./Components/Home/HomePage";
 import Error404 from "./Components/Error404/Error404";
-import Abc from "./Components/Pages/Abc";
+
 import NavBar from "./Components/Navbar/NavBar";
 import Login from "./Components/Login/Login";
 import OwnerPage from "./Components/Users/Owner/OwnerPage";
 import { useState, useEffect } from "react";
 import history from "./history";
 import SideBar from "./utils/sidebars/SideBar";
+import DashboardPage from "./Components/Pages/Dashboard/DashboardPage";
 
 function App() {
 
@@ -33,8 +34,8 @@ function App() {
             >  </Route>
             <Route
               exact
-              path="/abc"
-              element={<Abc setAuth={true} />}
+              path="/dashboard"
+              element={<DashboardPage setAuth={true} />}
             ></Route>
 
 
