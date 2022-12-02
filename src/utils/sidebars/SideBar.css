@@ -1,5 +1,5 @@
 #SideBar {
-    background-color: #171616;
+    background-color: #f7c02c;
     width: 248px;
     height: 100vh;
     display: flex;
@@ -16,17 +16,34 @@
 }
 
 #SideBar .content .menu_top {
-    margin-bottom: 60px;
+    margin-bottom: 200px;
 }
 
 #SideBar .content .menu_item {
-    margin: 10px;
+    margin: 15px 10px;
     padding: 0 10px;
     color: azure;
+    text-align: left;
 }
 
+
+#SideBar .content .menu_item .menu_option {
+    margin: 10px;
+    padding-left: 4px;
+}
+
+#SideBar .content .menu_item .option_logout {
+    margin: 10px;
+    padding-left: 4px;
+}
+
+
+
 #SideBar .content .menu_item:hover {
-    background-color: #534325;
+    background-color: #22201e;
+    width: 100%;
+    height: 200%;
+    border-collapse: collapse;
 }
 
 #SideBar .content .menu_item img {

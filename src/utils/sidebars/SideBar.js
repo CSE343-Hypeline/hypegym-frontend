@@ -21,15 +21,15 @@ export default function SideBar() {
 					}}>
 						{/* < img src={logo} srcSet='' /> */}
 						<i class="bi bi-exclude"></i>
-						<span>DASHBOARD</span>
+						<span className='menu_option'>DASHBOARD</span>
 					</button>
 					<button className='menu_item'>
 						<i class="bi bi-grid-3x3"></i>
-						<span>GYM MEMBER</span>
+						<span className='menu_option'>GYM MEMBER</span>
 					</button>
 					<button className='menu_item'>
 						<i class="bi bi-grid-3x3-gap-fill"></i>
-						<span>PERSONAL TRAINER</span>
+						<span className='menu_option'>PERSONAL TRAINER</span>
 					</button>
 				</div>
 				<div className='menu_bottom'>
@@ -39,7 +39,7 @@ export default function SideBar() {
 					</div> */}
 					<button className='menu_item'>
 						<i class="bi bi-x-circle"></i>
-						<span>LOG OUT</span>
+						<span className=' option_logout'>LOG OUT</span>
 					</button>
 				</div>
 			</div>
