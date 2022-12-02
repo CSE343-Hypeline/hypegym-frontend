@@ -1,4 +1,39 @@
 #main_dashboard {
-    background-color: black;
+    background-color: rgb(39, 36, 46);
     background-image: none !important;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+#main_dashboard .dashboard_graphs {
+    width: 100%;
+    background-color: rgb(39, 36, 46);
+    background-image: none !important;
+    display: flex !important;
+    flex-direction: column;
+}
+
+#main_dashboard .dashboard_graphs .widgets {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+#main_dashboard .dashboard_barcharts_group {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+#main_dashboard .dashboard_barchart {
+    margin: 20px;
+
+}
+
+#main_dashboard .dashboard_donutchart {
+    margin: 20px;
+
+
 }

@@ -15,9 +15,7 @@
 
 }
 
-#SideBar .content .menu_top {
-    margin-bottom: 100px;
-}
+#SideBar .content .menu_top {}
 
 #SideBar .content .menu_item {
     margin: 15px 0px;
