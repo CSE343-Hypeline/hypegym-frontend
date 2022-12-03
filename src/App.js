@@ -13,6 +13,8 @@ import { useState, useEffect } from "react";
 import history from "./history";
 import SideBar from "./utils/sidebars/SideBar";
 import DashboardPage from "./Components/Pages/Dashboard/DashboardPage";
+import GymMemberPage from "./Components/Pages/Gym Member/GymMemberPage";
+
 
 function App() {
 
@@ -37,7 +39,11 @@ function App() {
               path="/dashboard"
               element={<DashboardPage setAuth={true} />}
             ></Route>
-
+            <Route
+              exact
+              path="/gymmember"
+              element={<GymMemberPage setAuth={true} />}
+            ></Route>
 
           </Routes>
         </BrowserRouter>

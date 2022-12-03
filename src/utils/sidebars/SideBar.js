@@ -23,7 +23,12 @@ export default function SideBar() {
 						<i class="bi bi-exclude" style={{ fontSize: '20px' }}></i>
 						<span className='menu_option'>DASHBOARD</span>
 					</button>
-					<button className='menu_item'>
+					<button className='menu_item' onClick={() => {
+						navigate("/gymmember");
+						// history.push('/gymmember')
+						// history.go()
+
+					}}>
 						<i class="bi bi-grid-3x3" style={{ fontSize: '20px' }}></i>
 						<span className='menu_option'>GYM MEMBER</span>
 					</button>
