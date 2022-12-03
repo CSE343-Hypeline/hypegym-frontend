@@ -8,7 +8,11 @@
     flex-direction: column;
 }
 
-#SideBar .Logo {}
+#SideBar .Logo {
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+}
 
 #SideBar .content {
     padding: 0 0px;
@@ -26,7 +30,7 @@
 
 
 #SideBar .content .menu_item .menu_option {
-    margin: 8px;
+    margin: px;
     padding-left: 4px;
 }
 

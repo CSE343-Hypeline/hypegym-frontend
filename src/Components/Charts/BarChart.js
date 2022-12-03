@@ -8,8 +8,8 @@ function BarChart() {
         <React.Fragment>
 
             <Chart type='bar'
-                width={500}
-                height={400}
+                width={400}
+                height={300}
                 series={
                     [
                         {
@@ -32,7 +32,7 @@ function BarChart() {
                         style: { fontSize: 10, color: "#f7c02c" }
                     },
                     color: ['#f90000'],
-                    theme: { mode: 'dark' },
+                    theme: { mode: 'light' },
 
                     xaxis: {
                         // tickPlacement: "on",

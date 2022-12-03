@@ -13,10 +13,10 @@
     flex: 1;
     justify-content: space-between;
     padding: 10px;
+    -webkit-box-shadow: 20px 40px 10px 1px rgba(237, 231, 231, 0.47);
+    box-shadow: 15px 4px 10px 1px rgba(14, 14, 14, 0.244);
     /* -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.10); */
-    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47); */
     border-radius: 10px;
     height: 100px;
     /* background-color: #f7c12c; */
@@ -28,7 +28,7 @@
 .title {
     font-weight: bold;
     font-size: 20px;
-    color: rgb(252, 252, 252);
+    color: rgb(45, 43, 43);
 }
 
 .value {
@@ -36,6 +36,7 @@
     font-weight: 300;
     align-items: center;
     display: flex;
+    color: rgb(45, 43, 43);
 }
 
 

@@ -36,8 +36,8 @@ function DonutChart() {
             <div className='container-fluid mt-3 mb-3'>
                 <Chart
                     type="donut"
-                    width={400}
-                    height={400}
+                    width={300}
+                    height={200}
                     series={[45, 67]}
                     options={{
                         theme: { mode: 'dark' },
