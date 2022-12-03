@@ -11,7 +11,7 @@ export async function loginAPI(data) {
     email: data.email,
     password: data.password
   })
-  return response.data
+  return response
 }
 
 export function button() {
