@@ -5,20 +5,13 @@ import { useNavigate } from "react-router-dom";
  * @param {Object} An object containing user credentials
  * @param {Function} setAuth To set state of auth
  */
-export function loginAPI(data) {
+export async function loginAPI(data) {
   // const navigate = useNavigate();
-
-  return new Promise((resolve, reject) => {
-    axios
-      .post("http://localhost:8080/login", {
-        email: data.email,
-        password: data.password,
-      })
-      .then((response) => {
-        resolve(response);
-      })
-      .catch((err) => reject(err));
-  });
+  const response = await axios.post("http://localhost:8080/login",{
+    email: data.email,
+    password: data.password
+  })
+  return response
 }
 
 export function button() {
