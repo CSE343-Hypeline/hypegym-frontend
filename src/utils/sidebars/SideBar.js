@@ -3,7 +3,8 @@ import './SideBar.css'
 import logo from './logo.png'
 import history from '../../history'
 import { useNavigate } from 'react-router-dom'
-export default function SideBar() {
+import { logout } from '../../Components/API'
+export default function SideBar({ setAuth }) {
 	const navigate = useNavigate();
 
 	return (
@@ -52,7 +53,13 @@ export default function SideBar() {
 						<i class="bi bi-person-circle" style={{ fontSize: '20px' }} s></i>
 						<span className='option_logout'>PROFILE</span>
 					</button>
-					<button className='menu_item' >
+					<button className='menu_item' onClick={() => {
+						navigate("/");
+						setAuth(false);
+
+
+
+					}}>
 						<i class="bi bi-x-circle" style={{ fontSize: '20px' }}></i>
 						<span className=' option_logout'>LOG OUT</span>
 					</button>

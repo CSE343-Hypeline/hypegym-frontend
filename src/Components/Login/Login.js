@@ -28,7 +28,7 @@ export default function ({ setAuth }) {
         console.log(data);
         if (data.status === 200) {
           setAuth(true);
-          navigate("/ownerpage");
+          navigate("/dashboard");
         }
       })
       .catch((err) => console.log(err.response.data.error));

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
  */
 export async function loginAPI(data) {
   // const navigate = useNavigate();
-  const response = await axios.post("http://localhost:8080/login",{
+  const response = await axios.post("http://localhost:8080/login", {
     email: data.email,
     password: data.password
   })
@@ -48,21 +48,20 @@ export function button() {
 //   }
 // };
 
-// /**
-//  * @param {Function} setAuth To set state of auth
-//  */
-// export const logout = async (setAuth) => {
-//   console.log("Logging Out");
-//   const response = await fetch("/logout", {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-//   if (response.status === 200) {
-//     setAuth(false);
-//   }
-// };
+
+
+export const logout = async (setAuth) => {
+  //   console.log("Logging Out");
+  //   const response = await fetch("/logout", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   if (response.status === 200) {
+  setAuth(false);
+  //   }
+};
 
 // /**
 //  *

@@ -89,7 +89,7 @@ const TableP = () => {
 
     const formValues = {
       fullName: contact.fullName,
-      address: contact.address,
+      // address: contact.address,
       phoneNumber: contact.phoneNumber,
       email: contact.email,
     };
@@ -117,8 +117,8 @@ const TableP = () => {
         <table>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Address</th>
+              <th>Gym Member Name</th>
+              {/* <th>Address</th> */}
               <th>Phone Number</th>
               <th>Email</th>
               <th>Actions</th>
@@ -146,7 +146,7 @@ const TableP = () => {
         </table>
       </form>
 
-      <h2>Add a Contact</h2>
+      <h2>Add New Gym Member</h2>
       <form onSubmit={handleAddFormSubmit}>
         <input
           type="text"
@@ -155,13 +155,13 @@ const TableP = () => {
           placeholder="Enter a name..."
           onChange={handleAddFormChange}
         />
-        <input
+        {/* <input
           type="text"
           name="address"
           required="required"
           placeholder="Enter an addres..."
           onChange={handleAddFormChange}
-        />
+        /> */}
         <input
           type="text"
           name="phoneNumber"

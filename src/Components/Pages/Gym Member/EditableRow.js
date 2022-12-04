@@ -17,7 +17,7 @@ const EditableRow = ({
                     onChange={handleEditFormChange}
                 ></input>
             </td>
-            <td>
+            {/* <td>
                 <input
                     type="text"
                     required="required"
@@ -26,7 +26,7 @@ const EditableRow = ({
                     value={editFormData.address}
                     onChange={handleEditFormChange}
                 ></input>
-            </td>
+            </td> */}
             <td>
                 <input
                     type="text"

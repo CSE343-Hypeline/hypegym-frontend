@@ -2,11 +2,11 @@ import React from 'react'
 import SideBar from '../../../utils/sidebars/SideBar'
 import './profile.css'
 
-function ProfilePage() {
+function ProfilePage({ setAuth }) {
     return (
         <div id='main_profile'>
 
-            <SideBar />
+            <SideBar setAuth={setAuth} />
         </div>
     )
 }

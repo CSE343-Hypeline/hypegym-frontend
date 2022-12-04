@@ -7,12 +7,12 @@ import LoginNavbar from '../../Login Navbar/LoginNavbar'
 import Widget from '../../widget/Widget'
 import './dashboard.css'
 
-function DashboardPage() {
+function DashboardPage({ setAuth }) {
     return (
 
         < div id='main_dashboard'>
 
-            <SideBar />
+            <SideBar setAuth={setAuth} />
 
             <div className='dashboard_graphs'>
                 {/* <LoginNavbar /> */}
