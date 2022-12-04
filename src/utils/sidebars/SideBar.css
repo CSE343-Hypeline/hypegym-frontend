@@ -19,23 +19,35 @@
 
 }
 
-#SideBar .content .menu_top {}
+#SideBar .content .menu_top {
+
+    margin-bottom: 100px;
+}
 
 #SideBar .content .menu_item {
-    margin: 15px 0px;
-    padding: 10px 10px;
-    color: azure;
-    text-align: left;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 1rem;
+    border-radius: 5px;
+    margin-bottom: 5px;
 }
 
 
+#SideBar .content .menu_item span {
+    margin-left: 10px;
+
+
+}
+
 #SideBar .content .menu_item .menu_option {
-    margin: px;
+
     padding-left: 4px;
 }
 
 #SideBar .content .menu_item .option_logout {
-    margin: 10px;
+    margin-top: 0px;
     padding-left: 4px;
 }
 

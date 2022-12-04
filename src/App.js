@@ -14,7 +14,8 @@ import history from "./history";
 import SideBar from "./utils/sidebars/SideBar";
 import DashboardPage from "./Components/Pages/Dashboard/DashboardPage";
 import GymMemberPage from "./Components/Pages/Gym Member/GymMemberPage";
-
+import Profile from "./Components/Pages/Profile/ProfilePage";
+import ProfilePage from "./Components/Pages/Profile/ProfilePage";
 
 function App() {
 
@@ -43,6 +44,11 @@ function App() {
               exact
               path="/gymmember"
               element={<GymMemberPage setAuth={true} />}
+            ></Route>
+            <Route
+              exact
+              path="/profile"
+              element={<ProfilePage setAuth={true} />}
             ></Route>
 
           </Routes>

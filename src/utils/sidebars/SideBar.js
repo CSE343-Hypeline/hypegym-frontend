@@ -36,16 +36,22 @@ export default function SideBar() {
 						<i class="bi bi-grid-3x3-gap-fill" style={{ fontSize: '20px' }}></i>
 						<span className='menu_option'>PERSONAL TRAINER</span>
 					</button>
-					<button className='menu_item'>
-						<i class="bi bi-grid-3x3-gap-fill" style={{ fontSize: '20px' }}></i>
-						<span className='menu_option'>PROFILE</span>
-					</button>
+
 				</div>
 				<div className='menu_bottom'>
 					{/* <div className='menu_item'>
 						<img src={logo} srcSet='' />
 						<span>Dashboard</span>
 					</div> */}
+					<button className='menu_item' onClick={() => {
+						navigate("/profile");
+						// history.push('/gymmember')
+						// history.go()
+
+					}}>
+						<i class="bi bi-person-circle" style={{ fontSize: '20px' }} s></i>
+						<span className='option_logout'>PROFILE</span>
+					</button>
 					<button className='menu_item' >
 						<i class="bi bi-x-circle" style={{ fontSize: '20px' }}></i>
 						<span className=' option_logout'>LOG OUT</span>
