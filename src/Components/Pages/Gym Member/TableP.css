@@ -7,7 +7,8 @@
 }
 
 .app-container h2 {
-    color: blueviolet;
+    color: rgb(248, 247, 250);
+
 }
 
 table {
@@ -19,7 +20,7 @@ table {
 th,
 td {
     /* border: 1px solid #81e014; */
-    border-radius: 0px;
+    border-radius: 5px;
     text-align: center;
     padding: 2px;
     font-size: 12px;
@@ -27,7 +28,7 @@ td {
 }
 
 th {
-    background-color: rgb(220, 156, 18);
+    background-color: #f7c02c;
 }
 
 td {

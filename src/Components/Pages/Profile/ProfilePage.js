@@ -7,6 +7,9 @@ function ProfilePage({ setAuth }) {
         <div id='main_profile'>
 
             <SideBar setAuth={setAuth} />
+            <div className='profile_div'>
+
+            </div>
         </div>
     )
 }
