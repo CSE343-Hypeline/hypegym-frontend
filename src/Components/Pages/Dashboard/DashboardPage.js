@@ -7,6 +7,7 @@ import LoginNavbar from '../../Login Navbar/LoginNavbar'
 import Widget from '../../widget/Widget'
 import './dashboard.css'
 
+
 function DashboardPage({ setAuth }) {
     return (
 
@@ -26,13 +27,18 @@ function DashboardPage({ setAuth }) {
                         <BarChart />
 
                     </div>
+                    <div className='main_div'>
+                        <div className='dashboard_donutchart'>
+                            <DonutChart />
 
-                    <div className='dashboard_donutchart'>
-                        <DonutChart />
+                        </div>
+                        <div className='active_table_ingym'>
 
-                    </div>
-                </div>
+                        </div>
+                    </div>        </div>
+
             </div>
+
 
         </div>
     )

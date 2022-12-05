@@ -7,7 +7,7 @@ function GymMemberPage({ setAuth }) {
     return (
         <div id='main_gymmember'>
             <SideBar setAuth={setAuth} />
-            <div className='gymmember_background'>
+            <div className='gymmember_background'>göbgn
                 <TableP />
             </div>
         </div>

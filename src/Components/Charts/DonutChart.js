@@ -40,13 +40,16 @@ function DonutChart() {
                     height={200}
                     series={[45, 67]}
                     options={{
-                        theme: { mode: 'dark' },
+                        // theme: { mode: 'white' },
                         labels: ['Number of Joined', 'Others'],
                         title: {
                             text: "Rates of Members",
 
 
                         },
+
+                        theme: { mode: 'light' },
+                        color: ['#f90000'],
                         plotOptions: {
                             pie: {
                                 donut: {

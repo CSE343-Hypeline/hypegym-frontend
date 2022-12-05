@@ -21,7 +21,7 @@
     height: 100px;
     /* background-color: #f7c12c; */
     margin-right: 10px;
-
+    margin: auto;
 
 }
 
@@ -29,6 +29,15 @@
     font-weight: bold;
     font-size: 20px;
     color: rgb(45, 43, 43);
+    margin-bottom: 100px;
+}
+
+.widget .card_icon {
+    align-items: flex-end;
+    display: flex;
+    float: left;
+    font-weight: 300;
+
 }
 
 .value {
