@@ -25,11 +25,11 @@ function BarChart() {
                 options={{
                     title: {
                         text: "Numbers of Members by Month",
-                        style: { fontSize: 18, color: "#f7c02c" }
+                        style: { fontSize: 18, color: "#22201e" }
                     },
                     subtitle: {
                         text: "Number of Members by Month",
-                        style: { fontSize: 10, color: "#f7c02c" }
+                        style: { fontSize: 10, color: "#22201e" }
                     },
                     color: ['#f90000'],
                     theme: { mode: 'light' },
