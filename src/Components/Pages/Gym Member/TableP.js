@@ -176,7 +176,7 @@ const TableP = () => {
           placeholder="Enter an email..."
           onChange={handleAddFormChange}
         />
-        <button type="submit">Add</button>
+        <button className="button_add" type="submit">ADD</button>
       </form>
     </div>
   );
