@@ -1,12 +1,6 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
-/**
- * @param {Object} An object containing user credentials
- * @param {Function} setAuth To set state of auth
- */
 export async function loginAPI(data) {
-  // const navigate = useNavigate();
   const response = await axios.post("http://localhost:8080/login", {
     email: data.email,
     password: data.password,
@@ -15,101 +9,21 @@ export async function loginAPI(data) {
 }
 
 export async function getMembers() {
-  const response = await axios.get("http://localhost:8080/getUsers", {
-    headers: {
-      Authorization: localStorage.getItem("token")
-    }
-  });
+  const response = await axios.get("http://localhost:8080/api/users/members/1");//Gym idyi değiştir
   return response;
 }
 
 export async function apiMe() {
-  const response = await axios.get("http://localhost:8080/api/me", {
-    headers: {
-      Authorization: localStorage.getItem("token")
-    }
-  });
+  const response = await axios.get("http://localhost:8080/api/me");
   return response;
 }
 
-
-
 export async function addMember(user) {
   const response = await axios.post("http://localhost:8080/api/user", {
-
     email: user.email,
     password: user.password,
     role: user.role,
     gym_id: user.gym_id
-
-  }, {
-    headers: {
-      Authorization: localStorage.getItem("token")
-    }
-  }
-
-
-  );
+  });
   return response;
 }
-
-// export function button() {
-//   // const navigate = useNavigate();
-//   return new Promise((resolve, reject) => {
-//     axios
-//       .get("http://localhost:8080/api/ping")
-//       .then((response) => {
-//         resolve(response);
-//       })
-//       .catch((err) => reject(err));
-//   });
-// }
-
-// /**
-//  *
-//  * @param {Function} setAuth represents if user login in
-//  */
-// export const authCheck = async (setAuth) => {
-//   const response = await fetch("http://localhost:8080/api/auth", {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-//   console.log(response);
-
-//   if (response.status === 200) {
-//     setAuth(true);
-//     console.log("Status: 200");
-//   } else {
-//     setAuth(false);
-//   }
-// };
-
-export const logout = async (setAuth) => {
-  //   console.log("Logging Out");
-  //   const response = await fetch("/logout", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   if (response.status === 200) {
-  setAuth(false);
-  //   }
-};
-
-// /**
-//  *
-//  * @param {Function} setUserData Function to set user data state on User Detail component
-//  */
-// export const getUserData = async (setUserData) => {
-//   const data = await fetch("/auth/user", {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   }).then((response) => response.json());
-
-//   setUserData({ email: data.email, username: data.username });
-// };

@@ -17,6 +17,7 @@ import GymMemberPage from "./Components/Pages/Gym Member/GymMemberPage";
 import Profile from "./Components/Pages/Profile/ProfilePage";
 import ProfilePage from "./Components/Pages/Profile/ProfilePage";
 import { apiMe } from "./Components/API";
+import ErrorwithLogin from "./Components/Error404/ErrorwithLogin";
 
 function App() {
 
@@ -25,7 +26,8 @@ function App() {
 
   useEffect(() => {
     apiMe().then(response => {
-      if (response.status === 200 && !location.pathname.includes("dashboard"))
+      console.log(response);
+      if (response.status === 200)
         setAuth(true)
       else
         setAuth(false)
@@ -58,6 +60,12 @@ function App() {
             path="/profile"
             element={<ProfilePage setAuth={true} />}
           ></Route>
+          <Route
+            exact
+            path="*"
+            element={<ErrorwithLogin />}
+          ></Route>
+
 
         </Routes>
 
@@ -68,8 +76,8 @@ function App() {
           <Route exact path="/" element={<HomePage />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
-          <Route path="*" element={<Error404 />}></Route>
           <Route path="/login" element={<Login setAuth={setAuth} />}></Route>
+          <Route path="*" element={<Error404 />}></Route>
         </Routes>
 
       )}

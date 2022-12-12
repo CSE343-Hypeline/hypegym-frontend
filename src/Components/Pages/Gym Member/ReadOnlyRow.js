@@ -3,11 +3,12 @@ import "./row.css";
 
 const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
   return (
+
     <tr>
-      <td>{contact.fullName}</td>
-      <td>{contact.phoneNumber}</td>
+      {/* <td>{contact.fullName}</td> */}
+      {/* <td>{contact.phoneNumber}</td> */}
       <td>{contact.email}</td>
-      <td>{contact.password}</td>
+      {/* <td>{contact.password}</td> */}
 
       <td>
         <button

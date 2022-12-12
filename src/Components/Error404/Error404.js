@@ -1,7 +1,12 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
 
 function Error404() {
-  return <h1>Error404</h1>;
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate("/login")
+  })
 }
 
-export default Error404;
+export default Error404

@@ -4,7 +4,7 @@ import "./TableP.css";
 import data from "./mock-data.json";
 import ReadOnlyRow from "./ReadOnlyRow";
 import EditableRow from "./EditableRow";
-import { addMember, getUsers } from "../../API";
+import { addMember, getMembers } from "../../API";
 
 const initialMember = {
   email: "",
@@ -15,6 +15,8 @@ const initialMember = {
 
 const TableP = () => {
   const [contacts, setContacts] = useState(data);
+  const [isSubmit, setIsSubmit] = useState(0);
+
   const [editContactId, setEditContactId] = useState(null);
   const [addFormData, setAddFormData] = useState({
     fullName: "",
@@ -31,11 +33,25 @@ const TableP = () => {
 
   const [newMember, setNewMember] = useState(initialMember);
 
-  // useEffect(() => {
-  //   getMembers().then((members)=> {
-  //     setContacts(members);
-  //   });
-  // }, [])
+  useEffect(() => {
+    console.log("Table ");
+
+    getMembers().then((response) => {
+      setContacts(response.data);
+    });
+  }, [])
+
+  useEffect(() => {
+    console.log(isSubmit);
+    if (isSubmit === 201) {
+      getMembers().then((response) => {
+        setContacts(response.data);
+        setIsSubmit(0)
+      });
+    }
+  }, [isSubmit])
+
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -51,7 +67,7 @@ const TableP = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(newMember);
-    addMember(newMember).then((response) => console.log(response));
+    addMember(newMember).then((response) => setIsSubmit(response.status));
     setNewMember(initialMember)
   };
   ////////////////////////////
@@ -156,7 +172,7 @@ const TableP = () => {
             </tr>
           </thead>
           <tbody>
-            {contacts.map((contact) => (
+            {contacts && contacts.map((contact) => (
               <Fragment>
                 {editContactId === contact.id ? (
                   <EditableRow
