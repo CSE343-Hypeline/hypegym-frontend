@@ -1,60 +1,64 @@
 .app-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 4rem;
 }
 
 .app-container h2 {
-    color: rgb(248, 247, 250);
-
+  color: rgb(248, 247, 250);
 }
 
 table {
-    border-collapse: collapse;
-    width: 800px;
-    height: 50px;
+  border-collapse: collapse;
+  width: 800px;
+  height: 50px;
 }
 
 th,
 td {
-    /* border: 1px solid #81e014; */
-    border-radius: 5px;
-    text-align: center;
-    padding: 2px;
-    font-size: 12px;
-    color: rgb(10, 10, 10);
+  /* border: 1px solid #81e014; */
+  border-radius: 5px;
+  text-align: center;
+  padding: 2px;
+  font-size: 12px;
+  color: rgb(10, 10, 10);
 }
 
 th {
-    background-color: #f7c02c;
+  background-color: #f7c02c;
 }
 
 td {
-    background-color: rgb(248, 247, 250);
-
+  background-color: rgb(248, 247, 250);
 }
 
 form {
-    display: flex;
-    gap: 5px;
+  display: flex;
+  gap: 5px;
 }
 
 form td:last-child {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 form * {
-    font-size: 12px;
+  font-size: 12px;
+}
+input {
+  height: 32px;
+  padding-inline: 10px;
+  margin-right: 7px;
+  border-radius: 10px;
+  border-color: rgb(228, 228, 228);
 }
 
-
 .button_add {
-    background-color: rgb(81, 212, 49);
-    border-radius: 10px;
-    width: 50px;
-    color: aliceblue;
-
+  background-color: rgb(0, 0, 0);
+  border-radius: 6px;
+  width: 70px;
+  color: aliceblue;
+  margin-left: 20px;
 }

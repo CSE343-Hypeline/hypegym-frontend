@@ -9,14 +9,28 @@ export async function loginAPI(data) {
   // const navigate = useNavigate();
   const response = await axios.post("http://localhost:8080/login", {
     email: data.email,
-    password: data.password
-  })
-  return response
+    password: data.password,
+  });
+  return response;
+}
+
+export async function getMembers() {
+  const response = await axios.get("http://localhost:8080/getUsers");
+  return response;
+}
+
+export async function addMember(user) {
+  const response = await axios.post("http://localhost:8080/user/register", {
+    name: user.name,
+    email: user.email,
+    phone: user.phone,
+    password: user.password,
+  });
+  return response;
 }
 
 export function button() {
   // const navigate = useNavigate();
-
   return new Promise((resolve, reject) => {
     axios
       .get("http://localhost:8080/api/ping")
@@ -47,8 +61,6 @@ export function button() {
 //     setAuth(false);
 //   }
 // };
-
-
 
 export const logout = async (setAuth) => {
   //   console.log("Logging Out");

@@ -19,12 +19,17 @@
 }
 
 .Auth-form {
-  width: 420px;
+  width: 450px;
   box-shadow: rgb(255, 239, 10, 0.5) 3px 3px 100px;
   padding-top: 30px;
   padding-bottom: 20px;
   border-radius: 8px;
   z-index: 2;
+}
+
+.form-control {
+  display: inline;
+  height: 4vh;
 }
 
 a {
@@ -40,13 +45,12 @@ a:hover {
 .Auth-form-content {
   padding-left: 20%;
   padding-right: 10%;
-  margin-left: 30px;
-
+  margin-left: 10px;
 }
 
 .Auth-form-title {
   text-align: center;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
   font-size: 24px;
   color: rgb(255, 239, 10);
   font-weight: 800;

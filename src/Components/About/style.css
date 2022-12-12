@@ -21,9 +21,9 @@
 .about {
   /* border: 5px solid; */
   display: flex;
-  height: 630px;
+  height: 720px;
   align-items: center;
-  transform: translate(0, 37%);
+  transform: translate(0, 7%);
   flex-direction: column;
   display: flex;
   width: 800px;

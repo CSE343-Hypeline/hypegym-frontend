@@ -1,19 +1,27 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { nanoid } from "nanoid";
 import "./TableP.css";
 import data from "./mock-data.json";
 import ReadOnlyRow from "./ReadOnlyRow";
 import EditableRow from "./EditableRow";
+import { addMember, getUsers } from "../../API";
+
+const initialMember = {
+  fullName: "",
+  phoneNumber: "",
+  email: "",
+  password: "",
+};
 
 const TableP = () => {
   const [contacts, setContacts] = useState(data);
+  const [editContactId, setEditContactId] = useState(null);
   const [addFormData, setAddFormData] = useState({
     fullName: "",
-    address: "",
     phoneNumber: "",
     email: "",
+    password: "",
   });
-
   const [editFormData, setEditFormData] = useState({
     fullName: "",
     address: "",
@@ -21,8 +29,28 @@ const TableP = () => {
     email: "",
   });
 
-  const [editContactId, setEditContactId] = useState(null);
+  const [newMember, setNewMember] = useState(initialMember);
 
+  // useEffect(() => {
+  //   getMembers().then((members)=> {
+  //     setContacts(members);
+  //   });
+  // }, [])
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setNewMember((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+  };
+
+  const handleSubmit = () => {
+    addMember(newMember).then((response) => console.log(response));
+  };
+  ////////////////////////////
   const handleAddFormChange = (event) => {
     event.preventDefault();
 
@@ -43,7 +71,6 @@ const TableP = () => {
 
     const newFormData = { ...editFormData };
     newFormData[fieldName] = fieldValue;
-
     setEditFormData(newFormData);
   };
 
@@ -113,14 +140,14 @@ const TableP = () => {
 
   return (
     <div className="app-container">
-      <form onSubmit={handleEditFormSubmit}>
+      <form onSubmit={handleSubmit}>
         <table>
           <thead>
             <tr>
               <th>Gym Member Name</th>
-              {/* <th>Address</th> */}
               <th>Phone Number</th>
               <th>Email</th>
+              <th>Password</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -152,31 +179,34 @@ const TableP = () => {
           type="text"
           name="fullName"
           required="required"
-          placeholder="Enter a name..."
-          onChange={handleAddFormChange}
+          placeholder="Fullname"
+          onChange={handleChange}
         />
-        {/* <input
-          type="text"
-          name="address"
-          required="required"
-          placeholder="Enter an addres..."
-          onChange={handleAddFormChange}
-        /> */}
+
         <input
-          type="text"
+          type="number"
           name="phoneNumber"
           required="required"
-          placeholder="Enter a phone number..."
-          onChange={handleAddFormChange}
+          placeholder="Phone Number"
+          onChange={handleChange}
         />
         <input
           type="email"
           name="email"
           required="required"
-          placeholder="Enter an email..."
-          onChange={handleAddFormChange}
+          placeholder="Email"
+          onChange={handleChange}
         />
-        <button className="button_add" type="submit">ADD</button>
+        <input
+          type="text"
+          name="password"
+          required="required"
+          placeholder="Password"
+          onChange={handleChange}
+        />
+        <button className="button_add" type="submit">
+          ADD
+        </button>
       </form>
     </div>
   );
