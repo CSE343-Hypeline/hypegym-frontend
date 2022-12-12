@@ -1,6 +1,5 @@
 import React, { useState, Fragment, useEffect } from "react";
 import "./TableP.css";
-import data from "./mock-data.json";
 import ReadOnlyRow from "./ReadOnlyRow";
 import { addMember, getMembers } from "../../../API";
 
@@ -12,7 +11,7 @@ const initialMember = {
 };
 
 const TableP = () => {
-  const [contacts, setContacts] = useState(data);
+  const [contacts, setContacts] = useState();
   const [isSubmit, setIsSubmit] = useState(0);
   const [newMember, setNewMember] = useState(initialMember);
 
@@ -39,7 +38,6 @@ const TableP = () => {
         [name]: value,
       };
     });
-    console.log(newMember);
   };
 
   const handleSubmit = (event) => {

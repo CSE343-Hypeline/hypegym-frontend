@@ -8,7 +8,6 @@ import NavBar from "./Components/Navbar/NavBar";
 import Login from "./Components/Login/Login";
 import { useState, useEffect } from "react";
 import history from "./History";
-import SideBar from "./Components/Utils/SideBar";
 import DashboardPage from "./Components//Users/Owner/Dashboard/DashboardPage";
 import GymMemberPage from "./Components/Users/Owner/ManageMembers/GymMemberPage";
 import ProfilePage from "./Components/Users/Owner/Profile/Profile";
