@@ -4,16 +4,16 @@ import { button } from "../API";
 
 const HomePage = () => {
   useEffect(() => {
-    pingTest();
+    /*  pingTest(); */
   }, []);
 
-  const pingTest = () => {
-    button()
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => console.log(err.response.data.error));
-  };
+  /*   const pingTest = () => {
+      button()
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => console.log(err.response.data.error));
+    }; */
 
   return (
     <section className="banner" id="home">

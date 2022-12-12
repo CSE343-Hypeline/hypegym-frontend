@@ -15,31 +15,55 @@ export async function loginAPI(data) {
 }
 
 export async function getMembers() {
-  const response = await axios.get("http://localhost:8080/getUsers");
+  const response = await axios.get("http://localhost:8080/getUsers", {
+    headers: {
+      Authorization: localStorage.getItem("token")
+    }
+  });
   return response;
 }
+
+export async function apiMe() {
+  const response = await axios.get("http://localhost:8080/api/me", {
+    headers: {
+      Authorization: localStorage.getItem("token")
+    }
+  });
+  return response;
+}
+
+
 
 export async function addMember(user) {
-  const response = await axios.post("http://localhost:8080/user/register", {
-    name: user.name,
+  const response = await axios.post("http://localhost:8080/api/user", {
+
     email: user.email,
-    phone: user.phone,
     password: user.password,
-  });
+    role: user.role,
+    gym_id: user.gym_id
+
+  }, {
+    headers: {
+      Authorization: localStorage.getItem("token")
+    }
+  }
+
+
+  );
   return response;
 }
 
-export function button() {
-  // const navigate = useNavigate();
-  return new Promise((resolve, reject) => {
-    axios
-      .get("http://localhost:8080/api/ping")
-      .then((response) => {
-        resolve(response);
-      })
-      .catch((err) => reject(err));
-  });
-}
+// export function button() {
+//   // const navigate = useNavigate();
+//   return new Promise((resolve, reject) => {
+//     axios
+//       .get("http://localhost:8080/api/ping")
+//       .then((response) => {
+//         resolve(response);
+//       })
+//       .catch((err) => reject(err));
+//   });
+// }
 
 // /**
 //  *

@@ -21,12 +21,11 @@ export default function ({ setAuth }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(userData);
 
     loginAPI(userData)
       .then((data) => {
-        console.log(data);
         if (data.status === 200) {
+          localStorage.setItem('token', JSON.stringify(data.data.token));
           setAuth(true);
           navigate("/dashboard");
         }

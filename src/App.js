@@ -1,6 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import About from "./Components/About/About";
 import Contact from "./Components/Contact/Contact";
 import HomePage from "./Components/Home/HomePage";
@@ -16,54 +16,62 @@ import DashboardPage from "./Components/Pages/Dashboard/DashboardPage";
 import GymMemberPage from "./Components/Pages/Gym Member/GymMemberPage";
 import Profile from "./Components/Pages/Profile/ProfilePage";
 import ProfilePage from "./Components/Pages/Profile/ProfilePage";
+import { apiMe } from "./Components/API";
 
 function App() {
 
   const [auth, setAuth] = useState(false);
+  const location = useLocation();
+
   useEffect(() => {
-    // authCheck(setAuth);
-  }, []);
+    apiMe().then(response => {
+      if (response.status === 200 && !location.pathname.includes("dashboard"))
+        setAuth(true)
+      else
+        setAuth(false)
+    })
+  }, [location]);
+
 
   return (
     <div className="App">
-      {console.log(auth)}
       {auth ? (
-        <BrowserRouter>
-          <Routes history={history}>
-            <Route
-              exact
-              path="/ownerpage"
-              element={<OwnerPage auth={true} />}
-            >  </Route>
-            <Route
-              exact
-              path="/dashboard"
-              element={<DashboardPage setAuth={true} />}
-            ></Route>
-            <Route
-              exact
-              path="/gymmember"
-              element={<GymMemberPage setAuth={true} />}
-            ></Route>
-            <Route
-              exact
-              path="/profile"
-              element={<ProfilePage setAuth={true} />}
-            ></Route>
 
-          </Routes>
-        </BrowserRouter>
+        <Routes history={history}>
+          <Route
+            exact
+            path="/ownerpage"
+            element={<OwnerPage auth={true} />}
+          >  </Route>
+          <Route
+            exact
+            path="/dashboard"
+            element={<DashboardPage setAuth={true} />}
+          ></Route>
+          <Route
+            exact
+            path="/gymmember"
+            element={<GymMemberPage setAuth={true} />}
+          ></Route>
+          <Route
+            exact
+            path="/profile"
+            element={<ProfilePage setAuth={true} />}
+          ></Route>
+
+        </Routes>
+
       ) : (
-        <BrowserRouter>
-          <NavBar auth={auth} setAuth={setAuth} />
-          <Routes history={history}>
-            <Route exact path="/" element={<HomePage />}></Route>
-            <Route path="/about" element={<About />}></Route>
-            <Route path="/contact" element={<Contact />}></Route>
-            <Route path="*" element={<Error404 />}></Route>
-            <Route path="/login" element={<Login setAuth={setAuth} />}></Route>
-          </Routes>
-        </BrowserRouter>
+
+        // <NavBar auth={auth} setAuth={setAuth} />
+        <Routes history={history}>
+          <Route exact path="/" element={<HomePage />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+          <Route path="*" element={<Error404 />}></Route>
+          <Route path="/login" element={<Login setAuth={setAuth} />}></Route>
+        </Routes>
+
       )}
     </div>
   );

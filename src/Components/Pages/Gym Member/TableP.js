@@ -7,10 +7,10 @@ import EditableRow from "./EditableRow";
 import { addMember, getUsers } from "../../API";
 
 const initialMember = {
-  fullName: "",
-  phoneNumber: "",
   email: "",
   password: "",
+  role: "MEMBER",
+  gym_id: 1
 };
 
 const TableP = () => {
@@ -45,10 +45,14 @@ const TableP = () => {
         [name]: value,
       };
     });
+    console.log(newMember)
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(newMember);
     addMember(newMember).then((response) => console.log(response));
+    setNewMember(initialMember)
   };
   ////////////////////////////
   const handleAddFormChange = (event) => {
@@ -174,22 +178,22 @@ const TableP = () => {
       </form>
 
       <h2>Add New Gym Member</h2>
-      <form onSubmit={handleAddFormSubmit}>
-        <input
+      <form onSubmit={handleSubmit}>
+        {/* <input
           type="text"
           name="fullName"
           required="required"
           placeholder="Fullname"
           onChange={handleChange}
-        />
+        /> */}
 
-        <input
+        {/* <input
           type="number"
           name="phoneNumber"
           required="required"
           placeholder="Phone Number"
           onChange={handleChange}
-        />
+        /> */}
         <input
           type="email"
           name="email"
