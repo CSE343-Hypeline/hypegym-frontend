@@ -21,7 +21,6 @@ function App() {
 
   useEffect(() => {
     apiMe().then((response) => {
-      console.log(response);
       if (response.status === 200) setAuth(true);
       else setAuth(false);
     });

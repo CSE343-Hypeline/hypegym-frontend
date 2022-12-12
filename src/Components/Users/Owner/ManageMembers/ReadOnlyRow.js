@@ -1,7 +1,7 @@
 import React from "react";
 import "./row.css";
 
-const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
+const ReadOnlyRow = ({ contact, handleDeleteClick }) => {
   return (
     <tr>
       {/* <td>{contact.fullName}</td> */}
@@ -10,13 +10,6 @@ const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
       {/* <td>{contact.password}</td> */}
 
       <td>
-        <button
-          type="button"
-          className="button_edit"
-          onClick={(event) => handleEditClick(event, contact)}
-        >
-          Edit
-        </button>
         <button
           type="button"
           className="button_delete"

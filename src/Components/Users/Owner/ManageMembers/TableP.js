@@ -1,11 +1,8 @@
 import React, { useState, Fragment, useEffect } from "react";
-import { nanoid } from "nanoid";
 import "./TableP.css";
 import data from "./mock-data.json";
 import ReadOnlyRow from "./ReadOnlyRow";
-import EditableRow from "./EditableRow";
 import { addMember, getMembers } from "../../../API";
-import SideBar from "../../../Utils/SideBar";
 
 const initialMember = {
   email: "",
@@ -17,33 +14,15 @@ const initialMember = {
 const TableP = () => {
   const [contacts, setContacts] = useState(data);
   const [isSubmit, setIsSubmit] = useState(0);
-
-  const [editContactId, setEditContactId] = useState(null);
-  const [addFormData, setAddFormData] = useState({
-    fullName: "",
-    phoneNumber: "",
-    email: "",
-    password: "",
-  });
-  const [editFormData, setEditFormData] = useState({
-    fullName: "",
-    address: "",
-    phoneNumber: "",
-    email: "",
-  });
-
   const [newMember, setNewMember] = useState(initialMember);
 
   useEffect(() => {
-    console.log("Table ");
-
     getMembers().then((response) => {
       setContacts(response.data);
     });
   }, []);
 
   useEffect(() => {
-    console.log(isSubmit);
     if (isSubmit === 201) {
       getMembers().then((response) => {
         setContacts(response.data);
@@ -65,95 +44,14 @@ const TableP = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(newMember);
     addMember(newMember).then((response) => setIsSubmit(response.status));
     setNewMember(initialMember);
-  };
-  ////////////////////////////
-  const handleAddFormChange = (event) => {
-    event.preventDefault();
-
-    const fieldName = event.target.getAttribute("name");
-    const fieldValue = event.target.value;
-
-    const newFormData = { ...addFormData };
-    newFormData[fieldName] = fieldValue;
-
-    setAddFormData(newFormData);
-  };
-
-  const handleEditFormChange = (event) => {
-    event.preventDefault();
-
-    const fieldName = event.target.getAttribute("name");
-    const fieldValue = event.target.value;
-
-    const newFormData = { ...editFormData };
-    newFormData[fieldName] = fieldValue;
-    setEditFormData(newFormData);
-  };
-
-  const handleAddFormSubmit = (event) => {
-    event.preventDefault();
-
-    const newContact = {
-      id: nanoid(),
-      fullName: addFormData.fullName,
-      address: addFormData.address,
-      phoneNumber: addFormData.phoneNumber,
-      email: addFormData.email,
-    };
-
-    const newContacts = [...contacts, newContact];
-    setContacts(newContacts);
-  };
-
-  const handleEditFormSubmit = (event) => {
-    event.preventDefault();
-
-    const editedContact = {
-      id: editContactId,
-      fullName: editFormData.fullName,
-      address: editFormData.address,
-      phoneNumber: editFormData.phoneNumber,
-      email: editFormData.email,
-    };
-
-    const newContacts = [...contacts];
-
-    const index = contacts.findIndex((contact) => contact.id === editContactId);
-
-    newContacts[index] = editedContact;
-
-    setContacts(newContacts);
-    setEditContactId(null);
-  };
-
-  const handleEditClick = (event, contact) => {
-    event.preventDefault();
-    setEditContactId(contact.id);
-
-    const formValues = {
-      fullName: contact.fullName,
-      // address: contact.address,
-      phoneNumber: contact.phoneNumber,
-      email: contact.email,
-    };
-
-    setEditFormData(formValues);
-  };
-
-  const handleCancelClick = () => {
-    setEditContactId(null);
   };
 
   const handleDeleteClick = (contactId) => {
     const newContacts = [...contacts];
-
     const index = contacts.findIndex((contact) => contact.id === contactId);
-
     newContacts.splice(index, 1);
-
     setContacts(newContacts);
   };
 
@@ -174,19 +72,10 @@ const TableP = () => {
             {contacts &&
               contacts.map((contact) => (
                 <Fragment>
-                  {editContactId === contact.id ? (
-                    <EditableRow
-                      editFormData={editFormData}
-                      handleEditFormChange={handleEditFormChange}
-                      handleCancelClick={handleCancelClick}
-                    />
-                  ) : (
-                    <ReadOnlyRow
-                      contact={contact}
-                      handleEditClick={handleEditClick}
-                      handleDeleteClick={handleDeleteClick}
-                    />
-                  )}
+                  <ReadOnlyRow
+                    contact={contact}
+                    handleDeleteClick={handleDeleteClick}
+                  />
                 </Fragment>
               ))}
           </tbody>
