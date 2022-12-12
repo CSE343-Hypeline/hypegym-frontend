@@ -8,7 +8,7 @@ function ProfilePage({ setAuth }) {
 
             <SideBar setAuth={setAuth} />
             <div className='profile_div'>
-
+                USER PROFILE PAGE
             </div>
         </div>
     )

@@ -33,7 +33,7 @@ function DashboardPage({ setAuth }) {
 
                         </div>
                         <div className='active_table_ingym'>
-
+                            Activities
                         </div>
                     </div>        </div>
 
