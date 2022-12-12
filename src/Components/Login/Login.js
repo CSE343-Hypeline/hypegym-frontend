@@ -3,7 +3,7 @@ import { loginAPI } from "../API";
 import "./LoginStyle.css";
 import { useNavigate } from "react-router-dom";
 
-export default function ({ setAuth }) {
+export default function () {
   const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
@@ -25,8 +25,8 @@ export default function ({ setAuth }) {
     loginAPI(userData)
       .then((data) => {
         if (data.status === 200) {
-          localStorage.setItem('token', JSON.stringify(data.data.token));
-          setAuth(true);
+          localStorage.setItem("token", JSON.stringify(data.data.token));
+          // setAuth(true);
           navigate("/dashboard");
         }
       })

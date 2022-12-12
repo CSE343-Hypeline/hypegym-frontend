@@ -5,7 +5,7 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 
-function NavBar({ auth, setAuth }) {
+function NavBar() {
   const [activateLink, setActivateLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
 
@@ -79,44 +79,26 @@ function NavBar({ auth, setAuth }) {
               </Nav.Link>
             </LinkContainer>
 
-            {auth ? (
+            <LinkContainer to="login">
               <Nav.Link
                 className={
-                  activateLink === "Logout"
+                  activateLink === "Login"
                     ? "active navbar-link"
                     : "navbar-link"
                 }
-                onClick={() => {
-                  onUpdateActiveLink("Logout");
-                  setAuth(false);
-                }}
+                onClick={() => onUpdateActiveLink("Login")}
               >
-                Log Out
+                Log In
               </Nav.Link>
-            ) : (
-              <LinkContainer to="login">
-                <Nav.Link
-                  className={
-                    activateLink === "Login"
-                      ? "active navbar-link"
-                      : "navbar-link"
-                  }
-                  onClick={() => onUpdateActiveLink("Login")}
-                >
-                  Log In
-                </Nav.Link>
-              </LinkContainer>
-            )}
+            </LinkContainer>
           </Nav>
           <span className="navbar-text">
-            {!auth && (
-              <LinkContainer to="contact">
-                <button className="vvd" onClick={() => console.log("connect")}>
-                  {" "}
-                  <span>Become member</span>{" "}
-                </button>
-              </LinkContainer>
-            )}
+            <LinkContainer to="contact">
+              <button className="vvd" onClick={() => console.log("connect")}>
+                {" "}
+                <span>Become member</span>{" "}
+              </button>
+            </LinkContainer>
           </span>
         </Navbar.Collapse>
       </Container>

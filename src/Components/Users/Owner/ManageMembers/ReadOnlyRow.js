@@ -3,7 +3,6 @@ import "./row.css";
 
 const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
   return (
-
     <tr>
       {/* <td>{contact.fullName}</td> */}
       {/* <td>{contact.phoneNumber}</td> */}

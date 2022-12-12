@@ -1,85 +1,85 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import About from "./Components/About/About";
 import Contact from "./Components/Contact/Contact";
-import HomePage from "./Components/Home/HomePage";
-import Error404 from "./Components/Error404/Error404";
-
+import HomePage from "./Components/Home/Home";
 import NavBar from "./Components/Navbar/NavBar";
 import Login from "./Components/Login/Login";
-import OwnerPage from "./Components/Users/Owner/OwnerPage";
 import { useState, useEffect } from "react";
-import history from "./history";
-import SideBar from "./utils/sidebars/SideBar";
-import DashboardPage from "./Components/Pages/Dashboard/DashboardPage";
-import GymMemberPage from "./Components/Pages/Gym Member/GymMemberPage";
-import Profile from "./Components/Pages/Profile/ProfilePage";
-import ProfilePage from "./Components/Pages/Profile/ProfilePage";
+import history from "./History";
+import SideBar from "./Components/Utils/SideBar";
+import DashboardPage from "./Components//Users/Owner/Dashboard/DashboardPage";
+import GymMemberPage from "./Components/Users/Owner/ManageMembers/GymMemberPage";
+import ProfilePage from "./Components/Users/Owner/Profile/Profile";
 import { apiMe } from "./Components/API";
-import ErrorwithLogin from "./Components/Error404/ErrorwithLogin";
+import Error from "./Components/Error/Error";
 
 function App() {
-
-  const [auth, setAuth] = useState(false);
   const location = useLocation();
+  const [auth, setAuth] = useState(false);
 
   useEffect(() => {
-    apiMe().then(response => {
+    apiMe().then((response) => {
       console.log(response);
-      if (response.status === 200)
-        setAuth(true)
-      else
-        setAuth(false)
-    })
+      if (response.status === 200) setAuth(true);
+      else setAuth(false);
+    });
   }, [location]);
-
 
   return (
     <div className="App">
       {auth ? (
-
         <Routes history={history}>
-          <Route
-            exact
-            path="/ownerpage"
-            element={<OwnerPage auth={true} />}
-          >  </Route>
-          <Route
-            exact
-            path="/dashboard"
-            element={<DashboardPage setAuth={true} />}
-          ></Route>
-          <Route
-            exact
-            path="/gymmember"
-            element={<GymMemberPage setAuth={true} />}
-          ></Route>
-          <Route
-            exact
-            path="/profile"
-            element={<ProfilePage setAuth={true} />}
-          ></Route>
-          <Route
-            exact
-            path="*"
-            element={<ErrorwithLogin />}
-          ></Route>
-
-
+          <Route exact path="/dashboard" element={<DashboardPage />} />
+          <Route exact path="/gymmember" element={<GymMemberPage />} />
+          <Route exact path="/profile" element={<ProfilePage />} />
+          <Route exact path="*" element={<Error auth={auth} />} />
         </Routes>
-
       ) : (
-
-        // <NavBar auth={auth} setAuth={setAuth} />
         <Routes history={history}>
-          <Route exact path="/" element={<HomePage />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/login" element={<Login setAuth={setAuth} />}></Route>
-          <Route path="*" element={<Error404 />}></Route>
+          <Route
+            exact
+            path="/"
+            element={
+              <>
+                <NavBar /> <HomePage />
+              </>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <>
+                <NavBar /> <About />
+              </>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <>
+                <NavBar /> <Contact />
+              </>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <>
+                <NavBar /> <Login />
+              </>
+            }
+          ></Route>
+          <Route
+            path="*"
+            element={
+              <>
+                <NavBar /> <Error auth={auth} />
+              </>
+            }
+          />
         </Routes>
-
       )}
     </div>
   );
