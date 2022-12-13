@@ -20,13 +20,15 @@ function App() {
 
   useEffect(() => {
     apiMe().then((response) => {
+      console.log(response.status);
       if (response.status === 200) setAuth(true);
-      else setAuth(false);
+      else;
     });
   }, [location]);
 
   return (
     <div className="App">
+      {console.log(auth)}
       {auth ? (
         <Routes history={history}>
           <Route exact path="/dashboard" element={<DashboardPage />} />
@@ -35,49 +37,16 @@ function App() {
           <Route exact path="*" element={<Error auth={auth} />} />
         </Routes>
       ) : (
-        <Routes history={history}>
-          <Route
-            exact
-            path="/"
-            element={
-              <>
-                <NavBar /> <HomePage />
-              </>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <>
-                <NavBar /> <About />
-              </>
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <>
-                <NavBar /> <Contact />
-              </>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <>
-                <NavBar /> <Login />
-              </>
-            }
-          ></Route>
-          <Route
-            path="*"
-            element={
-              <>
-                <NavBar /> <Error auth={auth} />
-              </>
-            }
-          />
-        </Routes>
+        <>
+          <NavBar />
+          <Routes history={history}>
+            <Route exact path="/" element={<HomePage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="*" element={<Error auth={auth} />} />
+          </Routes>
+        </>
       )}
     </div>
   );
