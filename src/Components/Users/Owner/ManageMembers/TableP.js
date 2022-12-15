@@ -61,9 +61,9 @@ const TableP = () => {
             <tr>
               <th>Gym Member Name</th>
               <th>Phone Number</th>
-              <th>Email</th>
+              {/* <th>Email</th>
               <th>Password</th>
-              <th>Actions</th>
+              <th>Actions</th> */}
             </tr>
           </thead>
           <tbody>

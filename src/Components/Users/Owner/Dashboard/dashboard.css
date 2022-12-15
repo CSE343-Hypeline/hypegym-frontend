@@ -12,6 +12,8 @@
   background-image: none !important;
   display: flex !important;
   flex-direction: column;
+
+
 }
 
 #main_dashboard .dashboard_graphs .widgets {

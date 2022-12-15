@@ -4,15 +4,24 @@
   display: flex;
   width: 100vw;
   height: 100vh;
+  overflow-y: auto;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+
+#main_gymmember::-webkit-scrollbar {
+  display: none;
+}
+
 
 #main_gymmember .gymmember_background {
   border-radius: 10px;
   background-color: rgb(248, 247, 250);
 
   background-image: none !important;
-  width: 70%;
-  height: 70%;
+  width: max-content;
+  height: max-content;
   flex-direction: column;
   margin-left: 50px;
   margin-top: 50px;
@@ -20,5 +29,4 @@
   box-shadow: 15px 4px 10px 1px rgba(14, 14, 14, 0.244);
 }
 
-#main_gymmember .gymmember_background {
-}
+#main_gymmember .gymmember_background {}

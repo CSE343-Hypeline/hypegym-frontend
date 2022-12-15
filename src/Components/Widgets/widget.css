@@ -26,6 +26,9 @@
 }
 
 .title {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
     font-weight: bold;
     font-size: 20px;
     color: rgb(45, 43, 43);
