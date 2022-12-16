@@ -18,7 +18,6 @@ const TableP = () => {
   useEffect(() => {
     getMembers().then((response) => {
       setContacts(response.data);
-      console.log(response.data);
     });
   }, []);
 
@@ -50,7 +49,6 @@ const TableP = () => {
   const handleDeleteClick = (contactId) => {
     deleteMember(contactId)
       .then((response) => {
-        console.log(response);
         setIsSubmit(response.status);
       })
       .catch((e) => alert(e));

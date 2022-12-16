@@ -8,7 +8,6 @@ function ProfilePage() {
 
   useEffect(() => {
     apiMe().then((response) => {
-      console.log(response);
       if (response.status === 200) setuser(response.data);
       else;
     });
