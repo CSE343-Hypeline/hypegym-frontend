@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect } from "react";
 import "./TableP.css";
 import ReadOnlyRow from "./ReadOnlyRow";
-import { addMember, getMembers } from "../../../API";
+import { addMember, deleteMember, getMembers } from "../../../API";
 
 const initialMember = {
   email: "",
@@ -18,11 +18,12 @@ const TableP = () => {
   useEffect(() => {
     getMembers().then((response) => {
       setContacts(response.data);
+      console.log(response.data);
     });
   }, []);
 
   useEffect(() => {
-    if (isSubmit === 201) {
+    if (isSubmit === 200 || isSubmit === 201) {
       getMembers().then((response) => {
         setContacts(response.data);
         setIsSubmit(0);
@@ -47,10 +48,12 @@ const TableP = () => {
   };
 
   const handleDeleteClick = (contactId) => {
-    const newContacts = [...contacts];
-    const index = contacts.findIndex((contact) => contact.id === contactId);
-    newContacts.splice(index, 1);
-    setContacts(newContacts);
+    deleteMember(contactId)
+      .then((response) => {
+        console.log(response);
+        setIsSubmit(response.status);
+      })
+      .catch((e) => alert(e));
   };
 
   return (
@@ -59,8 +62,8 @@ const TableP = () => {
         <table>
           <thead>
             <tr>
-              <th>Gym Member Name</th>
-              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Delete</th>
               {/* <th>Email</th>
               <th>Password</th>
               <th>Actions</th> */}

@@ -13,7 +13,7 @@ const ReadOnlyRow = ({ contact, handleDeleteClick }) => {
         <button
           type="button"
           className="button_delete"
-          onClick={() => handleDeleteClick(contact.id)}
+          onClick={() => handleDeleteClick(contact.ID)}
         >
           X
         </button>
