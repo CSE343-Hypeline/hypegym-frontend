@@ -99,6 +99,12 @@ p.danger {
   color: red;
 }
 
+.main-div {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(255, 255, 255);
+}
+
 /************ Navbar Css ************/
 nav.navbar {
   padding: 18px 0;

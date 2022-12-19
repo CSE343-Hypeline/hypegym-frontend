@@ -6,7 +6,6 @@ import TableP from "./TableP";
 function GymMemberPage() {
   return (
     <div id="main_gymmember">
-      <SideBar />
       <div className="gymmember_background">
         <TableP />
       </div>

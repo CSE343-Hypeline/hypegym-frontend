@@ -2,13 +2,12 @@ import React from "react";
 import BarChart from "../../../Charts/BarChart";
 import DonutChart from "../../../Charts/DonutChart";
 import SideBar from "../../../Utils/SideBar";
-import Widget from "../../../Widgets/Widget";
+import Widget from "../Widgets/Widget";
 import "./dashboard.css";
 
 function DashboardPage() {
   return (
     <div id="main_dashboard">
-      <SideBar />
       <div className="dashboard_graphs">
         <div className="widgets">
           <Widget />
