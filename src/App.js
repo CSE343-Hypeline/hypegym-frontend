@@ -27,6 +27,7 @@ function App() {
     apiMe().then((response) => {
       if (response.status === 200) {
         setRole(response.data.role);
+        console.log(response.data.role);
         setAuth(true);
       } else;
     });

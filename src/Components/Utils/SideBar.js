@@ -1,6 +1,7 @@
 import "./SideBar.css";
 import logo from "./logo.png";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function SideBar(role) {
   const navigate = useNavigate();
@@ -18,24 +19,24 @@ export default function SideBar(role) {
               navigate("/dashboard");
             }}
           >
-            <i class="bi bi-exclude" style={{ fontSize: "20px" }}></i>
+            <i className="bi bi-exclude" style={{ fontSize: "20px" }}></i>
             <span className="menu_option">DASHBOARD</span>
           </button>
-          {role === "ADMIN" && (
+          {role.role === "SUPERADMIN" && (
             <button
               className="menu_item"
               onClick={() => {
                 navigate("/manage-members");
               }}
             >
-              <i class="bi bi-grid-3x3" style={{ fontSize: "20px" }}></i>
+              <i className="bi bi-grid-3x3" style={{ fontSize: "20px" }}></i>
               <span className="menu_option">GYM MEMBER</span>
             </button>
           )}
-          {role === "ADMIN" && (
+          {role.role === "SUPERADMIN" && (
             <button className="menu_item">
               <i
-                class="bi bi-grid-3x3-gap-fill"
+                className="bi bi-grid-3x3-gap-fill"
                 style={{ fontSize: "20px" }}
               ></i>
               <span className="menu_option">PERSONAL TRAINER</span>
@@ -49,7 +50,11 @@ export default function SideBar(role) {
               navigate("/profile");
             }}
           >
-            <i class="bi bi-person-circle" style={{ fontSize: "20px" }} s></i>
+            <i
+              className="bi bi-person-circle"
+              style={{ fontSize: "20px" }}
+              s
+            ></i>
             <span className="option_logout">PROFILE</span>
           </button>
           <button
@@ -58,7 +63,7 @@ export default function SideBar(role) {
               navigate("/");
             }}
           >
-            <i class="bi bi-x-circle" style={{ fontSize: "20px" }}></i>
+            <i className="bi bi-x-circle" style={{ fontSize: "20px" }}></i>
             <span className=" option_logout">LOG OUT</span>
           </button>
         </div>
