@@ -21,7 +21,7 @@ export default function SideBar(role) {
             <i class="bi bi-exclude" style={{ fontSize: "20px" }}></i>
             <span className="menu_option">DASHBOARD</span>
           </button>
-          {role === "ADMIN" && (
+          {(
             <button
               className="menu_item"
               onClick={() => {
@@ -32,7 +32,7 @@ export default function SideBar(role) {
               <span className="menu_option">GYM MEMBER</span>
             </button>
           )}
-          {role === "ADMIN" && (
+          {(
             <button className="menu_item">
               <i
                 class="bi bi-grid-3x3-gap-fill"
