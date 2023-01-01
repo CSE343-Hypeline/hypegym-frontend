@@ -16,21 +16,24 @@ export async function loginAPI(data) {
 }
 
 // Gets Members of the Gym
-export async function getMembers() {
-  const response = await axios.get("http://localhost:8080/api/users/members/1"); //Gym idyi değiştir
+export async function getMembers(gym_id) {
+  const response = await axios.get(
+    `http://localhost:8080/api/users/members/${gym_id}`
+  );
   return response;
 }
 
 // Adds member to the Gym
 export async function addMember(user) {
+  console.log("API: ", user);
   const response = await axios.post("http://localhost:8080/api/user", {
+    name: user.role,
     email: user.email,
     password: user.password,
     phone_number: user.phone_number,
     address: user.address,
-    role: user.role,
-    gym_id: user.gym_id,
-
+    role: "MEMBER",
+    gym_id: user.gymId,
   });
   return response;
 }

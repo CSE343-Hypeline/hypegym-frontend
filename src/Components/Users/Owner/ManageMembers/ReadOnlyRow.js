@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./row.css";
 
 const ReadOnlyRow = ({ contact, handleDeleteClick }) => {
-  console.log("number")
-  console.log(contact.adress)
+  console.log("number");
   return (
     <tr>
       {/* <td>{contact.fullName}</td> */}
+      <td>{contact.address}</td>
       <td>{contact.phone_number}</td>
       <td>{contact.email}</td>
       {/* <td>{contact.password}</td> */}
-      <td>{contact.adress}</td>
       <td>
         <button
           type="button"

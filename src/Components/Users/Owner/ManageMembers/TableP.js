@@ -1,31 +1,42 @@
 import React, { useState, Fragment, useEffect } from "react";
 import "./TableP.css";
 import ReadOnlyRow from "./ReadOnlyRow";
-import { addMember, deleteMember, getMembers } from "../../../API";
+import { addMember, apiMe, deleteMember, getMembers } from "../../../API";
 
 const initialMember = {
+  name: "",
   email: "",
   password: "",
   address: "",
   role: "MEMBER",
-  gym_id: 1,
-
+  phone_number: "",
+  gym_id: 0,
 };
 
 const TableP = () => {
   const [contacts, setContacts] = useState();
   const [isSubmit, setIsSubmit] = useState(0);
-  const [newMember, setNewMember] = useState(initialMember);
+  const [newMember, setNewMember] = useState();
+  const [gymId, setGymId] = useState();
 
   useEffect(() => {
-    getMembers().then((response) => {
-      setContacts(response.data);
-    });
+    setNewMember(initialMember);
+    apiMe()
+      .then((response) => {
+        setGymId(response.data.gym_id);
+        console.log(response.data.gym_id);
+      })
+      .then(() =>
+        getMembers(gymId).then((response) => {
+          setContacts(response.data);
+          console.log(response.data);
+        })
+      );
   }, []);
 
   useEffect(() => {
     if (isSubmit === 200 || isSubmit === 201) {
-      getMembers().then((response) => {
+      getMembers(gymId).then((response) => {
         setContacts(response.data);
         setIsSubmit(0);
       });
@@ -34,6 +45,7 @@ const TableP = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+
     setNewMember((prevState) => {
       return {
         ...prevState,
@@ -44,8 +56,16 @@ const TableP = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    setNewMember((prevState) => {
+      return {
+        ...prevState,
+        gymId: 1,
+      };
+    });
+
+    console.log(newMember);
     addMember(newMember).then((response) => setIsSubmit(response.status));
-    setNewMember(initialMember);
   };
 
   const handleDeleteClick = (contactId) => {
@@ -97,17 +117,22 @@ const TableP = () => {
         /> */}
 
         <input
-          type="address"
+          name="name"
+          required="required"
+          placeholder="Name"
+          onChange={handleChange}
+        />
+
+        <input
           name="address"
           required="required"
-          placeholder="adress"
+          placeholder="Address"
           onChange={handleChange}
         />
         <input
-          type="number"
-          name=" phone_number"
+          name="phone_number"
           required="required"
-          placeholder=" phone number"
+          placeholder="Phone number"
           onChange={handleChange}
         />
         <input
