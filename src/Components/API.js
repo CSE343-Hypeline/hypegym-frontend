@@ -17,6 +17,7 @@ export async function loginAPI(data) {
 
 // Gets Members of the Gym
 export async function getMembers(gym_id) {
+  console.log(gym_id);
   const response = await axios.get(
     `http://localhost:8080/api/users/members/${gym_id}`
   );
@@ -27,13 +28,13 @@ export async function getMembers(gym_id) {
 export async function addMember(user) {
   console.log("API: ", user);
   const response = await axios.post("http://localhost:8080/api/user", {
-    name: user.role,
+    name: user.name,
     email: user.email,
     password: user.password,
     phone_number: user.phone_number,
     address: user.address,
     role: "MEMBER",
-    gym_id: user.gymId,
+    gym_id: user.gym_id,
   });
   return response;
 }

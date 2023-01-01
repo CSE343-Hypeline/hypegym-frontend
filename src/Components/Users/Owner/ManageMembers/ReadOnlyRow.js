@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "./row.css";
 
 const ReadOnlyRow = ({ contact, handleDeleteClick }) => {
-  console.log("number");
   return (
     <tr>
       {/* <td>{contact.fullName}</td> */}

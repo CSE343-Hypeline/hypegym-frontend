@@ -5,33 +5,33 @@ import { addMember, apiMe, deleteMember, getMembers } from "../../../API";
 
 const initialMember = {
   name: "",
+  phone_number: "",
   email: "",
   password: "",
   address: "",
-  role: "MEMBER",
-  phone_number: "",
-  gym_id: 0,
+  gym_id: "",
+  role: "",
 };
 
 const TableP = () => {
   const [contacts, setContacts] = useState();
   const [isSubmit, setIsSubmit] = useState(0);
   const [newMember, setNewMember] = useState();
-  const [gymId, setGymId] = useState();
+  const [gymId, setGymId] = useState(0);
 
   useEffect(() => {
-    setNewMember(initialMember);
-    apiMe()
-      .then((response) => {
-        setGymId(response.data.gym_id);
-        console.log(response.data.gym_id);
-      })
-      .then(() =>
-        getMembers(gymId).then((response) => {
-          setContacts(response.data);
-          console.log(response.data);
-        })
-      );
+    apiMe().then((response) => {
+      setGymId(response.data.gym_id);
+
+      setNewMember({
+        gym_id: response.data.gym_id,
+      });
+
+      getMembers(response.data.gym_id).then((response) => {
+        setContacts(response.data);
+        console.log(response.data);
+      });
+    });
   }, []);
 
   useEffect(() => {
@@ -56,16 +56,10 @@ const TableP = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("Submit: ");
 
-    setNewMember((prevState) => {
-      return {
-        ...prevState,
-        gymId: 1,
-      };
-    });
-
-    console.log(newMember);
     addMember(newMember).then((response) => setIsSubmit(response.status));
+    setNewMember(initialMember);
   };
 
   const handleDeleteClick = (contactId) => {
@@ -121,6 +115,7 @@ const TableP = () => {
           required="required"
           placeholder="Name"
           onChange={handleChange}
+          value={newMember.name}
         />
 
         <input
@@ -128,12 +123,14 @@ const TableP = () => {
           required="required"
           placeholder="Address"
           onChange={handleChange}
+          value={newMember.address}
         />
         <input
           name="phone_number"
           required="required"
           placeholder="Phone number"
           onChange={handleChange}
+          value={newMember.phone_number}
         />
         <input
           type="email"
@@ -141,6 +138,7 @@ const TableP = () => {
           required="required"
           placeholder="Email"
           onChange={handleChange}
+          value={newMember.email}
         />
         <input
           type="text"
@@ -148,6 +146,7 @@ const TableP = () => {
           required="required"
           placeholder="Password"
           onChange={handleChange}
+          value={newMember.password}
         />
         <button className="button_add" type="submit">
           ADD
