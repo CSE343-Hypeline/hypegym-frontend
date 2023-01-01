@@ -6,8 +6,10 @@ import { addMember, deleteMember, getMembers } from "../../../API";
 const initialMember = {
   email: "",
   password: "",
+  address: "",
   role: "MEMBER",
   gym_id: 1,
+
 };
 
 const TableP = () => {
@@ -60,8 +62,11 @@ const TableP = () => {
         <table>
           <thead>
             <tr>
+              <th>Adress</th>
+              <th>Phone Number</th>
               <th>Email</th>
               <th>Delete</th>
+
               {/* <th>Email</th>
               <th>Password</th>
               <th>Actions</th> */}
@@ -91,13 +96,20 @@ const TableP = () => {
           onChange={handleChange}
         /> */}
 
-        {/* <input
-          type="number"
-          name="phoneNumber"
+        <input
+          type="address"
+          name="address"
           required="required"
-          placeholder="Phone Number"
+          placeholder="adress"
           onChange={handleChange}
-        /> */}
+        />
+        <input
+          type="number"
+          name=" phone_number"
+          required="required"
+          placeholder=" phone number"
+          onChange={handleChange}
+        />
         <input
           type="email"
           name="email"

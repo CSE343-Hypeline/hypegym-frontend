@@ -22,6 +22,7 @@ export default function SideBar(role) {
             <i className="bi bi-exclude" style={{ fontSize: "20px" }}></i>
             <span className="menu_option">DASHBOARD</span>
           </button>
+
           {role.role === "SUPERADMIN" && (
             <button
               className="menu_item"

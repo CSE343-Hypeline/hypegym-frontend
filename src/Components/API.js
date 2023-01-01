@@ -26,8 +26,11 @@ export async function addMember(user) {
   const response = await axios.post("http://localhost:8080/api/user", {
     email: user.email,
     password: user.password,
+    phone_number: user.phone_number,
+    address: user.address,
     role: user.role,
     gym_id: user.gym_id,
+
   });
   return response;
 }
