@@ -22,12 +22,14 @@ function App() {
   const location = useLocation();
   const [auth, setAuth] = useState(false);
   const [role, setRole] = useState("");
+  const [gym_id, setGym_id] = useState();
 
   useEffect(() => {
     apiMe().then((response) => {
       if (response.status === 200) {
         setRole(response.data.role);
         console.log(response.data.role);
+        setGym_id(response.data.gym_id);
         setAuth(true);
       } else;
     });
@@ -53,7 +55,11 @@ function App() {
           <SideBar role={role} />
           <Routes>
             <Route exact path="/dashboard" element={<DashboardAdmin />} />
-            <Route exact path="/manage-members" element={<ManageMembers />} />
+            <Route
+              exact
+              path="/manage-members"
+              element={<ManageMembers gym_id={gym_id} />}
+            />
             <Route exact path="/profile" element={<ProfileAdmin />} />
             <Route exact path="*" element={<Error auth={auth} />} />
           </Routes>

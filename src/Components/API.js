@@ -35,6 +35,7 @@ export async function addMember(user) {
     address: user.address,
     role: "MEMBER",
     gym_id: user.gym_id,
+    gender: user.gender,
   });
   return response;
 }

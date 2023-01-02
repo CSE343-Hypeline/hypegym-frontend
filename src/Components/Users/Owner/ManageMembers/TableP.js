@@ -11,12 +11,13 @@ const initialMember = {
   address: "",
   gym_id: "",
   role: "",
+  gender: "",
 };
 
 const TableP = () => {
   const [contacts, setContacts] = useState();
   const [isSubmit, setIsSubmit] = useState(0);
-  const [newMember, setNewMember] = useState();
+  const [newMember, setNewMember] = useState(initialMember);
   const [gymId, setGymId] = useState(0);
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-.app-container {
+/* .app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +18,6 @@ table {
 
 th,
 td {
-  /* border: 1px solid #81e014; */
   border-radius: 5px;
   text-align: center;
   padding: 2px;
@@ -61,4 +60,4 @@ input {
   width: 70px;
   color: aliceblue;
   margin-left: 20px;
-}
+} */
