@@ -1,13 +1,9 @@
-/* .app-container {
+.app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   padding: 4rem;
-}
-
-.app-container h2 {
-  color: rgb(248, 247, 250);
 }
 
 table {
@@ -21,43 +17,20 @@ td {
   border-radius: 5px;
   text-align: center;
   padding: 2px;
-  font-size: 12px;
+  font-size: 15px;
   color: rgb(10, 10, 10);
-}
-
-th {
-  background-color: #f7c02c;
 }
 
 td {
   background-color: rgb(248, 247, 250);
 }
 
-form {
-  display: flex;
-  gap: 5px;
-}
-
-form td:last-child {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-form * {
-  font-size: 12px;
-}
-input {
-  height: 32px;
-  padding-inline: 10px;
-  margin-right: 7px;
-  border-radius: 10px;
-  border-color: rgb(228, 228, 228);
-}
-
-.button_add {
-  background-color: rgb(0, 0, 0);
+.d-button {
+  background-color: rgb(235, 97, 97);
   border-radius: 6px;
-  width: 70px;
+  width: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   color: aliceblue;
-  margin-left: 20px;
-} */
+}

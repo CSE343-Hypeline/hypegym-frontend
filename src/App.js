@@ -17,6 +17,7 @@ import ProfileMember from "./Components/Users/Member/Profile/Profile";
 import ProfilePT from "./Components/Users/PersonalTrainer/Profile/Profile";
 import { apiMe } from "./Components/API";
 import SideBar from "./Components/Utils/SideBar";
+import TableP from "./Components/Users/Owner/ManageMembers/TableP";
 
 function App() {
   const location = useLocation();
@@ -58,7 +59,7 @@ function App() {
             <Route
               exact
               path="/manage-members"
-              element={<ManageMembers gym_id={gym_id} />}
+              element={<TableP gym_id={gym_id} />}
             />
             <Route exact path="/profile" element={<ProfileAdmin />} />
             <Route exact path="*" element={<Error auth={auth} />} />

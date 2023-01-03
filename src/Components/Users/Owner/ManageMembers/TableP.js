@@ -1,7 +1,15 @@
-import React, { useState, Fragment, useEffect } from "react";
 import "./TableP.css";
-import ReadOnlyRow from "./ReadOnlyRow";
 import { addMember, apiMe, deleteMember, getMembers } from "../../../API";
+import "primeicons/primeicons.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.css";
+import "primeflex/primeflex.css";
+import React, { useState, useEffect } from "react";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+import "./gymmember.css";
+import { Button } from "primereact/button";
+import AddMember from "./AddMember";
 
 const initialMember = {
   name: "",
@@ -18,6 +26,7 @@ const TableP = () => {
   const [contacts, setContacts] = useState();
   const [isSubmit, setIsSubmit] = useState(0);
   const [newMember, setNewMember] = useState(initialMember);
+  // const [selectedProduct, setSelectedProduct] = useState(null);
   const [gymId, setGymId] = useState(0);
 
   useEffect(() => {
@@ -44,115 +53,56 @@ const TableP = () => {
     }
   }, [isSubmit]);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setNewMember((prevState) => {
-      return {
-        ...prevState,
-        [name]: value,
-      };
-    });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Submit: ");
-
-    addMember(newMember).then((response) => setIsSubmit(response.status));
-    setNewMember(initialMember);
-  };
-
-  const handleDeleteClick = (contactId) => {
-    deleteMember(contactId)
-      .then((response) => {
-        setIsSubmit(response.status);
-      })
-      .catch((e) => alert(e));
+  const deleteButtonBody = (rowData) => {
+    return (
+      <>
+        <Button
+          onClick={() => {
+            deleteMember(rowData.ID)
+              .then((response) => {
+                setIsSubmit(response.status);
+              })
+              .catch((e) => alert(e));
+          }}
+          icon="pi pi-trash"
+          className="p-button-rounded p-button-danger p-button-outlined"
+        />
+        <Button
+          onClick={() => {
+            deleteMember(rowData.ID)
+              .then((response) => {
+                setIsSubmit(response.status);
+              })
+              .catch((e) => alert(e));
+          }}
+          icon="pi pi-pencil"
+          className="p-button-rounded p-button-success mr-2"
+        />
+      </>
+    );
   };
 
   return (
-    <div className="app-container">
-      <form onSubmit={handleSubmit}>
-        <table>
-          <thead>
-            <tr>
-              <th>Adress</th>
-              <th>Phone Number</th>
-              <th>Email</th>
-              <th>Delete</th>
+    <div className="manage-member">
+      <div>
+        <AddMember gym_id={gymId} setIsSubmit={setIsSubmit} />
+      </div>
 
-              {/* <th>Email</th>
-              <th>Password</th>
-              <th>Actions</th> */}
-            </tr>
-          </thead>
-          <tbody>
-            {contacts &&
-              contacts.map((contact) => (
-                <Fragment>
-                  <ReadOnlyRow
-                    contact={contact}
-                    handleDeleteClick={handleDeleteClick}
-                  />
-                </Fragment>
-              ))}
-          </tbody>
-        </table>
-      </form>
-
-      <h2>Add New Gym Member</h2>
-      <form onSubmit={handleSubmit}>
-        {/* <input
-          type="text"
-          name="fullName"
-          required="required"
-          placeholder="Fullname"
-          onChange={handleChange}
-        /> */}
-
-        <input
-          name="name"
-          required="required"
-          placeholder="Name"
-          onChange={handleChange}
-          value={newMember.name}
-        />
-
-        <input
-          name="address"
-          required="required"
-          placeholder="Address"
-          onChange={handleChange}
-          value={newMember.address}
-        />
-        <input
-          name="phone_number"
-          required="required"
-          placeholder="Phone number"
-          onChange={handleChange}
-          value={newMember.phone_number}
-        />
-        <input
-          type="email"
-          name="email"
-          required="required"
-          placeholder="Email"
-          onChange={handleChange}
-          value={newMember.email}
-        />
-        <input
-          type="text"
-          name="password"
-          required="required"
-          placeholder="Password"
-          onChange={handleChange}
-          value={newMember.password}
-        />
-        <button className="button_add" type="submit">
-          ADD
-        </button>
-      </form>
+      <div className="app-container">
+        <div className="card">
+          <DataTable
+            value={contacts}
+            // selection={selectedProduct}
+            // onSelectionChange={(e) => setSelectedProduct(e.value)}
+          >
+            <Column field="name" header="Name"></Column>
+            <Column field="email" header="Email"></Column>
+            <Column field="phone_number" header="Phone Number"></Column>
+            <Column field="address" header="Address"></Column>
+            <Column header="Delete" body={deleteButtonBody}></Column>
+          </DataTable>
+        </div>
+      </div>
     </div>
   );
 };

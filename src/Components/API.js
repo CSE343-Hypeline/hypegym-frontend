@@ -31,11 +31,11 @@ export async function addMember(user) {
     name: user.name,
     email: user.email,
     password: user.password,
+    role: "MEMBER",
     phone_number: user.phone_number,
     address: user.address,
-    role: "MEMBER",
-    gym_id: user.gym_id,
-    gender: user.gender,
+    gym_id: 1,
+    gender: "MALE",
   });
   return response;
 }

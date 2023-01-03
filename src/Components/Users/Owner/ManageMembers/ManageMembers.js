@@ -1,13 +1,17 @@
 import React from "react";
 import "./gymmember.css";
 import TableP from "./TableP";
-import MemberTable from "./MemberTable";
+import { Button } from "primereact/button";
 
 function GymMemberPage(gym_id) {
   return (
-    <div id="main_gymmember">
-      <div className="gymmember_background">
-        <MemberTable gym_id={gym_id} />
+    <div className="manage-member">
+      <div>
+        <Button label="ADD MEMBER" icon="pi pi-plus" />
+      </div>
+
+      <div>
+        <TableP />
       </div>
     </div>
   );

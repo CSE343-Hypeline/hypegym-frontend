@@ -1,71 +1,29 @@
-import $ from "jquery";
-import { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "jquery/dist/jquery.min.js";
-import "datatables.net-dt/js/dataTables.dataTables";
-import "datatables.net-dt/css/jquery.dataTables.min.css";
+import "primeicons/primeicons.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.css";
+import "primeflex/primeflex.css";
+import React, { useState, useEffect } from "react";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
 import { getMembers } from "../../../API";
 
-function MemberTable(gym_id) {
-  const [members, setMembers] = useState();
+function MemberTable() {
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    $(document).ready(function () {
-      $("#dataTable").DataTable();
-    });
+    getMembers(1).then((res) => setProducts(res.data));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    // getMembers(gym_id).then((res) => {
-    //   setMembers(res.data);
-    // });
-  }, []);
-
-  if (members) {
-    console.log(members);
-    return (
-      <div className="table">
-        <table id="table" className="display">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Phone Number</th>
-              <th>Email</th>
-              <th>Address</th>
-              <th>Gender</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* {console.log(members)}
-            {members.map((member, i) => (
-              <tr key={i}>
-                <td>{member.name}</td>
-                <td>{member.phone_number}</td>
-                <td>{member.email}</td>
-                <td>{member.address}</td>
-                <td>{member.gender}</td>
-              </tr>
-            ))} */}
-            <tr>
-              <td>Tiger Nixon</td>
-              <td>System Architect</td>
-              <td>Edinburgh</td>
-              <td>61</td>
-              <td>2011/04/25</td>
-              <td>$320,800</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <th>Name</th>
-              <th>Phone Number</th>
-              <th>Email</th>
-              <th>Address</th>
-              <th>Gender</th>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-    );
-  } else return <h1>Loading...</h1>;
+  console.log(products);
+  return (
+    <div className="card">
+      <DataTable value={products}>
+        <Column field="name" header="Name"></Column>
+        <Column field="email" header="Email"></Column>
+        <Column field="phone_number" header="Phone Number"></Column>
+        <Column field="address" header="Address"></Column>
+      </DataTable>
+    </div>
+  );
 }
-
 export default MemberTable;
