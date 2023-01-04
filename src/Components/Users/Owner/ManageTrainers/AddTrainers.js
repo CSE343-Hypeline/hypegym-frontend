@@ -5,35 +5,11 @@ import { useFormik } from "formik";
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import { classNames } from "primereact/utils";
-import { Dropdown } from "primereact/dropdown";
 import { RadioButton } from "primereact/radiobutton";
-import { createUser, apiMe, assignPT, getTrainers } from "../../../API";
+import { createUser } from "../../../API";
 import "./Style.css";
 
-function AddMember({ gym_id, setIsSubmit }) {
-  const [trainers, setTrainers] = useState(); // personal trainers
-
-  const membershipTimes = [
-    { name: "1 month", code: 1 },
-    { name: "2 months", code: 2 },
-    { name: "3 months", code: 3 },
-    { name: "6 months", code: 6 },
-    { name: "9 months", code: 9 },
-    { name: "12 months", code: 12 },
-  ];
-
-  useEffect(() => {
-    console.log("PERSONAL TRAINERS");
-    console.log("gym id: ", gym_id);
-
-    apiMe().then((response) => {
-      getTrainers(response.data.gym_id).then((response) => {
-        setTrainers(response.data);
-        console.log(response.data);
-      });
-    });
-  }, []);
-
+function AddTrainers({ gym_id, setIsSubmit }) {
   const [showMessage, setShowMessage] = useState(false);
   const [displayBasic, setDisplayBasic] = useState(false);
   const [position, setPosition] = useState("center");
@@ -45,10 +21,10 @@ function AddMember({ gym_id, setIsSubmit }) {
       address: "",
       phone_number: "",
       password: "",
-      trainer: "",
+      trainer: 0,
       gender: "",
       membership: 0,
-      role: "MEMBER",
+      role: "PT",
       gym_id: 0,
     },
     validate: (data) => {
@@ -59,7 +35,6 @@ function AddMember({ gym_id, setIsSubmit }) {
       if (!data.address) errors.address = "Address is required.";
       if (!data.phone_number) errors.phone_number = "Phone Number is required.";
       if (!data.gender) errors.gender = "You need to choose a gender.";
-      if (!data.trainer) trainers.gender = "You need to choose a trainer.";
       if (!data.email) errors.email = "Email is required.";
       else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]/i.test(data.email))
         errors.email = "Invalid email address. E.g. example@email.com";
@@ -118,7 +93,7 @@ function AddMember({ gym_id, setIsSubmit }) {
   return (
     <div>
       <Button
-        label="ADD MEMBER"
+        label="ADD TRAINER"
         icon="pi pi-plus"
         onClick={() => onClick("displayBasic")}
       />
@@ -144,14 +119,14 @@ function AddMember({ gym_id, setIsSubmit }) {
               ></i>
               <h5>Registration Successful!</h5>
               <p style={{ lineHeight: 1.5, textIndent: "1rem" }}>
-                Your new member is registered
+                Your new TRAINER is registered
               </p>
             </div>
           </Dialog>
 
           <div className="flex justify-content-center">
             <div className="card">
-              <h5 className="text-center">ADD NEW MEMBER</h5>
+              <h5 className="text-center">ADD NEW TRAINER</h5>
               <form onSubmit={formik.handleSubmit} className="p-fluid">
                 <div className="field">
                   <span className="p-float-label">
@@ -272,28 +247,6 @@ function AddMember({ gym_id, setIsSubmit }) {
                   {getFormErrorMessage("password")}
                 </div>
 
-                <div className="field">
-                  <Dropdown
-                    name="trainer"
-                    value={formik.values.trainer}
-                    options={trainers}
-                    onChange={formik.handleChange}
-                    placeholder="Select a Trainer "
-                    optionLabel="name"
-                  />
-                </div>
-
-                <div className="field">
-                  <Dropdown
-                    name="membership"
-                    value={formik.values.membership}
-                    optionLabel="name"
-                    options={membershipTimes}
-                    onChange={formik.handleChange}
-                    placeholder="Select Membership Time"
-                  />
-                </div>
-
                 <div className="field-radiobutton">
                   <RadioButton
                     checked={formik.values.gender === "MALE"}
@@ -324,4 +277,4 @@ function AddMember({ gym_id, setIsSubmit }) {
   );
 }
 
-export default AddMember;
+export default AddTrainers;

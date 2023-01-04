@@ -1,5 +1,3 @@
-import "./TableP.css";
-import { addMember, apiMe, deleteMember, getMembers } from "../../../API";
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.css";
@@ -7,38 +5,21 @@ import "primeflex/primeflex.css";
 import React, { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import "./gymmember.css";
 import { Button } from "primereact/button";
-import AddMember from "./AddMember";
+import AddTrainers from "./AddTrainers";
+import "./Style.css";
+import { apiMe, deleteMember, getTrainers } from "../../../API";
 
-const initialMember = {
-  name: "",
-  phone_number: "",
-  email: "",
-  password: "",
-  address: "",
-  gym_id: "",
-  role: "",
-  gender: "",
-};
-
-const TableP = () => {
-  const [contacts, setContacts] = useState();
+const ManageTrainers = () => {
+  const [trainers, setTrainers] = useState();
   const [isSubmit, setIsSubmit] = useState(0);
-  const [newMember, setNewMember] = useState(initialMember);
-  // const [selectedProduct, setSelectedProduct] = useState(null);
   const [gymId, setGymId] = useState(0);
 
   useEffect(() => {
     apiMe().then((response) => {
       setGymId(response.data.gym_id);
-
-      setNewMember({
-        gym_id: response.data.gym_id,
-      });
-
-      getMembers(response.data.gym_id).then((response) => {
-        setContacts(response.data);
+      getTrainers(response.data.gym_id).then((response) => {
+        setTrainers(response.data);
         console.log(response.data);
       });
     });
@@ -46,8 +27,8 @@ const TableP = () => {
 
   useEffect(() => {
     if (isSubmit === 200 || isSubmit === 201) {
-      getMembers(gymId).then((response) => {
-        setContacts(response.data);
+      getTrainers(gymId).then((response) => {
+        setTrainers(response.data);
         setIsSubmit(0);
       });
     }
@@ -67,17 +48,6 @@ const TableP = () => {
           icon="pi pi-trash"
           className="p-button-rounded p-button-danger p-button-outlined"
         />
-        <Button
-          onClick={() => {
-            deleteMember(rowData.ID)
-              .then((response) => {
-                setIsSubmit(response.status);
-              })
-              .catch((e) => alert(e));
-          }}
-          icon="pi pi-pencil"
-          className="p-button-rounded p-button-success mr-2"
-        />
       </>
     );
   };
@@ -85,16 +55,12 @@ const TableP = () => {
   return (
     <div className="manage-member">
       <div>
-        <AddMember gym_id={gymId} setIsSubmit={setIsSubmit} />
+        <AddTrainers gym_id={gymId} setIsSubmit={setIsSubmit} />
       </div>
 
       <div className="app-container">
         <div className="card">
-          <DataTable
-            value={contacts}
-            // selection={selectedProduct}
-            // onSelectionChange={(e) => setSelectedProduct(e.value)}
-          >
+          <DataTable value={trainers}>
             <Column field="name" header="Name"></Column>
             <Column field="email" header="Email"></Column>
             <Column field="phone_number" header="Phone Number"></Column>
@@ -107,4 +73,4 @@ const TableP = () => {
   );
 };
 
-export default TableP;
+export default ManageTrainers;

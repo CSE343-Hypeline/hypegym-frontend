@@ -5,11 +5,14 @@ function Error({ auth }) {
   const navigate = useNavigate();
   useEffect(() => {
     if (auth) {
+      console.log("here");
       navigate("/dashboard");
     } else {
       navigate("/login");
     }
-  });
+  }, []);
+
+  return <h1>Loading..</h1>;
 }
 
 export default Error;
