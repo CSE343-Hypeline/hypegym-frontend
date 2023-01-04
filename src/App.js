@@ -11,34 +11,49 @@ import { useState, useEffect } from "react";
 import DashboardAdmin from "./Components/Users/Owner/Dashboard/Dashboard";
 import DashboardPT from "./Components/Users/PersonalTrainer/Dashboard/Dashboard";
 import DashboardMember from "./Components/Users/Member/Dashboard/Dashboard";
-import ManageMembers from "./Components/Users/Owner/ManageMembers/ManageMembers";
 import ProfileAdmin from "./Components/Users/Owner/Profile/Profile";
 import ProfileMember from "./Components/Users/Member/Profile/Profile";
 import ProfilePT from "./Components/Users/PersonalTrainer/Profile/Profile";
 import { apiMe } from "./Components/API";
 import SideBar from "./Components/Utils/SideBar";
-import TableP from "./Components/Users/Owner/ManageMembers/TableP";
+import NewSideBar from "./Components/Utils/NewSideBar";
+import { ProgressSpinner } from "primereact/progressspinner";
+
+import ManageMembers from "./Components/Users/Owner/ManageMembers/ManageMembers";
+import ManageTrainers from "./Components/Users/Owner/ManageTrainers/ManageTrainers";
 
 function App() {
   const location = useLocation();
   const [auth, setAuth] = useState(false);
+  const [loading, setLoading] = useState(true);
+
   const [role, setRole] = useState("");
-  const [gym_id, setGym_id] = useState();
 
   useEffect(() => {
-    apiMe().then((response) => {
-      if (response.status === 200) {
-        setRole(response.data.role);
-        console.log(response.data.role);
-        setGym_id(response.data.gym_id);
-        setAuth(true);
-      } else;
-    });
+    getToken();
   }, [location]);
 
-  if (!auth) {
+  const getToken = async () => {
+    const response = await apiMe()
+      .then((response) => {
+        if (response.status === 200) {
+          setRole(response.data.role);
+          setAuth(true);
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        setAuth(false);
+        setLoading(false);
+      });
+  };
+
+  if (loading) {
+    return <ProgressSpinner />;
+  } else if (!auth) {
+    console.log(auth);
     return (
-      <>
+      <div className="not-auth">
         <NavBar />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
@@ -47,22 +62,22 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="*" element={<Error auth={auth} />} />
         </Routes>
-      </>
+      </div>
     );
   } else {
     if (role === "SUPERADMIN") {
       return (
         <div className="main-div">
-          <SideBar role={role} />
+          {/* <SideBar role={role} /> */}
+
+          <NewSideBar />
+
           <Routes>
             <Route exact path="/dashboard" element={<DashboardAdmin />} />
-            <Route
-              exact
-              path="/manage-members"
-              element={<TableP gym_id={gym_id} />}
-            />
-            <Route exact path="/profile" element={<ProfileAdmin />} />
-            <Route exact path="*" element={<Error auth={auth} />} />
+            <Route path="/manage-members" element={<ManageMembers />} />
+            <Route path="/manage-trainers" element={<ManageTrainers />} />
+            <Route path="/profile" element={<ProfileAdmin />} />
+            <Route path="*" element={<Error auth={auth} />} />
           </Routes>
         </div>
       );
@@ -73,6 +88,7 @@ function App() {
           <Routes>
             <Route exact path="/dashboard" element={<DashboardAdmin />} />
             <Route exact path="/manage-members" element={<ManageMembers />} />
+            <Route path="/manage-trainers" element={<ManageTrainers />} />
             <Route exact path="/profile" element={<ProfileAdmin />} />
             <Route exact path="*" element={<Error auth={auth} />} />
           </Routes>

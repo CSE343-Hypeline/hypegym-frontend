@@ -29,8 +29,8 @@ html {
   scroll-padding-top: 75px;
 }
 
-body {
-  background-image: url("./assets/img/image4.jpg");
+.not-auth {
+  background-image: url("./assets/img/image4.jpg") !important;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -73,11 +73,6 @@ img {
   height: auto;
 }
 
-button {
-  border: 0;
-  background-color: transparent;
-}
-
 input:focus,
 textarea:focus,
 select:focus {
@@ -101,7 +96,7 @@ p.danger {
 
 .main-div {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   background-color: rgb(255, 255, 255);
 }
 

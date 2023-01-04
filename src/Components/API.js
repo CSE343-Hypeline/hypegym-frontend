@@ -15,28 +15,53 @@ export async function loginAPI(data) {
   return response;
 }
 
+// Logout
+export async function LogoutAPI() {
+  const response = await axios.post("http://localhost:8080/api/logout");
+  return response;
+}
+
 // Gets Members of the Gym
 export async function getMembers(gym_id) {
-  console.log(gym_id);
   const response = await axios.get(
     `http://localhost:8080/api/users/members/${gym_id}`
   );
   return response;
 }
+// Gets PTs of the Gym
+export async function getTrainers(gym_id) {
+  console.log("api: ", gym_id);
+  const response = await axios.get(
+    `http://localhost:8080/api/users/pts/${gym_id}`
+  );
+  return response;
+}
 
 // Adds member to the Gym
-export async function addMember(user) {
-  console.log("API: ", user);
+export async function createUser(user) {
   const response = await axios.post("http://localhost:8080/api/user", {
     name: user.name,
     email: user.email,
     password: user.password,
-    role: "MEMBER",
+    role: user.role,
     phone_number: user.phone_number,
     address: user.address,
-    gym_id: 1,
-    gender: "MALE",
+    gym_id: user.gym_id,
+    gender: user.gender,
+    //trainer: user.trainer.ID,
+    //membership: user.membership.code,
   });
+  return response;
+}
+
+// Gets Members of the Gym
+export async function assignPT(trainerID, memberID) {
+  const response = await axios.post(
+    `http://localhost:8080/api/pt/${trainerID}/assign-member`,
+    {
+      user_id: memberID,
+    }
+  );
   return response;
 }
 

@@ -1,7 +1,7 @@
 import "./SideBar.css";
 import logo from "./logo.png";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { LogoutAPI } from "../API";
 
 export default function SideBar(role) {
   const navigate = useNavigate();
@@ -35,7 +35,12 @@ export default function SideBar(role) {
             </button>
           )}
           {role.role === "SUPERADMIN" && (
-            <button className="menu_item">
+            <button
+              className="menu_item"
+              onClick={() => {
+                navigate("/manage-trainers");
+              }}
+            >
               <i
                 className="bi bi-grid-3x3-gap-fill"
                 style={{ fontSize: "20px" }}
@@ -61,7 +66,7 @@ export default function SideBar(role) {
           <button
             className="menu_item"
             onClick={() => {
-              navigate("/");
+              LogoutAPI().then(() => navigate("/"));
             }}
           >
             <i className="bi bi-x-circle" style={{ fontSize: "20px" }}></i>

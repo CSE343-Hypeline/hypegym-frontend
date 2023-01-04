@@ -1,11 +1,7 @@
-#SideBar {
-  background-color: #f7c02c;
-  width: 240px;
-  height: 100vh;
+.SideBar {
+  background-color: #eeeeee;
+  width: 300px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
 }
 
 #SideBar .Logo {
@@ -55,13 +51,4 @@
 #SideBar .content .menu_item img {
   width: 50px;
   height: 50px;
-}
-
-#SideBar .content .menu_top .menu_item span {
-}
-
-#SideBar .content .menu_bottom {
-}
-
-#SideBar .content .menu_bottom .menu_item {
 }
