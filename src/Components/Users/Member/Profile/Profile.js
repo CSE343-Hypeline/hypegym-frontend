@@ -14,6 +14,7 @@ function ProfilePage() {
   }, []);
 
   if (user) {
+    console.log(user.name)
     return (
       <div id="main_profile">
         <div className="container">
@@ -49,7 +50,7 @@ function ProfilePage() {
                     </div>
 
                     <div className="col-sm-9 text-secondary">
-                      Kenneth Valdez
+                      {user.name}
                     </div>
                   </div>
                   <hr />
@@ -65,7 +66,7 @@ function ProfilePage() {
                       <h6 className="mb-0">Phone</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      (239) 816-9029
+                      {user.phone_number}
                     </div>
                   </div>
                   <hr />
