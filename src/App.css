@@ -27,6 +27,14 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 75px;
+  margin-top: 0;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .not-auth {
@@ -40,6 +48,13 @@ html {
   background-color: #121212 !important;
   /* color: #fff !important; */
   font-family: "Centra", sans-serif !important;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 h1,
@@ -95,8 +110,7 @@ p.danger {
 }
 
 .main-div {
-  display: flex;
-  /* flex-direction: row; */
+  display: -webkit-box;
   background-color: rgb(255, 255, 255);
 }
 

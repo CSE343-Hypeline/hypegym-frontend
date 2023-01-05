@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
+import { ProgressSpinner } from "primereact/progressspinner";
 import AddTrainers from "./AddTrainers";
 import "./Style.css";
 import { apiMe, deleteMember, getTrainers } from "../../../API";
@@ -14,13 +15,14 @@ const ManageTrainers = () => {
   const [trainers, setTrainers] = useState();
   const [isSubmit, setIsSubmit] = useState(0);
   const [gymId, setGymId] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     apiMe().then((response) => {
       setGymId(response.data.gym_id);
       getTrainers(response.data.gym_id).then((response) => {
         setTrainers(response.data);
-        console.log(response.data);
+        setLoading(false);
       });
     });
   }, []);
@@ -52,25 +54,33 @@ const ManageTrainers = () => {
     );
   };
 
-  return (
-    <div className="manage-member">
-      <div>
-        <AddTrainers gym_id={gymId} setIsSubmit={setIsSubmit} />
+  if (loading) {
+    return (
+      <div className="spinner">
+        <ProgressSpinner />
       </div>
+    );
+  } else {
+    return (
+      <div className="manage-member">
+        <div>
+          <AddTrainers gym_id={gymId} setIsSubmit={setIsSubmit} />
+        </div>
 
-      <div className="app-container">
-        <div className="card">
-          <DataTable value={trainers}>
-            <Column field="name" header="Name"></Column>
-            <Column field="email" header="Email"></Column>
-            <Column field="phone_number" header="Phone Number"></Column>
-            <Column field="address" header="Address"></Column>
-            <Column header="Delete" body={deleteButtonBody}></Column>
-          </DataTable>
+        <div className="app-container">
+          <div className="card">
+            <DataTable value={trainers}>
+              <Column field="name" header="Name"></Column>
+              <Column field="email" header="Email"></Column>
+              <Column field="phone_number" header="Phone Number"></Column>
+              <Column field="address" header="Address"></Column>
+              <Column header="Delete" body={deleteButtonBody}></Column>
+            </DataTable>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default ManageTrainers;

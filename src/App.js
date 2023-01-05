@@ -16,7 +16,6 @@ import ProfileMember from "./Components/Users/Member/Profile/Profile";
 import ProfilePT from "./Components/Users/PersonalTrainer/Profile/Profile";
 import { apiMe } from "./Components/API";
 import SideBar from "./Components/Utils/SideBar";
-import NewSideBar from "./Components/Utils/NewSideBar";
 import { ProgressSpinner } from "primereact/progressspinner";
 
 import ManageMembers from "./Components/Users/Owner/ManageMembers/ManageMembers";
@@ -30,6 +29,8 @@ function App() {
   const [role, setRole] = useState("");
 
   useEffect(() => {
+    setLoading(true);
+
     getToken();
   }, [location]);
 
@@ -49,9 +50,13 @@ function App() {
   };
 
   if (loading) {
-    return <ProgressSpinner />;
+    return (
+      <div className="spinner">
+        <ProgressSpinner />
+      </div>
+    );
   } else if (!auth) {
-    console.log(auth);
+    console.log(loading);
     return (
       <div className="not-auth">
         <NavBar />
@@ -68,10 +73,7 @@ function App() {
     if (role === "SUPERADMIN") {
       return (
         <div className="main-div">
-          {/* <SideBar role={role} /> */}
-
-          <NewSideBar />
-
+          <SideBar role={role} />
           <Routes>
             <Route exact path="/dashboard" element={<DashboardAdmin />} />
             <Route path="/manage-members" element={<ManageMembers />} />

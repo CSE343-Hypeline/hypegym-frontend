@@ -9,6 +9,14 @@ td {
   background-color: rgb(234, 234, 233);
 }
 
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
 .manage-member {
   justify-content: center;
   text-align: center;
