@@ -1,9 +1,6 @@
 import { useRef, useState, useEffect } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import "./main.css";
-import Widget from "../Widgets/Widget";
-import { apiMe } from "../../../API";
+import { apiMe, getTrainers } from "../../../API";
 
 function MemberNavbar() {
     const navRef = useRef();
@@ -13,10 +10,12 @@ function MemberNavbar() {
     };
     const [user, setuser] = useState();
 
+
+
     useEffect(() => {
         apiMe().then((response) => {
-            if (response.status === 200) setuser(response.data);
-            else;
+            setuser(response.data); console.log(response.data);
+
         });
     }, []);
     if (user) {

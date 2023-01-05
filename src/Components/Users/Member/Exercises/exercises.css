@@ -1,0 +1,23 @@
+.widget {
+  width: 100%;
+  display: flex;
+  margin: 0px 20px;
+  padding: 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-box-shadow: 20px 40px 10px 1px rgba(237, 231, 231, 0.47);
+  box-shadow: 15px 4px 10px 1px rgba(14, 14, 14, 0.244);
+
+}
+
+
+.titlem {
+  /* display: flex;
+    flex: 1;
+    justify-content: space-between;
+    font-weight: bold; */
+  font-size: 20px;
+
+  color: rgb(45, 43, 43);
+  /* margin-bottom: 100px;*/
+}

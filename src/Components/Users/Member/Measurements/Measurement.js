@@ -4,7 +4,8 @@ import "./measurement.css";
 
 const measure = [
     { region: "fgfg", now: "50" },
-    { region: "kg", now: "80" }]
+    { region: "kg", now: "80" }
+]
 
 const Row = (props) => {
     const { region, now } = props
@@ -37,6 +38,7 @@ function Measurement() {
     return (
         <div className='Measurement'>
             <div><h1 className='titlem'>Table Measurement</h1>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" />
                 <Table data={rows} /></div>
         </div>
 
