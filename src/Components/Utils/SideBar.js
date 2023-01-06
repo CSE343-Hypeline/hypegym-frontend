@@ -2,14 +2,17 @@ import "./SideBar.css";
 import logo from "./logo.png";
 import { useNavigate } from "react-router-dom";
 import { LogoutAPI } from "../API";
+import { useContext } from "react";
+import AuthContext from "../Contexts/AuthContext";
 
 export default function SideBar(role) {
   const navigate = useNavigate();
+  const { setAuth } = useContext(AuthContext);
 
   return (
     <div id="SideBar">
       <div className="Logo">
-        <img src={logo} alt="" />
+        <img src={logo} alt="" style={{ borderRadius: "15%" }} />
       </div>
       <div className="content">
         <div className="menu_top">
@@ -66,7 +69,10 @@ export default function SideBar(role) {
           <button
             className="menu_item"
             onClick={() => {
-              LogoutAPI().then(() => navigate("/"));
+              LogoutAPI().then(() => {
+                setAuth(false);
+                navigate("/login");
+              });
             }}
           >
             <i className="bi bi-x-circle" style={{ fontSize: "20px" }}></i>

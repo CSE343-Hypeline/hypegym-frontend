@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { useFormik } from "formik";
@@ -8,10 +8,12 @@ import { classNames } from "primereact/utils";
 import { Dropdown } from "primereact/dropdown";
 import { RadioButton } from "primereact/radiobutton";
 import { createUser, apiMe, assignPT, getTrainers } from "../../../API";
+import AuthContext from "../../../Contexts/AuthContext";
 import "./Style.css";
 
 function AddMember({ gym_id, setIsSubmit }) {
   const [trainers, setTrainers] = useState(); // personal trainers
+  const { gymId } = useContext(AuthContext);
 
   const membershipTimes = [
     { name: "1 month", code: 1 },
@@ -23,10 +25,8 @@ function AddMember({ gym_id, setIsSubmit }) {
   ];
 
   useEffect(() => {
-    apiMe().then((response) => {
-      getTrainers(response.data.gym_id).then((response) => {
-        setTrainers(response.data);
-      });
+    getTrainers(gymId).then((response) => {
+      setTrainers(response.data);
     });
   }, []);
 

@@ -7,7 +7,7 @@ import HomePage from "./Components/Home/Home";
 import NavBar from "./Components/Navbar/NavBar";
 import Login from "./Components/Login/Login";
 import Error from "./Components/Error/Error";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import DashboardAdmin from "./Components/Users/Owner/Dashboard/Dashboard";
 import DashboardPT from "./Components/Users/PersonalTrainer/Dashboard/Dashboard";
 import DashboardMember from "./Components/Users/Member/Dashboard/Dashboard";
@@ -18,33 +18,14 @@ import { ProgressSpinner } from "primereact/progressspinner";
 
 import ManageMembers from "./Components/Users/Owner/ManageMembers/ManageMembers";
 import ManageTrainers from "./Components/Users/Owner/ManageTrainers/ManageTrainers";
+import AuthContext from "./Components/Contexts/AuthContext";
 
 function App() {
-  const location = useLocation();
-  const [auth, setAuth] = useState(false);
-  const [loading, setLoading] = useState(true);
-
-  const [role, setRole] = useState("");
+  const { auth, loading, role, getToken } = useContext(AuthContext);
 
   useEffect(() => {
-    setLoading(true);
     getToken();
-  }, [location]);
-
-  const getToken = async () => {
-    const response = await apiMe()
-      .then((response) => {
-        if (response.status === 200) {
-          setRole(response.data.role);
-          setAuth(true);
-          setLoading(false);
-        }
-      })
-      .catch((err) => {
-        setAuth(false);
-        setLoading(false);
-      });
-  };
+  }, [auth]);
 
   if (loading) {
     return (
