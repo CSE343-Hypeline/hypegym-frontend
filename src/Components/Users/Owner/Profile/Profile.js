@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { apiMe } from "../../../API";
+import { apiMe, getMember } from "../../../API";
 import SideBar from "../../../Utils/SideBar";
 import "./profile.css";
 
@@ -8,7 +8,10 @@ function ProfilePage() {
 
   useEffect(() => {
     apiMe().then((response) => {
-      if (response.status === 200) setuser(response.data);
+      console.log(response)
+      if (response.status === 200) {
+        getMember(response.data.id).then((res) => setuser(res.data));
+      }
       else;
     });
   }, []);
@@ -49,7 +52,7 @@ function ProfilePage() {
                     </div>
 
                     <div className="col-sm-9 text-secondary">
-                      Kenneth Valdez
+                      {user.name}
                     </div>
                   </div>
                   <hr />

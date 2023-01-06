@@ -6,6 +6,7 @@ export async function apiMe() {
   return response;
 }
 
+
 // Login Control
 export async function loginAPI(data) {
   const response = await axios.post("http://localhost:8080/login", {
@@ -18,6 +19,15 @@ export async function loginAPI(data) {
 // Logout
 export async function LogoutAPI() {
   const response = await axios.post("http://localhost:8080/api/logout");
+  return response;
+}
+// 
+
+
+export async function getMember(user_id) {
+  const response = await axios.get(
+    `http://localhost:8080/api/user/${user_id}`
+  );
   return response;
 }
 
