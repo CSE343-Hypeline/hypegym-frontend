@@ -4,9 +4,10 @@
   display: flex;
 } */
 #SideBar {
-  background-color: #f0d430;
-  height: 100vh;
+  background-color: #6366f1;
+  /* height: auto; */
   width: 300px !important;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -21,7 +22,7 @@
 }
 
 #SideBar .content {
-  padding: 0 0px;
+  padding: 30px 10px;
 }
 
 #SideBar .content .menu_top {

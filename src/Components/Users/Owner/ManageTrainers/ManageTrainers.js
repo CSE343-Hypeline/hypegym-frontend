@@ -18,9 +18,12 @@ const ManageTrainers = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
+
     apiMe().then((response) => {
       setGymId(response.data.gym_id);
       getTrainers(response.data.gym_id).then((response) => {
+        console.log(response);
         setTrainers(response.data);
         setLoading(false);
       });

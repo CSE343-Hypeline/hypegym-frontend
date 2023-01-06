@@ -19,13 +19,12 @@ const ManageMembers = () => {
 
   useEffect(() => {
     apiMe().then((response) => {
+      console.log(response.data.gym_id);
       setGymId(response.data.gym_id);
       getMembers(response.data.gym_id).then((response) => {
         setMembers(response.data);
 
         setLoading(false);
-
-        console.log(response.data);
       });
     });
   }, []);

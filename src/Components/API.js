@@ -23,6 +23,7 @@ export async function LogoutAPI() {
 
 // Gets Members of the Gym
 export async function getMembers(gym_id) {
+  console.log(gym_id);
   const response = await axios.get(
     `http://localhost:8080/api/users/members/${gym_id}`
   );

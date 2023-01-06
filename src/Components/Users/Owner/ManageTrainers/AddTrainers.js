@@ -42,9 +42,8 @@ function AddTrainers({ gym_id, setIsSubmit }) {
       return errors;
     },
     onSubmit: async (data) => {
-      const response = await createUser(data);
       data.gym_id = gym_id;
-      console.log(data.gym_id);
+      const response = await createUser(data);
 
       if (response.status === 201) {
         setShowMessage(true);
