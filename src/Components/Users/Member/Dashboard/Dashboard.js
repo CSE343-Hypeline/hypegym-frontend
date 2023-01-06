@@ -10,15 +10,15 @@ function DashboardPage() {
   return (
     <div id="main_dashboard">
       <MemberNavbar />
-      {/* <div className="dashboard_graphs">
+      <div className="dashboard_graphs">
         <div className="widgets">
           <div className="first">  <Exercises /></div>
           <div className="second"> <Measurement /></div>
-          <div className="activity"> Your Activities So Far</div>
+          {/* <div className="activity"> Your Activities So Far</div> */}
         </div>
       </div>
-       */}
-      <CardDemo />
+
+      {/* <CardDemo /> */}
 
     </div>
   );
