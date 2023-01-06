@@ -26,7 +26,6 @@ export default function () {
       .then((data) => {
         if (data.status === 200) {
           localStorage.setItem("token", JSON.stringify(data.data.token));
-          // setAuth(true);
           navigate("/dashboard");
         }
       })

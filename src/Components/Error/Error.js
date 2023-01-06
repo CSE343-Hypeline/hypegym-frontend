@@ -5,7 +5,6 @@ function Error({ auth }) {
   const navigate = useNavigate();
   useEffect(() => {
     if (auth) {
-      console.log("here");
       navigate("/dashboard");
     } else {
       navigate("/login");

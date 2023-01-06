@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { apiMe } from "../../../API";
-import SideBar from "../../../Utils/SideBar";
+import { apiMe, getUser } from "../../API";
 import "./profile.css";
 
 function ProfilePage() {
@@ -8,13 +7,13 @@ function ProfilePage() {
 
   useEffect(() => {
     apiMe().then((response) => {
-      if (response.status === 200) setuser(response.data);
-      else;
+      if (response.status === 200) {
+        getUser(response.data.id).then((res) => setuser(res.data));
+      } else;
     });
   }, []);
 
   if (user) {
-    console.log(user.name)
     return (
       <div id="main_profile">
         <div className="container">
@@ -29,12 +28,12 @@ function ProfilePage() {
                       className="rounded-circle"
                     />
                     <div className="mt-3">
-                      <h4>User Name</h4>
+                      <h4>{user.role}</h4>
                       <p className="text-muted font-size-sm">{user.role}</p>
 
-                      <button className="btn btn-outline-primary">
+                      {/* <button className="btn btn-outline-primary">
                         Change Photo
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>
@@ -49,9 +48,7 @@ function ProfilePage() {
                       <h6 className="mb-0">Full Name</h6>
                     </div>
 
-                    <div className="col-sm-9 text-secondary">
-                      {user.name}
-                    </div>
+                    <div className="col-sm-9 text-secondary">{user.name}</div>
                   </div>
                   <hr />
                   <div className="row">
@@ -82,7 +79,7 @@ function ProfilePage() {
                       <h6 className="mb-0">Address</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      Bay Area, San Francisco, CA
+                      {user.address}
                     </div>
                   </div>
                   <hr />

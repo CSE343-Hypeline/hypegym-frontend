@@ -11,9 +11,7 @@ import { useState, useEffect } from "react";
 import DashboardAdmin from "./Components/Users/Owner/Dashboard/Dashboard";
 import DashboardPT from "./Components/Users/PersonalTrainer/Dashboard/Dashboard";
 import DashboardMember from "./Components/Users/Member/Dashboard/Dashboard";
-import ProfileAdmin from "./Components/Users/Owner/Profile/Profile";
-import ProfileMember from "./Components/Users/Member/Profile/Profile";
-import ProfilePT from "./Components/Users/PersonalTrainer/Profile/Profile";
+import Profile from "./Components/Users/Profile/Profile";
 import { apiMe } from "./Components/API";
 import SideBar from "./Components/Utils/SideBar";
 import { ProgressSpinner } from "primereact/progressspinner";
@@ -30,7 +28,6 @@ function App() {
 
   useEffect(() => {
     setLoading(true);
-
     getToken();
   }, [location]);
 
@@ -51,12 +48,14 @@ function App() {
 
   if (loading) {
     return (
-      <div className="spinner">
-        <ProgressSpinner />
+      <div className="main-div">
+        <SideBar role={role} />
+        <div className="spinner">
+          <ProgressSpinner />
+        </div>
       </div>
     );
   } else if (!auth) {
-    console.log(loading);
     return (
       <div className="not-auth">
         <NavBar />
@@ -78,7 +77,7 @@ function App() {
             <Route exact path="/dashboard" element={<DashboardAdmin />} />
             <Route path="/manage-members" element={<ManageMembers />} />
             <Route path="/manage-trainers" element={<ManageTrainers />} />
-            <Route path="/profile" element={<ProfileAdmin />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="*" element={<Error auth={auth} />} />
           </Routes>
         </div>
@@ -89,10 +88,10 @@ function App() {
           <SideBar role={role} />
           <Routes>
             <Route exact path="/dashboard" element={<DashboardAdmin />} />
-            <Route exact path="/manage-members" element={<ManageMembers />} />
+            <Route path="/manage-members" element={<ManageMembers />} />
             <Route path="/manage-trainers" element={<ManageTrainers />} />
-            <Route exact path="/profile" element={<ProfileAdmin />} />
-            <Route exact path="*" element={<Error auth={auth} />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="*" element={<Error auth={auth} />} />
           </Routes>
         </div>
       );
@@ -102,8 +101,8 @@ function App() {
           <SideBar role={role} />
           <Routes>
             <Route exact path="/dashboard" element={<DashboardMember />} />
-            <Route exact path="/profile" element={<ProfileMember />} />
-            <Route exact path="*" element={<Error auth={auth} />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="*" element={<Error auth={auth} />} />
           </Routes>
         </div>
       );
@@ -113,7 +112,7 @@ function App() {
           <SideBar role={role} />
           <Routes>
             <Route exact path="/dashboard" element={<DashboardPT />} />
-            <Route exact path="/profile" element={<ProfilePT />} />
+            <Route exact path="/profile" element={<Profile />} />
             <Route exact path="*" element={<Error auth={auth} />} />
           </Routes>
         </div>

@@ -94,7 +94,7 @@ function NavBar() {
           </Nav>
           <span className="navbar-text">
             <LinkContainer to="contact">
-              <button className="vvd" onClick={() => console.log("connect")}>
+              <button className="vvd">
                 {" "}
                 <span>Become member</span>{" "}
               </button>

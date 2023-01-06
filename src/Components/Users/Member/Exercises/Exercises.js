@@ -31,54 +31,50 @@
 // }
 // export default Widget;
 
-
-import React from 'react'
-import { useState } from 'react'
+import React from "react";
+import { useState } from "react";
 import "./exercises.css";
-import img1 from '../../../../../src/assets/img/img1.jpg'
+import img1 from "../../../../../src/assets/img/img1.jpg";
 
 const exercisearray = [
   { exercise: "squat", reps: "5x12" },
-  { exercise: "bench", reps: "1x22" }
-]
+  { exercise: "bench", reps: "1x22" },
+];
 
 const Row = (props) => {
-  const { exercise, reps } = props
+  const { exercise, reps } = props;
   return (
     <tr>
       <td>{exercise}</td>
       <td>{reps}</td>
     </tr>
-  )
-}
+  );
+};
 
 const Table = (props) => {
-  const { data } = props
-  console.log(data)
+  const { data } = props;
   return (
     <table>
       <tbody>
-        {data.map((row, index) =>
-          <Row key={`key-${index}`}
-            exercise={row.exercise}
-            reps={row.reps} />)}
-
+        {data.map((row, index) => (
+          <Row key={`key-${index}`} exercise={row.exercise} reps={row.reps} />
+        ))}
       </tbody>
     </table>
-  )
-}
+  );
+};
 
 function Exercises() {
-  const [rows, setRows] = useState(exercisearray)
+  const [rows, setRows] = useState(exercisearray);
   return (
-    <div className='widget'>
-      <div className='product-card'><h1 className='titlem'>Table Exercises</h1>
+    <div className="widget">
+      <div className="product-card">
+        <h1 className="titlem">Table Exercises</h1>
         {/* <img  src='../../../../../src/assets/img/img1.jpg' /> */}
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" />
-        <Table data={rows} /></div>
+        <Table data={rows} />
+      </div>
     </div>
-
-
-  )
+  );
 }
-export default Exercises
+export default Exercises;

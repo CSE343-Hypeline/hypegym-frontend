@@ -23,13 +23,9 @@ function AddMember({ gym_id, setIsSubmit }) {
   ];
 
   useEffect(() => {
-    console.log("PERSONAL TRAINERS");
-    console.log("gym id: ", gym_id);
-
     apiMe().then((response) => {
       getTrainers(response.data.gym_id).then((response) => {
         setTrainers(response.data);
-        console.log(response.data);
       });
     });
   }, []);

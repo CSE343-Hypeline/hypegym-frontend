@@ -6,7 +6,6 @@ export async function apiMe() {
   return response;
 }
 
-
 // Login Control
 export async function loginAPI(data) {
   const response = await axios.post("http://localhost:8080/login", {
@@ -21,19 +20,15 @@ export async function LogoutAPI() {
   const response = await axios.post("http://localhost:8080/api/logout");
   return response;
 }
-// 
+//
 
-
-export async function getMember(user_id) {
-  const response = await axios.get(
-    `http://localhost:8080/api/user/${user_id}`
-  );
+export async function getUser(user_id) {
+  const response = await axios.get(`http://localhost:8080/api/user/${user_id}`);
   return response;
 }
 
 // Gets Members of the Gym
 export async function getMembers(gym_id) {
-  console.log(gym_id);
   const response = await axios.get(
     `http://localhost:8080/api/users/members/${gym_id}`
   );
@@ -41,7 +36,6 @@ export async function getMembers(gym_id) {
 }
 // Gets PTs of the Gym
 export async function getTrainers(gym_id) {
-  console.log("api: ", gym_id);
   const response = await axios.get(
     `http://localhost:8080/api/users/pts/${gym_id}`
   );
