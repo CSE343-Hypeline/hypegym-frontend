@@ -25,9 +25,9 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth;
   scroll-padding-top: 75px;
-  margin-top: 0;
+  margin-top: 0; */
 }
 
 .spinner {
@@ -38,7 +38,7 @@ html {
 }
 
 .not-auth {
-  background-image: url("./assets/img/image4.jpg") !important;
+  background-image: url("./assets/img/gymback.jpg") !important;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -97,7 +97,7 @@ select:focus {
 @media (min-width: 1700px) {
   main .container {
     max-width: 100%;
-    padding: 0 150px;
+    padding: 0 0px;
   }
 }
 
@@ -266,11 +266,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-weight: 700;
   letter-spacing: 0.8px;
   padding: 8px 10px;
-  color: linear-gradient(
-    90.21deg,
-    rgba(170, 139, 54, 0.5) -5.91%,
-    rgba(7, 0, 0, 0.5) 111.58%
-  );
+  color: linear-gradient(90.21deg,
+      rgba(170, 139, 54, 0.5) -5.91%,
+      rgba(7, 0, 0, 0.5) 111.58%);
   border: 1px solid rgba(255, 255, 255, 0.5);
   font-size: 20px;
   margin-bottom: 16px;
@@ -339,7 +337,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
 }
 
-.txt-rotate > .wrap {
+.txt-rotate>.wrap {
   border-right: 0.08em solid #666;
 }
 
