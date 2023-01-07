@@ -12,8 +12,8 @@ const Row = (props) => {
   const { exercise, reps } = props;
   return (
     <tr>
-      <td>{exercise}</td>
-      <td>{reps}</td>
+      <td style={{ backgroundColor: 'white' }}>{exercise}</td>
+      <td style={{ backgroundColor: 'white' }}>{reps}</td>
     </tr>
   );
 };
@@ -23,8 +23,8 @@ const Table = (props) => {
   return (
     <table>
       <thead>
-        <th> Exercises</th>
-        <th> Repetitions</th>
+        <th style={{ backgroundColor: '#f6f6f6' }}> Exercises</th>
+        <th style={{ backgroundColor: '#f6f6f6' }}> Repetitions</th>
       </thead>
       <tbody>
         {data.map((row, index) => (

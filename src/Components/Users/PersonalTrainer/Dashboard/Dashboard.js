@@ -1,7 +1,8 @@
 import React from "react";
 import BarChart from "../../../Charts/BarChart";
 import DonutChart from "../../../Charts/DonutChart";
-import SideBar from "../../../Utils/SideBar";
+
+import NavbarDashboard from "../../Member/NavbarDashboard/NavbarDashboard";
 import Widget from "../../Owner/Widgets/Widget";
 import "./dashboard.css";
 
@@ -9,6 +10,7 @@ function DashboardPage() {
   return (
     <div id="main_dashboard">
       <div className="dashboard_graphs">
+        <NavbarDashboard />
         <div className="widgets">
           <Widget />
         </div>

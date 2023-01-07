@@ -11,8 +11,8 @@ const Row = (props) => {
     const { region, now } = props
     return (
         <tr>
-            <td>{region}</td>
-            <td>{now}</td>
+            <td style={{ backgroundColor: 'white' }}>{region}</td>
+            <td style={{ backgroundColor: 'white' }}>{now}</td>
         </tr>
     )
 }
@@ -23,8 +23,8 @@ const Table = (props) => {
     return (
         <table>
             <thead>
-                <th> Region</th>
-                <th> Now</th>
+                <th style={{ backgroundColor: '#f6f6f6' }}> Region</th>
+                <th style={{ backgroundColor: '#f6f6f6' }}> Now</th>
             </thead>
             <tbody>
                 {data.map((row, index) =>
@@ -33,7 +33,7 @@ const Table = (props) => {
                         now={row.now} />)}
 
             </tbody>
-        </table>
+        </table >
     )
 }
 
