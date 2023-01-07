@@ -20,8 +20,8 @@ export async function LogoutAPI() {
   const response = await axios.post("http://localhost:8080/api/logout");
   return response;
 }
-//
 
+// Get User Informations
 export async function getUser(user_id) {
   const response = await axios.get(`http://localhost:8080/api/user/${user_id}`);
   return response;
@@ -74,6 +74,14 @@ export async function assignPT(trainerID, memberID) {
 export async function deleteMember(memberID) {
   const response = await axios.delete(
     `http://localhost:8080/api/user/${memberID}`
+  );
+  return response;
+}
+
+// Get Daily Attedance
+export async function getDailyAttendance(gymId) {
+  const response = await axios.get(
+    `http://localhost:8080/api/gym/${gymId}/attendance/day`
   );
   return response;
 }

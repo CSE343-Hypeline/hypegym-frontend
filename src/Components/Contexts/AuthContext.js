@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { responsivePropType } from "react-bootstrap/esm/createUtilityClasses";
 import { apiMe } from "../API";
 // import { useNavigate } from "react-router-dom";
 
@@ -16,6 +17,7 @@ export const AuthContextProvider = ({ children }) => {
       .then((response) => {
         if (response.status === 200) {
           setRole(response.data.role);
+          setGymId(response.data.gym_id);
           setAuth(true);
           setLoading(false);
         }
@@ -29,7 +31,16 @@ export const AuthContextProvider = ({ children }) => {
   return (
     <>
       <AuthContext.Provider
-        value={{ auth, setAuth, gymId, setGymId, getToken, role }}
+        value={{
+          auth,
+          setAuth,
+          gymId,
+          setGymId,
+          getToken,
+          role,
+          loading,
+          setLoading,
+        }}
       >
         {children}
       </AuthContext.Provider>

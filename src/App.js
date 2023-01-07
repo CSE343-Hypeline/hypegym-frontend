@@ -1,6 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import About from "./Components/About/About";
 import Contact from "./Components/Contact/Contact";
 import HomePage from "./Components/Home/Home";
@@ -12,13 +12,11 @@ import DashboardAdmin from "./Components/Users/Owner/Dashboard/Dashboard";
 import DashboardPT from "./Components/Users/PersonalTrainer/Dashboard/Dashboard/Dashboard";
 import DashboardMember from "./Components/Users/Member/Dashboard/Dashboard";
 import Profile from "./Components/Users/Profile/Profile";
-import { apiMe } from "./Components/API";
 import SideBar from "./Components/Utils/SideBar";
-import { ProgressSpinner } from "primereact/progressspinner";
-
 import ManageMembers from "./Components/Users/Owner/ManageMembers/ManageMembers";
 import ManageTrainers from "./Components/Users/Owner/ManageTrainers/ManageTrainers";
 import AuthContext from "./Components/Contexts/AuthContext";
+import { ProgressSpinner } from "primereact/progressspinner";
 
 function App() {
   const { auth, loading, role, getToken } = useContext(AuthContext);
