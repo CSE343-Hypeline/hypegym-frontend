@@ -15,9 +15,10 @@ import { Button } from 'primereact/button';
 
 
 function DashboardPage() {
-  const header = (
-    <img alt="Card" src="images/usercard.png" onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} />
-  );
+  // const header = (
+  //   <img alt="Card" src="images/usercard.png" onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} />
+  // );
+  /*Bu header kısmı card a image eklersek diye, çok veri olacagı için fotograf eklemeyecegım muhtemelen */
 
   return (
     <div id="main_dashboard">
