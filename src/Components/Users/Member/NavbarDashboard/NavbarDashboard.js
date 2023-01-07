@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect } from "react";
-import "./main.css";
+import "./navbardashboard.css";
 import { apiMe, getTrainers } from "../../../API";
 
-function MemberNavbar() {
+function NavbarDashboard() {
   const navRef = useRef();
 
   const showNavbar = () => {
@@ -24,4 +24,4 @@ function MemberNavbar() {
   }
 }
 
-export default MemberNavbar;
+export default NavbarDashboard;

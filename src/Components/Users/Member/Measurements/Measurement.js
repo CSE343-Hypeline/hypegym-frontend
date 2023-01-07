@@ -18,10 +18,14 @@ const Row = (props) => {
 }
 
 const Table = (props) => {
-    const { data } = props
+    const { data } = props;
     console.log(data)
     return (
         <table>
+            <thead>
+                <th> Region</th>
+                <th> Now</th>
+            </thead>
             <tbody>
                 {data.map((row, index) =>
                     <Row key={`key-${index}`}
@@ -37,12 +41,8 @@ function Measurement() {
     const [rows, setRows] = useState(measure)
     return (
         <div className='Measurement'>
-            <div><h1 className='titlem'>Table Measurement</h1>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" />
-                <Table data={rows} /></div>
-        </div>
-
-
+            <Table data={rows} />
+        </div >
     )
 }
 export default Measurement
