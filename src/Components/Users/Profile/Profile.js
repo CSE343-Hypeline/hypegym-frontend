@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { apiMe, getUser } from "../../API";
 import "./profile.css";
 
-function ProfilePage() {
+function Profile() {
   const [user, setuser] = useState();
 
   useEffect(() => {
     apiMe().then((response) => {
+      console.log(response);
       if (response.status === 200) {
         getUser(response.data.id).then((res) => setuser(res.data));
       } else;
@@ -92,4 +93,4 @@ function ProfilePage() {
     );
   }
 }
-export default ProfilePage;
+export default Profile;
