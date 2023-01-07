@@ -1,7 +1,5 @@
-import { createContext, useContext, useState } from "react";
-import { responsivePropType } from "react-bootstrap/esm/createUtilityClasses";
+import { createContext, useState } from "react";
 import { apiMe } from "../API";
-// import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 

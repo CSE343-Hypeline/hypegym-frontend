@@ -1,8 +1,5 @@
-import { title } from "process";
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import Chart from "react-apexcharts";
-import { getOnlines } from "../API";
-import AuthContext from "../Contexts/AuthContext";
 
 function BarChart() {
   //   const { gymId } = useContext(AuthContext);
