@@ -23,7 +23,6 @@ export async function LogoutAPI() {
 
 // Get User Informations
 export async function getUser(user_id) {
-  console.log(user_id);
   const response = await axios.get(`http://localhost:8080/api/user/${user_id}`);
   return response;
 }
@@ -45,7 +44,6 @@ export async function getTrainers(gym_id) {
 
 // Adds member to the Gym
 export async function createUser(user) {
-  console.log(user);
   const response = await axios.post("http://localhost:8080/api/user", {
     name: user.name,
     email: user.email,

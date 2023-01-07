@@ -28,7 +28,6 @@ const ManageMembers = () => {
       setGymId(response.data.gym_id);
       getMembers(response.data.gym_id).then((response) => {
         setMembers(response.data);
-
         setLoading(false);
       });
       initFilters1();
@@ -113,6 +112,10 @@ const ManageMembers = () => {
         operator: FilterOperator.AND,
         constraints: [{ value: null, matchMode: FilterMatchMode.CONTAINS }],
       },
+      // trainer: {
+      //   operator: FilterOperator.AND,
+      //   constraints: [{ value: null, matchMode: FilterMatchMode.CONTAINS }],
+      // },
     });
     setGlobalFilterValue1("");
   };
@@ -124,6 +127,7 @@ const ManageMembers = () => {
       </div>
     );
   } else {
+    console.log(members);
     return (
       <div className="manage-member">
         <div>
@@ -140,7 +144,7 @@ const ManageMembers = () => {
               globalFilterFields={["name", "email", "phone_number", "address"]}
               header={renderHeader1}
               emptyMessage="No members found."
-              style={{ width: "50vw" }}
+              style={{ width: "100%" }}
             >
               <Column
                 field="name"
@@ -155,6 +159,7 @@ const ManageMembers = () => {
                 sortable
               ></Column>
               <Column field="address" header="Address" sortable></Column>
+              <Column field="trainer_id" header="Trainer"></Column>
               <Column header="Delete" body={deleteButtonBody}></Column>
             </DataTable>
           </div>
