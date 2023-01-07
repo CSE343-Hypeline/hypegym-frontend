@@ -17,7 +17,7 @@ function DashboardPage() {
         {
           res.data.online_user_ids.map((memberID) => {
             getUser(memberID).then((res) => {
-              setOnlineMembers([...onlineMembers, res.data.email]);
+              setOnlineMembers((prevState) => [...prevState, res.data.email]);
             });
           });
         }
