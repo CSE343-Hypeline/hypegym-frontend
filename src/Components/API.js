@@ -44,6 +44,7 @@ export async function getTrainers(gym_id) {
 
 // Adds member to the Gym
 export async function createUser(user) {
+  console.log(user);
   const response = await axios.post("http://localhost:8080/api/user", {
     name: user.name,
     email: user.email,
@@ -53,7 +54,7 @@ export async function createUser(user) {
     address: user.address,
     gym_id: user.gym_id,
     gender: user.gender,
-    //trainer: user.trainer.ID,
+    trainer_id: user.trainer.ID,
     //membership: user.membership.code,
   });
   return response;
@@ -83,5 +84,19 @@ export async function getDailyAttendance(gymId) {
   const response = await axios.get(
     `http://localhost:8080/api/gym/${gymId}/attendance/day`
   );
+  return response;
+}
+
+// Get Daily Attedance
+export async function getOnlines(gymId) {
+  const response = await axios.get(
+    `http://localhost:8080/api/gym/${gymId}/online`
+  );
+  return response;
+}
+
+// Get Daily Attedance
+export async function contactUs(contact) {
+  const response = await axios.post("http://localhost:8080/contact", contact);
   return response;
 }

@@ -9,7 +9,7 @@ export const AuthContextProvider = ({ children }) => {
   const [auth, setAuth] = useState();
   const [gymId, setGymId] = useState();
   const [role, setRole] = useState();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const getToken = async () => {
     setLoading(true);

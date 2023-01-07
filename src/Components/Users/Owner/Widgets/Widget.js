@@ -7,28 +7,25 @@ function Widget() {
   const [loading, setLoading] = useState(true);
   const [numOfMembers, setNumOfMembers] = useState();
   const [numOfTrainers, setNumOfTrainers] = useState();
-  const [dailyAttendance, setDailyAttendance] = useState();
+  const [dailyAttendance, setDailyAttendance] = useState({
+    attendance_count_female: "",
+    attendance_count_male: "",
+    attendance_count_other: "",
+  });
 
   const { gymId } = useContext(AuthContext);
 
   useEffect(() => {
+    const getInfos = async () => {
+      await getMembers().then((res) => setNumOfMembers(res.data.length));
+      await getTrainers().then((res) => setNumOfTrainers(res.data.length));
+      await getDailyAttendance(gymId).then((res) =>
+        setDailyAttendance(res.data)
+      );
+    };
+
     getInfos().then(setLoading(false));
   }, []);
-
-  const getInfos = async () => {
-    await getMembers().then((res) => {
-      setNumOfMembers(res.data.length);
-      setLoading(false);
-    });
-    await getTrainers().then((res) => {
-      setNumOfTrainers(res.data.length);
-      console.log(res.data.length);
-    });
-
-    await getDailyAttendance(gymId).then((res) => {
-      setDailyAttendance(res.data);
-    });
-  };
 
   if (!loading) {
     return (

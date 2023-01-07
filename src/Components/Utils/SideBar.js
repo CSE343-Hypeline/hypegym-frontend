@@ -26,7 +26,7 @@ export default function SideBar(role) {
             <span className="menu_option">DASHBOARD</span>
           </button>
 
-          {role.role === "SUPERADMIN" && (
+          {(role.role === "SUPERADMIN" || role.role === "ADMIN") && (
             <button
               className="menu_item"
               onClick={() => {
@@ -37,7 +37,7 @@ export default function SideBar(role) {
               <span className="menu_option">GYM MEMBER</span>
             </button>
           )}
-          {role.role === "SUPERADMIN" && (
+          {(role.role === "SUPERADMIN" || role.role === "ADMIN") && (
             <button
               className="menu_item"
               onClick={() => {
