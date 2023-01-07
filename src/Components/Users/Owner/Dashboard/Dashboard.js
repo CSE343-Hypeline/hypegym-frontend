@@ -8,33 +8,25 @@ import "./dashboard.css";
 
 function DashboardPage() {
   const { gymId } = useContext(AuthContext);
-  const [onlines, setOnlines] = useState();
   const [onlineMembers, setOnlineMembers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getActivities = async () => {
-      await getOnlines(gymId).then((res) =>
-        setOnlines(res.data.online_user_ids)
-      );
-      console.log(onlines);
-
-      {
-        onlines &&
-          onlines.map((memberID) => {
+      await getOnlines(gymId).then((res) => {
+        {
+          res.data.online_user_ids.map((memberID) => {
             getUser(memberID).then((res) => {
-              console.log("Here");
-              setOnlineMembers([...onlineMembers, res.data]);
+              setOnlineMembers([...onlineMembers, res.data.email]);
             });
           });
-      }
+        }
+      });
     };
-
     getActivities().then(setLoading(false));
   }, []);
 
-  if (!loading && onlineMembers !== 0) {
-    console.log(onlineMembers);
+  if (!loading) {
     return (
       <div id="main_dashboard">
         <div className="dashboard_graphs">
@@ -51,8 +43,8 @@ function DashboardPage() {
               </div>
               <div className="active_table_ingym">
                 <h2>Activities</h2>
-                {onlineMembers.map((onlineMember) => (
-                  <span>{onlineMember.email}</span>
+                {onlineMembers.map((ID) => (
+                  <span>{ID} - Online</span>
                 ))}
               </div>
             </div>{" "}

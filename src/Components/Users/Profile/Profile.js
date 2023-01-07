@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { apiMe, getUser } from "../../API";
+import AuthContext from "../../Contexts/AuthContext";
 import "./profile.css";
 
 function Profile() {
-  const [user, setuser] = useState();
+  const { me } = useContext(AuthContext);
 
-  useEffect(() => {
-    apiMe().then((response) => {
-      console.log(response);
-      if (response.status === 200) {
-        getUser(response.data.id).then((res) => setuser(res.data));
-      } else;
-    });
-  }, []);
-
-  if (user) {
+  if (me) {
     return (
       <div id="main_profile">
         <div className="container">
@@ -29,12 +21,8 @@ function Profile() {
                       className="rounded-circle"
                     />
                     <div className="mt-3">
-                      <h4>{user.role}</h4>
-                      <p className="text-muted font-size-sm">{user.role}</p>
-
-                      {/* <button className="btn btn-outline-primary">
-                        Change Photo
-                      </button> */}
+                      <h4>{me.name}</h4>
+                      <p className="text-muted font-size-sm">{me.role}</p>
                     </div>
                   </div>
                 </div>
@@ -49,14 +37,14 @@ function Profile() {
                       <h6 className="mb-0">Full Name</h6>
                     </div>
 
-                    <div className="col-sm-9 text-secondary">{user.name}</div>
+                    <div className="col-sm-9 text-secondary">{me.name}</div>
                   </div>
                   <hr />
                   <div className="row">
                     <div className="col-sm-3">
                       <h6 className="mb-0">Email</h6>
                     </div>
-                    <div className="col-sm-9 text-secondary">{user.email}</div>
+                    <div className="col-sm-9 text-secondary">{me.email}</div>
                   </div>
                   <hr />
                   <div className="row">
@@ -64,7 +52,7 @@ function Profile() {
                       <h6 className="mb-0">Phone</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {user.phone_number}
+                      {me.phone_number}
                     </div>
                   </div>
                   <hr />
@@ -79,9 +67,7 @@ function Profile() {
                     <div className="col-sm-3">
                       <h6 className="mb-0">Address</h6>
                     </div>
-                    <div className="col-sm-9 text-secondary">
-                      {user.address}
-                    </div>
+                    <div className="col-sm-9 text-secondary">{me.address}</div>
                   </div>
                   <hr />
                 </div>

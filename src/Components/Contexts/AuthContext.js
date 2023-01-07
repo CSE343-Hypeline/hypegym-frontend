@@ -10,12 +10,14 @@ export const AuthContextProvider = ({ children }) => {
   const [gymId, setGymId] = useState();
   const [role, setRole] = useState();
   const [loading, setLoading] = useState(true);
+  const [me, setMe] = useState();
 
   const getToken = async () => {
     setLoading(true);
     const response = await apiMe()
       .then((response) => {
         if (response.status === 200) {
+          setMe(response.data);
           setRole(response.data.role);
           setGymId(response.data.gym_id);
           setAuth(true);
@@ -40,6 +42,7 @@ export const AuthContextProvider = ({ children }) => {
           role,
           loading,
           setLoading,
+          me,
         }}
       >
         {children}

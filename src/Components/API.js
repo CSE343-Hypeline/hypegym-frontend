@@ -23,6 +23,7 @@ export async function LogoutAPI() {
 
 // Get User Informations
 export async function getUser(user_id) {
+  console.log(user_id);
   const response = await axios.get(`http://localhost:8080/api/user/${user_id}`);
   return response;
 }

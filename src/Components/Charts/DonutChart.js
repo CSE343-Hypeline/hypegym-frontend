@@ -22,30 +22,6 @@ function DonutChart() {
     getOnlineRate().then(() => setLoading(false));
   }, []);
 
-  /*VERİLERİ URL OLARAK ALDIGIMIZDA EKLENİLECEK */
-
-  // const [contryname, setCountryname]= useState([]);
-  // const [medal, setMedal]= useState([]);
-
-  // useEffect( ()=>{
-  //  const getdata= async()=>{
-  //       const countryname=[];
-  //       const getmedal=[];
-
-  //     const reqData= await fetch("http://localhost/reactgraphtutorial/medals");
-  //     const resData= await reqData.json();
-  //     for(let i=0; i<resData.length; i++)
-  //     {
-  //         countryname.push(resData[i].country);
-  //         getmedal.push(parseInt(resData[i].medals));
-  //     }
-  //     setCountryname(countryname);
-  //     setMedal(getmedal);
-
-  //  }
-  //  getdata();
-  // },[]);
-
   if (!loading) {
     return (
       <React.Fragment>
