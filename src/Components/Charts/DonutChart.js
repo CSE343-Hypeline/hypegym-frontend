@@ -13,6 +13,7 @@ function DonutChart() {
     const getOnlineRate = async () => {
       await getOnlines(gymId).then((res) => {
         setOnlines(res.data.online_user_ids.length);
+        // console.log(res.data.online_user_ids.length);
       });
       await getMembers(gymId).then((res) => {
         setTotalMembers(res.data.length);

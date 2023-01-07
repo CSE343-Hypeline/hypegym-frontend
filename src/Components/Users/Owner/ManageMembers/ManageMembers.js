@@ -13,10 +13,10 @@ import { FilterMatchMode, FilterOperator } from "primereact/api";
 
 import AddMember from "./AddMember";
 import "./Style.css";
-import { apiMe, deleteMember, getMembers } from "../../../API";
+import { apiMe, deleteMember, getMembers, getTrainerOf } from "../../../API";
 
 const ManageMembers = () => {
-  const [members, setMembers] = useState();
+  const [members, setMembers] = useState([]);
   const [isSubmit, setIsSubmit] = useState(0);
   const [gymId, setGymId] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -30,7 +30,19 @@ const ManageMembers = () => {
         setMembers(response.data);
         setLoading(false);
       });
+      getTrainerOf();
       initFilters1();
+
+      members.map((member, key) => {
+        member = {
+          ...member,
+          ["trainer"]: "selam",
+        };
+      });
+
+      for (let i = 0; i < members.length; i++) {
+        setMembers([...members]);
+      }
     });
   }, []);
 
@@ -159,7 +171,7 @@ const ManageMembers = () => {
                 sortable
               ></Column>
               <Column field="address" header="Address" sortable></Column>
-              <Column field="trainer_id" header="Trainer"></Column>
+              <Column field="trainer" header="Trainer"></Column>
               <Column header="Delete" body={deleteButtonBody}></Column>
             </DataTable>
           </div>
