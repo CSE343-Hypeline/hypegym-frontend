@@ -1,9 +1,9 @@
 import React from "react";
-import BarChart from "../../../../Charts/BarChart";
-import DonutChart from "../../../../Charts/DonutChart";
-import SideBar from "../../../../Utils/SideBar";
-import NavbarDashboard from "../../../Member/NavbarDashboard/NavbarDashboard";
-import Widget from "../../../Owner/Widgets/Widget";
+import BarChart from "../../../Charts/BarChart";
+import DonutChart from "../../../Charts/DonutChart";
+
+import NavbarDashboard from "../../Member/NavbarDashboard/NavbarDashboard";
+import Widget from "../../Owner/Widgets/Widget";
 import "./dashboard.css";
 
 function DashboardPage() {
