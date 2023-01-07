@@ -26,18 +26,18 @@ function DashboardPage() {
         <NavbarDashboard />
         <div className="widgets">
           <div className="first">
-            <Card title="Your Exercises" subTitle="Subtitle" style={{ width: '20em' }} >
+            <Card title="Your Exercises" style={{ width: '20em' }} >
               <p className="m-1" ><Exercises /></p>
             </Card>
           </div>
           <div className="second">
-            <Card title="Your Measurements" subTitle="Subtitle" style={{ width: '20em' }} >
+            <Card title="Your Measurements" style={{ width: '20em' }} >
               <p className="m-1" ><Measurement /></p>
             </Card>
           </div>
         </div>
         <div className="third">
-          <Card title="Your Activities So Far" subTitle="Subtitle" style={{ width: '20em' }} >
+          <Card title="Your Activities So Far" style={{ width: '20em' }} >
             <p className="m-1" > Your Activities So Far</p>
           </Card>
         </div>

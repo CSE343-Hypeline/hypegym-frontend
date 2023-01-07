@@ -9,7 +9,7 @@ import Login from "./Components/Login/Login";
 import Error from "./Components/Error/Error";
 import { useState, useEffect, useContext } from "react";
 import DashboardAdmin from "./Components/Users/Owner/Dashboard/Dashboard";
-import DashboardPT from "./Components/Users/PersonalTrainer/Dashboard/Dashboard";
+import DashboardPT from "./Components/Users/PersonalTrainer/Dashboard/Dashboard/Dashboard";
 import DashboardMember from "./Components/Users/Member/Dashboard/Dashboard";
 import Profile from "./Components/Users/Profile/Profile";
 import { apiMe } from "./Components/API";
