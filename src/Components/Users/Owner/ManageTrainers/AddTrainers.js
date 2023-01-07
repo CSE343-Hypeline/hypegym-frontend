@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { useFormik } from "formik";
@@ -12,7 +12,6 @@ import "./Style.css";
 function AddTrainers({ gym_id, setIsSubmit }) {
   const [showMessage, setShowMessage] = useState(false);
   const [displayBasic, setDisplayBasic] = useState(false);
-  const [position, setPosition] = useState("center");
 
   const formik = useFormik({
     initialValues: {
@@ -79,10 +78,6 @@ function AddTrainers({ gym_id, setIsSubmit }) {
   };
   const onClick = (name, position) => {
     dialogFuncMap[`${name}`](true);
-
-    if (position) {
-      setPosition(position);
-    }
   };
 
   const onHide = (name) => {

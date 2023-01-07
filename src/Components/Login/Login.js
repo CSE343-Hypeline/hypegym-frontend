@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { loginAPI } from "../API";
 import "./LoginStyle.css";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../Contexts/AuthContext";
 
-export default function () {
+export default function Login() {
   const navigate = useNavigate();
+  const { setAuth } = useContext(AuthContext);
 
   const [userData, setUserData] = useState({
     email: "",
@@ -25,7 +27,7 @@ export default function () {
     loginAPI(userData)
       .then((data) => {
         if (data.status === 200) {
-          localStorage.setItem("token", JSON.stringify(data.data.token));
+          setAuth(true);
           navigate("/dashboard");
         }
       })

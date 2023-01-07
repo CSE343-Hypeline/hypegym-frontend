@@ -111,7 +111,7 @@ p.danger {
 
 .main-div {
   display: -webkit-box;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(188, 227, 246);
 }
 
 /************ Navbar Css ************/
@@ -266,9 +266,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-weight: 700;
   letter-spacing: 0.8px;
   padding: 8px 10px;
-  color: linear-gradient(90.21deg,
-      rgba(170, 139, 54, 0.5) -5.91%,
-      rgba(7, 0, 0, 0.5) 111.58%);
+  color: linear-gradient(
+    90.21deg,
+    rgba(170, 139, 54, 0.5) -5.91%,
+    rgba(7, 0, 0, 0.5) 111.58%
+  );
   border: 1px solid rgba(255, 255, 255, 0.5);
   font-size: 20px;
   margin-bottom: 16px;
@@ -337,7 +339,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
 }
 
-.txt-rotate>.wrap {
+.txt-rotate > .wrap {
   border-right: 0.08em solid #666;
 }
 

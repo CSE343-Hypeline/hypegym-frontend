@@ -16,9 +16,9 @@
 }
 
 #SideBar .Logo {
-  height: 50px;
-  width: 50px;
-  margin-top: 10px;
+  height: 50%;
+  width: 50%;
+  margin-top: 15vh;
 }
 
 #SideBar .content {

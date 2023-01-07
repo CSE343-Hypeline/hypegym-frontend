@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BarChart from "../../../Charts/BarChart";
 import DonutChart from "../../../Charts/DonutChart";
 import SideBar from "../../../Utils/SideBar";
