@@ -3,8 +3,11 @@ import { useState } from 'react'
 import "./measurement.css";
 
 const measure = [
-    { region: "fgfg", now: "50" },
-    { region: "kg", now: "80" }
+    { region: "Weight", now: "130" },
+    { region: "waist", now: "32" },
+    { region: "hips", now: "40" },
+    { region: "wrist", now: "6" },
+    { region: "forearm", now: "11" }
 ]
 
 const Row = (props) => {
@@ -24,7 +27,7 @@ const Table = (props) => {
         <table>
             <thead>
                 <th style={{ backgroundColor: '#f6f6f6' }}> Region</th>
-                <th style={{ backgroundColor: '#f6f6f6' }}> Now</th>
+                <th style={{ backgroundColor: '#f6f6f6' }}> Measure</th>
             </thead>
             <tbody>
                 {data.map((row, index) =>

@@ -4,12 +4,14 @@ import DonutChart from "../../../Charts/DonutChart";
 
 import NavbarDashboard from "../../Member/NavbarDashboard/NavbarDashboard";
 import Widget from "../../Owner/Widgets/Widget";
+import ManageMembersPT from "../ManageMemberForPT/ManageMembersPT";
+
 import "./dashboard.css";
 
 function DashboardPage() {
   return (
     <div id="main_dashboard">
-      <div className="dashboard_graphs">
+      {/* <div className="dashboard_graphs">
         <NavbarDashboard />
         <div className="widgets">
           <Widget />
@@ -25,7 +27,8 @@ function DashboardPage() {
             <div className="active_table_ingym">Activities</div>
           </div>{" "}
         </div>
-      </div>
+      </div> */}
+      <ManageMembersPT />
     </div>
   );
 }

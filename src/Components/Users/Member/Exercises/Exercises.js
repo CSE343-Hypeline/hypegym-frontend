@@ -4,8 +4,11 @@ import "./exercises.css";
 import img1 from "../../../../../src/assets/img/img1.jpg";
 
 const exercisearray = [
-  { exercise: "squat", reps: "5x12" },
-  { exercise: "bench", reps: "1x22" },
+  { exercise: "squat", reps: "4x12" },
+  { exercise: "bench press", reps: "4x12" },
+  { exercise: "Upright Row", reps: "4x12" },
+  { exercise: "Seated Overhead Press", reps: "4x12" },
+  { exercise: "Pull Ups", reps: "4x12" },
 ];
 
 const Row = (props) => {

@@ -66,9 +66,6 @@ export default function Login() {
                 <span className="text">SUBMIT</span>
               </button>
             </div>
-            <p className="forgotPassword">
-              <a href="#"> Forgot password?</a>
-            </p>
           </div>
         </form>
       </div>

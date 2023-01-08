@@ -18,7 +18,7 @@ function NavbarDashboard() {
   if (user) {
     return (
       <header>
-        <h3>WELCOME,{user.email}</h3>
+        <h3>WELCOME,{user.name}</h3>
       </header>
     );
   }

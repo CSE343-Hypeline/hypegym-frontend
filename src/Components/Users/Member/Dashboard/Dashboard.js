@@ -37,8 +37,8 @@ function DashboardPage() {
           </div>
         </div>
         <div className="third">
-          <Card title="Your Activities So Far" style={{ width: '20em' }} >
-            <p className="m-1" > Your Activities So Far</p>
+          <Card style={{ width: '20em' }} >
+            <p className="m-1" > </p>
           </Card>
         </div>
       </div>
