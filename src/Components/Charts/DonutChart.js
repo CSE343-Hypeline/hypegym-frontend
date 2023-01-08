@@ -5,6 +5,7 @@ import AuthContext from "../Contexts/AuthContext";
 
 function DonutChart() {
   const { gymId } = useContext(AuthContext);
+
   const [loading, setLoading] = useState(true);
   const [onlines, setOnlines] = useState();
   const [totalMembers, setTotalMembers] = useState();

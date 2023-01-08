@@ -13,10 +13,16 @@ import { FilterMatchMode, FilterOperator } from "primereact/api";
 
 import AddMember from "./AddMember";
 import "./Style.css";
-import { apiMe, deleteMember, getMembers } from "../../../API";
+import {
+  apiMe,
+  deleteMember,
+  getMembers,
+  getTrainerOf,
+  getUser,
+} from "../../../API";
 
 const ManageMembers = () => {
-  const [members, setMembers] = useState();
+  const [members, setMembers] = useState([]);
   const [isSubmit, setIsSubmit] = useState(0);
   const [gymId, setGymId] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -24,15 +30,39 @@ const ManageMembers = () => {
   const [filters1, setFilters1] = useState(null);
 
   useEffect(() => {
-    apiMe().then((response) => {
+    getInfos().then(setLoading(false));
+  }, []);
+
+  const getInfos = async () => {
+    await apiMe().then((response) => {
       setGymId(response.data.gym_id);
       getMembers(response.data.gym_id).then((response) => {
-        setMembers(response.data);
-        setLoading(false);
+        response.data.map((member) => {
+          getTrainerOf(member.ID).then((res) => {
+            if (res.data.user_id === 0) {
+              member = {
+                ...member,
+                ["trainer"]: "No Found",
+              };
+              setMembers((prev) => [...prev, member]);
+            } else {
+              getUser(res.data.user_id)
+                .then((res) => {
+                  member = {
+                    ...member,
+                    ["trainer"]: res.data.name,
+                  };
+                  setMembers((prev) => [...prev, member]);
+                })
+                .catch((err) => console.log(err));
+            }
+          });
+        });
       });
+      // getTrainerOf();
       initFilters1();
     });
-  }, []);
+  };
 
   useEffect(() => {
     if (isSubmit === 200 || isSubmit === 201) {
@@ -127,7 +157,6 @@ const ManageMembers = () => {
       </div>
     );
   } else {
-    console.log(members);
     return (
       <div className="manage-member">
         <div>
@@ -159,7 +188,7 @@ const ManageMembers = () => {
                 sortable
               ></Column>
               <Column field="address" header="Address" sortable></Column>
-              <Column field="trainer_id" header="Trainer"></Column>
+              <Column field="trainer" header="Trainer"></Column>
               <Column header="Delete" body={deleteButtonBody}></Column>
             </DataTable>
           </div>

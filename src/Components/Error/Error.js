@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Error({ auth }) {
+function Error(auth) {
   const navigate = useNavigate();
   useEffect(() => {
     if (auth) {

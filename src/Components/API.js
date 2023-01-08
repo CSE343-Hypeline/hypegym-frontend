@@ -99,3 +99,10 @@ export async function contactUs(contact) {
   const response = await axios.post("http://localhost:8080/contact", contact);
   return response;
 }
+
+export async function getTrainerOf(memberID) {
+  const response = await axios.get(
+    `http://localhost:8080/api/member/get-trainer-of/${memberID}`
+  );
+  return response;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "./exercises.css";
-import img1 from "../../../../../src/assets/img/img1.jpg";
+// import img1 from "../../../../../src/assets/img/img1.jpg";
 
 const exercisearray = [
   { exercise: "squat", reps: "4x12" },
@@ -15,8 +15,8 @@ const Row = (props) => {
   const { exercise, reps } = props;
   return (
     <tr>
-      <td style={{ backgroundColor: 'white' }}>{exercise}</td>
-      <td style={{ backgroundColor: 'white' }}>{reps}</td>
+      <td style={{ backgroundColor: "white" }}>{exercise}</td>
+      <td style={{ backgroundColor: "white" }}>{reps}</td>
     </tr>
   );
 };
@@ -26,8 +26,8 @@ const Table = (props) => {
   return (
     <table>
       <thead>
-        <th style={{ backgroundColor: '#f6f6f6' }}> Exercises</th>
-        <th style={{ backgroundColor: '#f6f6f6' }}> Repetitions</th>
+        <th style={{ backgroundColor: "#f6f6f6" }}> Exercises</th>
+        <th style={{ backgroundColor: "#f6f6f6" }}> Repetitions</th>
       </thead>
       <tbody>
         {data.map((row, index) => (
