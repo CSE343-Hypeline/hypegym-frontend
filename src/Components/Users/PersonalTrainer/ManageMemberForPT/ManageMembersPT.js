@@ -165,7 +165,9 @@ const ManageMembersPT = () => {
               sortable
             ></Column>
             <Column field="reps" header="Measurements" sortable></Column>
+            {/* <Column <AddMember gym_id={gymId} setIsSubmit={setIsSubmit} />/> */}
             {/* <Column header="Delete" body={deleteButtonBody}></Column> */}
+            <Column field header="Exercises"><Button>kkkkkkkkkk</Button></Column>
           </DataTable>
         </div>
       </div>
