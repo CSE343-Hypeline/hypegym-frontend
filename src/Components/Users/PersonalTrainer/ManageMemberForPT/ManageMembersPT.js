@@ -10,10 +10,10 @@ import { InputText } from "primereact/inputtext";
 import { MultiSelect } from 'primereact/multiselect';
 import { ProgressSpinner } from "primereact/progressspinner";
 import { FilterMatchMode, FilterOperator } from "primereact/api";
-
+import { assignPT } from "../../../API";
 import AddMember from "./AddMeasurementExercise";
 import "./styleManage.css";
-// import { apiMe, deleteMember, getMembers } from "../../../API";
+import { apiMe, getMemberOfPT } from "../../../API";
 
 
 // const members = [
@@ -42,7 +42,7 @@ const cities = [
 ];
 
 const ManageMembersPT = () => {
-  // const [members, setMembers] = useState([]);
+  const [members, setMembers] = useState([]);
   const [isSubmit, setIsSubmit] = useState(0);
   const [gymId, setGymId] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -52,37 +52,30 @@ const ManageMembersPT = () => {
   // useEffect(() => {
   //   apiMe().then((response) => {
   //     setGymId(response.data.gym_id);
-  //     getMembers(response.data.gym_id).then((response) => {
+  //     getMemberOfPT(response.data.ID).then((response) => {
   //       setMembers(response.data);
-
   //       setLoading(false);
   //     });
   //     initFilters1();
   //   });
   // }, []);
-
+  // console.log(members)
   // useEffect(() => {
   //   if (isSubmit === 200 || isSubmit === 201) {
-  //     getMembers(gymId).then((response) => {
+  //     getMemberOfPT(Id).then((response) => {
   //       setMembers(response.data);
   //       setIsSubmit(0);
   //     });
   //   }
   // }, [isSubmit]);
 
+  // const response =await assignPT ()
+
+
   const deleteButtonBody = (rowData) => {
     return (
       <>
-        {/* <Button
-          options={exercise}
-          icon="pi pi-trash"
-          className="p-button-rounded p-button-danger p-button-outlined"
-        /> */}
-
-
         <MultiSelect value={selectedexercises} options={cities} onChange={(e) => setselectedexercises(e.value)} optionLabel="name" placeholder="Select exercises" maxSelectedLabels={3} />
-
-
       </>
     );
   };
