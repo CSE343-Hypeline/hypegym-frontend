@@ -8,7 +8,7 @@
       "type": "chrome",
       "request": "launch",
       "name": "Launch Chrome against localhost",
-      "url": "https://46ab-78-190-132-16.eu.ngrok.io/",
+      "url": "http://localhost:8080",
       "webRoot": "${workspaceFolder}"
     }
   ]
