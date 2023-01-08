@@ -143,7 +143,7 @@ const ManageMembersPT = () => {
       <div className="app-container">
         <div className="card">
           <DataTable
-            value={members.exercise}
+            value={members}
             responsiveLayout="scroll"
             filters={filters1}
             filterDisplay="menu"
@@ -160,11 +160,11 @@ const ManageMembersPT = () => {
             ></Column>
             <Column field="email" header="Email" sortable></Column>
             <Column
-              field="phone_number"
-              header="Phone Number"
+              field="exercise"
+              header="Exercises"
               sortable
             ></Column>
-            <Column field="address" header="Address" sortable></Column>
+            <Column field="reps" header="Measurements" sortable></Column>
             {/* <Column header="Delete" body={deleteButtonBody}></Column> */}
           </DataTable>
         </div>
