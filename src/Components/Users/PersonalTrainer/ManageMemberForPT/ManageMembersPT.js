@@ -7,7 +7,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
-
+import { MultiSelect } from 'primereact/multiselect';
 import { ProgressSpinner } from "primereact/progressspinner";
 import { FilterMatchMode, FilterOperator } from "primereact/api";
 
@@ -16,14 +16,30 @@ import "./styleManage.css";
 // import { apiMe, deleteMember, getMembers } from "../../../API";
 
 
-const members = [
-  { exercise: "squat", reps: "4x12" },
-  { exercise: "bench press", reps: "4x12" },
-  { exercise: "Upright Row", reps: "4x12" },
-  { exercise: "Seated Overhead Press", reps: "4x12" },
-  { exercise: "Pull Ups", reps: "4x12" },
+// const members = [
+//   { exercise: "squat", reps: "4x12" },
+//   { exercise: "bench press", reps: "4x12" },
+//   { exercise: "Upright Row", reps: "4x12" },
+//   { exercise: "Seated Overhead Press", reps: "4x12" },
+//   { exercise: "Pull Ups", reps: "4x12" },
+// ];
+
+const exercise = [
+  { label: "squat", value: 355 },
+  { label: "bench press", value: 54 },
+  { label: "Upright Row", value: 43 },
+  { label: "Seated Overhead Pres", value: 61 },
+  { label: "Pull Ups", value: 965 },
+
 ];
 
+const cities = [
+  { name: 'New York', code: 'NY' },
+  { name: 'Rome', code: 'RM' },
+  { name: 'London', code: 'LDN' },
+  { name: 'Istanbul', code: 'IST' },
+  { name: 'Paris', code: 'PRS' }
+];
 
 const ManageMembersPT = () => {
   // const [members, setMembers] = useState([]);
@@ -32,7 +48,7 @@ const ManageMembersPT = () => {
   const [loading, setLoading] = useState(true);
   const [globalFilterValue1, setGlobalFilterValue1] = useState("");
   const [filters1, setFilters1] = useState(null);
-
+  const [selectedexercises, setselectedexercises] = useState(null);
   // useEffect(() => {
   //   apiMe().then((response) => {
   //     setGymId(response.data.gym_id);
@@ -54,25 +70,22 @@ const ManageMembersPT = () => {
   //   }
   // }, [isSubmit]);
 
-  // const deleteButtonBody = (rowData) => {
-  //   return (
-  //     <>
-  //       <Button
-  //         onClick={() => {
-  //           setLoading(true);
-  //           deleteMember(rowData.ID)
-  //             .then((response) => {
-  //               setIsSubmit(response.status);
-  //               setLoading(false);
-  //             })
-  //             .catch((e) => alert(e));
-  //         }}
-  //         icon="pi pi-trash"
-  //         className="p-button-rounded p-button-danger p-button-outlined"
-  //       />
-  //     </>
-  //   );
-  // };
+  const deleteButtonBody = (rowData) => {
+    return (
+      <>
+        {/* <Button
+          options={exercise}
+          icon="pi pi-trash"
+          className="p-button-rounded p-button-danger p-button-outlined"
+        /> */}
+
+
+        <MultiSelect value={selectedexercises} options={cities} onChange={(e) => setselectedexercises(e.value)} optionLabel="name" placeholder="Select exercises" maxSelectedLabels={3} />
+
+
+      </>
+    );
+  };
 
   const renderHeader1 = () => {
     return (
@@ -143,7 +156,7 @@ const ManageMembersPT = () => {
       <div className="app-container">
         <div className="card">
           <DataTable
-            value={members}
+            value={exercise}
             responsiveLayout="scroll"
             filters={filters1}
             filterDisplay="menu"
@@ -166,8 +179,8 @@ const ManageMembersPT = () => {
             ></Column>
             <Column field="reps" header="Measurements" sortable></Column>
             {/* <Column <AddMember gym_id={gymId} setIsSubmit={setIsSubmit} />/> */}
-            {/* <Column header="Delete" body={deleteButtonBody}></Column> */}
-            <Column field header="Exercises"><Button>kkkkkkkkkk</Button></Column>
+            <Column header="Add Exercises" body={deleteButtonBody}></Column>
+
           </DataTable>
         </div>
       </div>
