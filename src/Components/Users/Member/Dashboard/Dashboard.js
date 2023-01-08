@@ -1,18 +1,13 @@
 import React from "react";
-import BarChart from "../../../Charts/BarChart";
-import DonutChart from "../../../Charts/DonutChart";
-import Exercises from "../Exercises/Exercises"
+import Exercises from "../Exercises/Exercises";
 import "./dashboard.css";
 import NavbarDashboard from "../NavbarDashboard/NavbarDashboard";
 import Measurement from "../Measurements/Measurement";
-import 'primeicons/primeicons.css';
-import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import 'primereact/resources/primereact.css';
-import 'primeflex/primeflex.css';
-import { Card } from 'primereact/card';
-import { Button } from 'primereact/button';
-
-
+import "primeicons/primeicons.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.css";
+import "primeflex/primeflex.css";
+import { Card } from "primereact/card";
 
 function DashboardPage() {
   // const header = (
@@ -26,19 +21,28 @@ function DashboardPage() {
         <NavbarDashboard />
         <div className="widgets">
           <div className="first">
-            <Card title="Your Exercises" style={{ width: '20em' }} >
-              <p className="m-1" ><Exercises /></p>
+            <Card title="Your Exercises" style={{ width: "20em" }}>
+              <p className="m-1">
+                <Exercises />
+              </p>
             </Card>
           </div>
           <div className="second">
-            <Card title="Your Measurements" style={{ width: '20em' }} >
-              <p className="m-1" ><Measurement /></p>
+            <Card title="Your Measurements" style={{ width: "20em" }}>
+              <p className="m-1">
+                <Measurement />
+              </p>
             </Card>
           </div>
         </div>
         <div className="third">
+<<<<<<< HEAD
           <Card style={{ width: '20em' }} >
             <p className="m-1" > </p>
+=======
+          <Card title="Your Activities So Far" style={{ width: "20em" }}>
+            <p className="m-1"> Your Activities So Far</p>
+>>>>>>> 236f2c3245dfe59556824639a92d8bdcf4e644ae
           </Card>
         </div>
       </div>
