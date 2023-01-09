@@ -2,26 +2,20 @@ import axios from "axios";
 
 // Authorizations Control
 export async function apiMe() {
-  const response = await axios.get(
-    "http://localhost:8080/api/me",
-    {
-      headers: {
-        Authorization: localStorage.getItem("Token"),
-      },
-    }
-  );
+  const response = await axios.get("http://localhost:8080/api/me", {
+    headers: {
+      Authorization: localStorage.getItem("Token"),
+    },
+  });
   return response;
 }
 
 // Login Control
 export async function loginAPI(data) {
-  const response = await axios.post(
-    "http://localhost:8080/login",
-    {
-      email: data.email,
-      password: data.password,
-    }
-  );
+  const response = await axios.post("http://localhost:8080/login", {
+    email: data.email,
+    password: data.password,
+  });
 
   if (response.status === 200)
     localStorage.setItem("Token", response.data.token);
@@ -31,14 +25,11 @@ export async function loginAPI(data) {
 // Logout
 export async function LogoutAPI() {
   localStorage.removeItem("Token");
-  const response = await axios.post(
-    "http://localhost:8080/api/logout",
-    {
-      headers: {
-        Authorization: "",
-      },
-    }
-  );
+  const response = await axios.post("http://localhost:8080/api/logout", {
+    headers: {
+      Authorization: "",
+    },
+  });
 
   return response;
 }
@@ -94,7 +85,7 @@ export async function createUser(user) {
       address: user.address,
       gym_id: user.gym_id,
       gender: user.gender,
-      trainer_id: user.trainer.ID,
+      // trainer_id: user.trainer.ID,
       //membership: user.membership.code,
     },
     {
@@ -103,6 +94,9 @@ export async function createUser(user) {
       },
     }
   );
+
+  assignPT(user.trainer.ID, response.data.ID);
+
   return response;
 }
 
@@ -164,10 +158,7 @@ export async function getOnlines(gymId) {
 
 // Get Daily Attedance
 export async function contactUs(contact) {
-  const response = await axios.post(
-    "http://localhost:8080/contact",
-    contact
-  );
+  const response = await axios.post("http://localhost:8080/contact", contact);
   return response;
 }
 
@@ -184,14 +175,11 @@ export async function getTrainerOf(memberID) {
 }
 
 export async function getExercises() {
-  const response = await axios.get(
-    "http://localhost:8080/api/exercises",
-    {
-      headers: {
-        Authorization: localStorage.getItem("Token"),
-      },
-    }
-  );
+  const response = await axios.get("http://localhost:8080/api/exercises", {
+    headers: {
+      Authorization: localStorage.getItem("Token"),
+    },
+  });
   return response;
 }
 
@@ -230,10 +218,6 @@ export async function getMemberOfPT(memberID) {
   );
   return response;
 }
-
-
-
-
 
 // export async function assignProgram(memberID) {
 //   const response = await axios.post(

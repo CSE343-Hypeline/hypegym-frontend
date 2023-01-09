@@ -7,14 +7,13 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
-import { MultiSelect } from 'primereact/multiselect';
+import { MultiSelect } from "primereact/multiselect";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { FilterMatchMode, FilterOperator } from "primereact/api";
-import { assignPT } from "../../../API";
+import { assignPT, getExercise, getMemberProgram, getUser } from "../../../API";
 import AddMember from "./AddMeasurementExercise";
 import "./styleManage.css";
 import { apiMe, getMemberOfPT } from "../../../API";
-
 
 // const members = [
 //   { exercise: "squat", reps: "4x12" },
@@ -30,52 +29,90 @@ const exercise = [
   { label: "Upright Row", value: 43 },
   { label: "Seated Overhead Pres", value: 61 },
   { label: "Pull Ups", value: 965 },
-
 ];
 
 const cities = [
-  { name: 'New York', code: 'NY' },
-  { name: 'Rome', code: 'RM' },
-  { name: 'London', code: 'LDN' },
-  { name: 'Istanbul', code: 'IST' },
-  { name: 'Paris', code: 'PRS' }
+  { name: "New York", code: "NY" },
+  { name: "Rome", code: "RM" },
+  { name: "London", code: "LDN" },
+  { name: "Istanbul", code: "IST" },
+  { name: "Paris", code: "PRS" },
 ];
 
 const ManageMembersPT = () => {
   const [members, setMembers] = useState([]);
+  const [membersProgram, setMembersProgram] = useState([]);
+
   const [isSubmit, setIsSubmit] = useState(0);
   const [gymId, setGymId] = useState(0);
   const [loading, setLoading] = useState(true);
   const [globalFilterValue1, setGlobalFilterValue1] = useState("");
   const [filters1, setFilters1] = useState(null);
   const [selectedexercises, setselectedexercises] = useState(null);
-  // useEffect(() => {
-  //   apiMe().then((response) => {
-  //     setGymId(response.data.gym_id);
-  //     getMemberOfPT(response.data.ID).then((response) => {
-  //       setMembers(response.data);
-  //       setLoading(false);
-  //     });
-  //     initFilters1();
-  //   });
-  // }, []);
-  // console.log(members)
-  // useEffect(() => {
-  //   if (isSubmit === 200 || isSubmit === 201) {
-  //     getMemberOfPT(Id).then((response) => {
-  //       setMembers(response.data);
-  //       setIsSubmit(0);
-  //     });
-  //   }
-  // }, [isSubmit]);
+  useEffect(() => {
+    apiMe().then((response) => {
+      getMemberOfPT(response.data.ID).then((res) => {
+        res.data.members.map((member) => {
+          //Member names
+          getUser(member.user_id)
+            .then((res) => {
+              member = {
+                ...member,
+                ["name"]: res.data.name,
+              };
+              setMembers((prev) => [...prev, member]);
+            })
+            .catch((err) => console.log(err));
 
-  // const response =await assignPT ()
+          getMemberProgram(member.user_id)
+            .then((res) => {
+              for (let i = 0; i < res.data.programs.length; i++) {
+                console.log(res.data.programs[i]);
+                getExercise(res.data.programs[i].exercise_id).then((res2) => {
+                  member = {
+                    ...member,
+                    ["programss"]: res2.data.name,
+                    ["set_number"]: res.data.programs[i].set,
+                    ["repetition"]: res.data.programs[i].repetition,
+                  };
 
+                  setMembers((prev) => [...prev, member]);
+                  console.log(members);
+                });
+              }
+
+              console.log(members);
+            })
+            .catch((err) => console.log(err));
+
+          // //Member program
+          // getMemberProgram(member.user_id)
+          //   .then((res) => {
+          //     member = {
+          //       ...member,
+          //       ["programs"]: res.data.programs,
+          //     };
+          //     // setMembers((prev) => [...prev, member]);
+          //   })
+          //   .catch((err) => console.log(err));
+        });
+        setLoading(false);
+      });
+      initFilters1();
+    });
+  }, []);
 
   const deleteButtonBody = (rowData) => {
     return (
       <>
-        <MultiSelect value={selectedexercises} options={cities} onChange={(e) => setselectedexercises(e.value)} optionLabel="name" placeholder="Select exercises" maxSelectedLabels={3} />
+        <MultiSelect
+          value={selectedexercises}
+          options={cities}
+          onChange={(e) => setselectedexercises(e.value)}
+          optionLabel="name"
+          placeholder="Select exercises"
+          maxSelectedLabels={3}
+        />
       </>
     );
   };
@@ -133,53 +170,52 @@ const ManageMembersPT = () => {
     setGlobalFilterValue1("");
   };
 
-  // if () {
-  //   return (
-  //     <div className="spinner">
-  //       <ProgressSpinner />
-  //     </div>
-  //   );
-  // } else {
-  return (
-    <div className="manage-member">
-      <div>
-        {/* <AddMember gym_id={gymId} setIsSubmit={setIsSubmit} /> */}
+  if (loading) {
+    return (
+      <div className="spinner">
+        <ProgressSpinner />
       </div>
+    );
+  } else {
+    return (
+      <div className="manage-member">
+        <div>
+          {/* <AddMember gym_id={gymId} setIsSubmit={setIsSubmit} /> */}
+        </div>
 
-      <div className="app-container">
-        <div className="card">
-          <DataTable
-            value={exercise}
-            responsiveLayout="scroll"
-            filters={filters1}
-            filterDisplay="menu"
-            globalFilterFields={["name", "email", "phone_number", "address"]}
-            header={renderHeader1}
-            emptyMessage="No members found."
-            style={{ width: "50vw" }}
-          >
-            <Column
-              field="name"
-              header="Name"
-              filterField="name"
-              sortable
-            ></Column>
-            <Column field="email" header="Email" sortable></Column>
-            <Column
-              field="exercise"
-              header="Exercises"
-              sortable
-            ></Column>
-            <Column field="reps" header="Measurements" sortable></Column>
-            {/* <Column <AddMember gym_id={gymId} setIsSubmit={setIsSubmit} />/> */}
-            <Column header="Add Exercises" body={deleteButtonBody}></Column>
-
-          </DataTable>
+        <div className="app-container">
+          <div className="card">
+            <DataTable
+              value={members}
+              responsiveLayout="scroll"
+              filters={filters1}
+              filterDisplay="menu"
+              globalFilterFields={["name", "email", "phone_number", "address"]}
+              header={renderHeader1}
+              emptyMessage="No members found."
+              style={{ width: "50vw" }}
+            >
+              <Column
+                field="name"
+                header="Name"
+                filterField="name"
+                sortable
+              ></Column>
+              <Column
+                field="programss"
+                header="Exercise Name"
+                sortable
+              ></Column>
+              <Column field="set_number" header="Set" sortable></Column>
+              <Column field="repetition" header="Repetition" sortable></Column>
+              {/* <Column <AddMember gym_id={gymId} setIsSubmit={setIsSubmit} />/> */}
+              <Column header="Add Exercises" body={deleteButtonBody}></Column>
+            </DataTable>
+          </div>
         </div>
       </div>
-    </div>
-  );
-
+    );
+  }
 };
 
 export default ManageMembersPT;

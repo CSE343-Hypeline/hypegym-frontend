@@ -65,7 +65,6 @@ function AddMember({ gym_id, setIsSubmit }) {
     onSubmit: async (data) => {
       data.gym_id = gym_id;
       const response = await createUser(data);
-
       if (response.status === 201) {
         setShowMessage(true);
         formik.resetForm();
