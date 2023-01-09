@@ -219,22 +219,11 @@ export async function getMemberOfPT(memberID) {
   return response;
 }
 
-// export async function assignProgram(memberID) {
-//   const response = await axios.post(
-//     `http://localhost:8080/api/member/assign-programs/${memberID}`,
-
-//     [
-//       {
-//         exercise_id: 4,
-//         set: 4,
-//         repetition: 12,
-//       },
-//       {
-//         exercise_id: 6,
-//         set: 4,
-//         repetition: 12,
-//       },
-//     ]
-//   );
-//   return response;
-// }
+export async function assignProgram(memberID, program) {
+  console.log(program);
+  const response = await axios.post(
+    `http://localhost:8080/api/member/assign-programs/${memberID}`,
+    program
+  );
+  return response;
+}

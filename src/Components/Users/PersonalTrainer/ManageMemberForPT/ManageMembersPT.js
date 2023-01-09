@@ -10,10 +10,19 @@ import { InputText } from "primereact/inputtext";
 import { MultiSelect } from "primereact/multiselect";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { FilterMatchMode, FilterOperator } from "primereact/api";
-import { assignPT, getExercise, getMemberProgram, getUser } from "../../../API";
+import {
+  assignProgram,
+  assignPT,
+  getExercise,
+  getExercises,
+  getMemberProgram,
+  getUser,
+} from "../../../API";
 import AddMember from "./AddMeasurementExercise";
 import "./styleManage.css";
 import { apiMe, getMemberOfPT } from "../../../API";
+import { Dialog } from "primereact/dialog";
+import { Dropdown } from "react-bootstrap";
 
 // const members = [
 //   { exercise: "squat", reps: "4x12" },
@@ -23,33 +32,74 @@ import { apiMe, getMemberOfPT } from "../../../API";
 //   { exercise: "Pull Ups", reps: "4x12" },
 // ];
 
-const exercise = [
-  { label: "squat", value: 355 },
-  { label: "bench press", value: 54 },
-  { label: "Upright Row", value: 43 },
-  { label: "Seated Overhead Pres", value: 61 },
-  { label: "Pull Ups", value: 965 },
-];
-
-const cities = [
-  { name: "New York", code: "NY" },
-  { name: "Rome", code: "RM" },
-  { name: "London", code: "LDN" },
-  { name: "Istanbul", code: "IST" },
-  { name: "Paris", code: "PRS" },
+const exerciseList = [
+  {
+    code: 1,
+    name: "3/4 Sit-Up",
+  },
+  {
+    code: 2,
+    name: "Band Pull Apart",
+  },
+  {
+    code: 3,
+    name: "Crunches",
+  },
+  {
+    code: 4,
+    name: "Decline Push-Up",
+  },
+  {
+    code: 5,
+    name: "Inchworm",
+  },
+  {
+    code: 6,
+    name: "Heaving Snatch Balance",
+  },
+  {
+    code: 7,
+    name: "Incline Cable Flye",
+  },
+  {
+    code: 8,
+    name: "Bench Press - With Bands",
+  },
+  {
+    code: 9,
+    name: "Quick Leap",
+  },
+  {
+    code: 10,
+    name: "Bicycling",
+  },
 ];
 
 const ManageMembersPT = () => {
   const [members, setMembers] = useState([]);
   const [membersProgram, setMembersProgram] = useState([]);
+  const [position, setPosition] = useState("center");
+  const [exercise1, setExercise1] = useState();
+  const [programlar, setProgramlar] = useState([]);
+  const [memberId, setMemberId] = useState();
 
+  const [showMessage, setShowMessage] = useState(false);
+  const [displayBasic, setDisplayBasic] = useState(false);
   const [isSubmit, setIsSubmit] = useState(0);
   const [gymId, setGymId] = useState(0);
   const [loading, setLoading] = useState(true);
   const [globalFilterValue1, setGlobalFilterValue1] = useState("");
   const [filters1, setFilters1] = useState(null);
   const [selectedexercises, setselectedexercises] = useState(null);
+
+  const [exercises, setExercises] = useState();
+
   useEffect(() => {
+    // getExercises().then((res) => {
+    //   setExercises(res.data);
+    //   console.log(res.data);
+    // });
+
     apiMe().then((response) => {
       getMemberOfPT(response.data.ID).then((res) => {
         res.data.members.map((member) => {
@@ -66,22 +116,30 @@ const ManageMembersPT = () => {
 
           getMemberProgram(member.user_id)
             .then((res) => {
-              for (let i = 0; i < res.data.programs.length; i++) {
-                console.log(res.data.programs[i]);
-                getExercise(res.data.programs[i].exercise_id).then((res2) => {
-                  member = {
-                    ...member,
-                    ["programss"]: res2.data.name,
-                    ["set_number"]: res.data.programs[i].set,
-                    ["repetition"]: res.data.programs[i].repetition,
-                  };
+              member["programs"] = res.data.programs.map(
+                (item) => item.exercise.name + " "
+              );
+              member["set_num"] = res.data.programs.map(
+                (item) => item.set + " "
+              );
+              member["repetition"] = res.data.programs.map(
+                (item) => item.repetition + " "
+              );
+              // console.log(member);
 
-                  setMembers((prev) => [...prev, member]);
-                  console.log(members);
-                });
-              }
+              // for (let i = 0; i < res.data.programs.length; i++) {
+              //   console.log(res.data.programs[i]);
+              //     member = {
+              //       ...member,
+              //       [["programss"]]: res2.data.name,
+              //       ["set_number"]: res.data.programs[i].set,
+              //       ["repetition"]: res.data.programs[i].repetition,
+              //     };
+              //     setMembers((prev) => [...prev, member]);
+              //     // console.log(members);
+              // }
 
-              console.log(members);
+              // console.log(members);
             })
             .catch((err) => console.log(err));
 
@@ -102,16 +160,39 @@ const ManageMembersPT = () => {
     });
   }, []);
 
-  const deleteButtonBody = (rowData) => {
+  const dialogFooter = (
+    <div className="flex justify-content-center">
+      <Button
+        label="OK"
+        className="p-button-text"
+        autoFocus
+        onClick={() => setShowMessage(false)}
+      />
+    </div>
+  );
+
+  const dialogFuncMap = {
+    displayBasic: setDisplayBasic,
+  };
+
+  const onClick = (name, position) => {
+    dialogFuncMap[`${name}`](true);
+
+    if (position) {
+      setPosition(position);
+    }
+  };
+
+  const addProgram = (rowData) => {
     return (
       <>
-        <MultiSelect
-          value={selectedexercises}
-          options={cities}
-          onChange={(e) => setselectedexercises(e.value)}
-          optionLabel="name"
-          placeholder="Select exercises"
-          maxSelectedLabels={3}
+        <Button
+          onClick={() => {
+            setMemberId(rowData.user_id);
+            onClick("displayBasic");
+          }}
+          label="Assign program"
+          className="p-button-rounded  p-button-outlined"
         />
       </>
     );
@@ -170,6 +251,23 @@ const ManageMembersPT = () => {
     setGlobalFilterValue1("");
   };
 
+  const onHide = (name) => {
+    dialogFuncMap[`${name}`](false);
+  };
+
+  const handleFormSubmit = async () => {
+    await exercise1.map((exercise) => {
+      const exerciseFormat = {
+        ["exercise_id"]: exercise.code,
+        ["set"]: 4,
+        ["repetition"]: 12,
+      };
+      setProgramlar((prevState) => [...prevState, exerciseFormat]);
+    });
+
+    assignProgram(memberId, programlar);
+  };
+
   if (loading) {
     return (
       <div className="spinner">
@@ -178,39 +276,78 @@ const ManageMembersPT = () => {
     );
   } else {
     return (
-      <div className="manage-member">
-        <div>
-          {/* <AddMember gym_id={gymId} setIsSubmit={setIsSubmit} /> */}
-        </div>
+      <div>
+        <Dialog
+          visible={displayBasic}
+          style={{ width: "50vw" }}
+          onHide={() => onHide("displayBasic")}
+        >
+          <div className="form-demo">
+            <div className="flex justify-content-center">
+              <div className="card">
+                <form className="p-fluid">
+                  <div className="field">
+                    <MultiSelect
+                      value={exercise1}
+                      options={exerciseList}
+                      onChange={(e) => {
+                        setExercise1(e.value);
+                      }}
+                      optionLabel="name"
+                      placeholder="Select Exercises"
+                      maxSelectedLabels={5}
+                    />
+                  </div>
+                </form>
+                <Button
+                  type="submit"
+                  label="Submit"
+                  className="mt-2"
+                  onClick={handleFormSubmit}
+                />
+              </div>
+            </div>
+          </div>
+        </Dialog>
 
-        <div className="app-container">
-          <div className="card">
-            <DataTable
-              value={members}
-              responsiveLayout="scroll"
-              filters={filters1}
-              filterDisplay="menu"
-              globalFilterFields={["name", "email", "phone_number", "address"]}
-              header={renderHeader1}
-              emptyMessage="No members found."
-              style={{ width: "50vw" }}
-            >
-              <Column
-                field="name"
-                header="Name"
-                filterField="name"
-                sortable
-              ></Column>
-              <Column
-                field="programss"
-                header="Exercise Name"
-                sortable
-              ></Column>
-              <Column field="set_number" header="Set" sortable></Column>
-              <Column field="repetition" header="Repetition" sortable></Column>
-              {/* <Column <AddMember gym_id={gymId} setIsSubmit={setIsSubmit} />/> */}
-              <Column header="Add Exercises" body={deleteButtonBody}></Column>
-            </DataTable>
+        <div className="manage-member">
+          <div className="app-container">
+            <div className="card">
+              <DataTable
+                value={members}
+                responsiveLayout="scroll"
+                filters={filters1}
+                filterDisplay="menu"
+                globalFilterFields={[
+                  "name",
+                  "email",
+                  "phone_number",
+                  "address",
+                ]}
+                header={renderHeader1}
+                emptyMessage="No members found."
+                style={{ width: "50vw" }}
+              >
+                <Column
+                  field="name"
+                  header="Name"
+                  filterField="name"
+                  sortable
+                ></Column>
+                <Column
+                  field="programs"
+                  header="Exercise Names"
+                  sortable
+                ></Column>
+                <Column field="set_num" header="Set" sortable></Column>
+                <Column
+                  field="repetition"
+                  header="Repetition"
+                  sortable
+                ></Column>
+                <Column header="Add Exercises" body={addProgram}></Column>
+              </DataTable>
+            </div>
           </div>
         </div>
       </div>
